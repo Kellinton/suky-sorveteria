@@ -51,7 +51,7 @@
                                     <a href="#" class="btn px-4 py-2 text-white rounded">Picolé</a>
                                 </div>
                                 <div class="carousel-item rounded">
-                                    <img src="{{ asset ('img/hero-img-2.jpg') }}" class="img-fluid w-100 h-100 rounded" alt="Segundo slide">
+                                    <img src="{{ asset ('img/hero-img-4.png') }}" class="img-fluid w-100 h-100 rounded" alt="Segundo slide">
                                     <a href="#" class="btn px-4 py-2 text-white rounded">Sorvete de Massa</a>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="featurs-item text-center rounded bg-light p-4">
                             <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                                <i class="fas fa-car-side fa-3x text-white"></i>
+                                <i class="fas fa-exchange-alt fa-3x text-white"></i>
                             </div>
                             <div class="featurs-content text-center">
                                 <h5>Variedade de Sabores</h5>
@@ -93,14 +93,14 @@
                             </div>
                             <div class="featurs-content text-center">
                                 <h5>Pagamento Seguro</h5>
-                                <p class="mb-0">Pagamento 100% seguro</p>
+                                <p class="mb-0">Pagamento 100% seguro e confiável</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="featurs-item text-center rounded bg-light p-4">
                             <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                                <i class="fas fa-exchange-alt fa-3x text-white"></i>
+                                <i class="fas fa-car-side fa-3x text-white"></i>
                             </div>
                             <div class="featurs-content text-center">
                                 <h5>Entrega Rápida</h5>
@@ -142,22 +142,22 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                        <span class="text-dark" style="width: 130px;">Vegetais</span>
+                                        <span class="text-dark" style="width: 130px;">Açai</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                        <span class="text-dark" style="width: 130px;">Frutas</span>
+                                        <span class="text-dark" style="width: 130px;">Sorvete de Pote</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                                        <span class="text-dark" style="width: 130px;">Pão</span>
+                                        <span class="text-dark" style="width: 130px;">Picolé</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                        <span class="text-dark" style="width: 130px;">Carne</span>
+                                        <span class="text-dark" style="width: 130px;">Sorvete de Massa</span>
                                     </a>
                                 </li>
                             </ul>
@@ -588,7 +588,7 @@
                     </div>
                     <div class="border border-primary rounded position-relative vesitable-item">
                         <div class="vesitable-img">
-                            <img src="i{{ asset ('mg/vegetable-item-4.jpg') }}" class="img-fluid w-100 rounded-top" alt="">
+                            <img src="{{ asset ('img/vegetable-item-4.jpg') }}" class="img-fluid w-100 rounded-top" alt="">
                         </div>
                         <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
                         <div class="p-4 rounded-bottom">
