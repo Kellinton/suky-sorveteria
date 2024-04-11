@@ -106,16 +106,16 @@
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Fruitables</h1>
-                                <p class="text-secondary mb-0">Produtos frescos</p>
+                                <h1 class="text-primary mb-0">Suky Sorveteria</h1>
+                                <p class="text-secondary mb-0">Sorvetes e Açai</p>
                             </a>
                         </div>
-                        <div class="col-lg-6">
+                        {{-- <div class="col-lg-6">
                             <div class="position-relative mx-auto">
                                 <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="email" placeholder="Seu Email">
                                 <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Inscrever-se Agora</button>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
@@ -131,10 +131,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Por que as pessoas gostam de nós!</h4>
-                            <p class="mb-4">Composição tipográfica, permanecendo essencialmente inalterada. Foi popularizada na década de 1960 com a inclusão de programas como Aldus PageMaker, incluindo Lorem Ipsum.</p>
-                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Leia Mais</a>
+                            <p class="mb-4">Nossa sorveteria é amada pelos nossos clientes por causa da qualidade incomparável dos nossos sorvetes.</p>
+                            <a href="#" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Saiba Mais</a>
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
                             <h4 class="text-light mb-3">Informações da Loja</h4>
@@ -178,7 +179,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Nome do Seu Site</a>, Todos os direitos reservados.</span>
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Code Forge</a>, Todos os direitos reservados.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** Este modelo é gratuito desde que você mantenha o link de crédito/attribution/backlink do autor abaixo. ***/-->
