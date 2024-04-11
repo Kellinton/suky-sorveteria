@@ -867,10 +867,10 @@
                 <div class="row g-4 align-items-center">
                     <div class="col-lg-6">
                         <div class="py-4">
-                            <h1 class="display-3 text-white">Fresh Exotic Fruits</h1>
-                            <p class="fw-normal display-3 text-dark mb-4">in Our Store</p>
-                            <p class="mb-4 text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                            <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">BUY</a>
+                            <h1 class="display-3 text-white">Picolés em desconto</h1>
+                            <p class="fw-normal display-3 text-dark mb-4">Só em nossa loja</p>
+                            <p class="mb-4 text-dark">As delicias geladas mais procuradas em todo o país. Excelência desde a produção até a venda, venha e aproveite as promoções.</p>
+                            <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Comprar</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -880,7 +880,7 @@
                                 <h1 style="font-size: 100px;">1</h1>
                                 <div class="d-flex flex-column">
                                     <span class="h2 mb-0">50R$</span>
-                                    <span class="h4 text-muted mb-0">UN</span>
+                                    <span class="h4 text-muted mb-0">un</span>
                                 </div>
                             </div>
                         </div>
