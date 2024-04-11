@@ -7,7 +7,7 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Pesquisar por palavra-chave</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center">
@@ -57,8 +57,8 @@
                             <form action="" class="">
                                 <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
                                 <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email">
-                                <textarea class="w-100 form-control border-0 mb-4 textarea-form" rows="5" cols="10" placeholder="Your Message"></textarea>
-                                <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
+                                <textarea class="w-100 form-control border-0 m'b-4 textarea-form" rows="5" cols="10" placeholder="Your Message"></textarea>
+                                <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Enviar</button>
                             </form>
                         </div>
                         <div class="col-lg-5">
