@@ -64,8 +64,8 @@
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                             <a href="{{ url ('/') }}" class="nav-item nav-link active">Início</a>
-                            <a href="shop.html" class="nav-item nav-link">Loja</a>
-                            <a href="shop-detail.html" class="nav-item nav-link">Detalhes da Loja</a>
+                            <a href="{{ url ('/shop') }}" class="nav-item nav-link">Loja</a>
+                            <a href="{{ url ('/shop-detalhes') }}" class="nav-item nav-link">Detalhes da Loja</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
