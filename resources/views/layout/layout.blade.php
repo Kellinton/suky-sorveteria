@@ -66,7 +66,7 @@
                             <a href="{{ url ('/') }}" class="nav-item nav-link active">Início</a>
                             <a href="{{ url ('/shop') }}" class="nav-item nav-link">Loja</a>
                             <a href="{{ url ('/shop-detalhes') }}" class="nav-item nav-link">Detalhes da Loja</a>
-                            <div class="nav-item dropdown">
+                            {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                     <a href="cart.html" class="dropdown-item">Carrinho</a>
@@ -74,7 +74,7 @@
                                     <a href="testimonial.html" class="dropdown-item">Depoimentos</a>
                                     <a href="404.html" class="dropdown-item">Página 404</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <a href="{{ url ('/contato') }}" class="nav-item nav-link">Contato</a>
                         </div>
                         <div class="d-flex m-3 me-0">
