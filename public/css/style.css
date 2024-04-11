@@ -519,4 +519,7 @@
     background-color: #ba34ac;
 }
 
+.textarea-form{
+    resize: none;
+}
 /* #endregion mudanças */
