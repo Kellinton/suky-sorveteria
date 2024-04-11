@@ -505,4 +505,18 @@
     color: #BA34AC !important;
 }
 
+/* .hero-header {
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/hero-img.png);
+} */
+
+::-webkit-scrollbar{
+    width: 15px;
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb{
+    width: 15px;
+    background-color: #ba34ac;
+}
+
 /* #endregion mudanças */
