@@ -179,7 +179,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Code Forge</a>, Todos os direitos reservados.</span>
+                        <span class="text-light"><a href="https://github.com/CodeForgeGroup"><i class="fas fa-copyright text-light me-2"></i>Code Forge</a>, Todos os direitos reservados.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** Este modelo é gratuito desde que você mantenha o link de crédito/attribution/backlink do autor abaixo. ***/-->

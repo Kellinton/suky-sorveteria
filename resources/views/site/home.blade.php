@@ -867,7 +867,7 @@
                 <div class="row g-4 align-items-center">
                     <div class="col-lg-6">
                         <div class="py-4">
-                            <h1 class="display-3 text-white">Picolés em desconto</h1>
+                            <h1 class="display-3 text-white">Picolés em desconto!!!</h1>
                             <p class="fw-normal display-3 text-dark mb-4">Só em nossa loja</p>
                             <p class="mb-4 text-dark">As delicias geladas mais procuradas em todo o país. Excelência desde a produção até a venda, venha e aproveite as promoções.</p>
                             <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">Comprar</a>
