@@ -116,14 +116,14 @@
                                 <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Inscrever-se Agora</button>
                             </div>
                         </div> --}}
-                        <div class="col-lg-3">
+                        {{-- <div class="col-lg-3">
                             <div class="d-flex justify-content-end pt-3">
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
                                 <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -150,20 +150,20 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
                             <h4 class="text-light mb-3">Conta</h4>
-                            <a class="btn-link" href="">Minha Conta</a>
-                            <a class="btn-link" href="">Detalhes da Loja</a>
-                            <a class="btn-link" href="">Carrinho de Compras</a>
-                            <a class="btn-link" href="">Lista de Desejos</a>
-                            <a class="btn-link" href="">Histórico de Pedidos</a>
-                            <a class="btn-link" href="">Pedidos Internacionais</a>
+                            <a class="btn-link" href="{{ url ('/login') }}">Minha Conta</a>
+                            <a class="btn-link" href="{{ url ('/shop-detalhes') }}">Detalhes da Loja</a>
+                            <a class="btn-link" href="{{ url ('/carrinho') }}">Carrinho de Compras</a>
+                            <a class="btn-link" href="{{ url ('/carrinho') }}">Lista de Desejos</a>
+                            {{-- <a class="btn-link" href="">Histórico de Pedidos</a>
+                            <a class="btn-link" href="">Pedidos Internacionais</a> --}}
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contato</h4>
-                            <p>Endereço: 1429 Rua Netus, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Telefone: +0123 4567 8910</p>
+                            <p>Endereço: Av. Rosária, 1381 - São Miguel Paulista</p>
+                            <p>Email: sukysorveteria@gmail.com</p>
+                            <p>Telefone: 11 99999-9999</p>
                             <p>Pagamento Aceito</p>
                             <img src="{{ asset ('img/payment.png') }}" class="img-fluid" alt="">
                         </div>
@@ -181,12 +181,12 @@
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         <span class="text-light"><a href="https://github.com/CodeForgeGroup"><i class="fas fa-copyright text-light me-2"></i>Code Forge</a>, Todos os direitos reservados.</span>
                     </div>
-                    <div class="col-md-6 my-auto text-center text-md-end text-white">
+                    {{-- <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** Este modelo é gratuito desde que você mantenha o link de crédito/attribution/backlink do autor abaixo. ***/-->
                         <!--/*** Se você deseja usar o modelo sem o link de crédito/attribution/backlink do autor abaixo, ***/-->
                         <!--/*** você pode adquirir a Licença de Remoção de Crédito em "https://htmlcodex.com/credit-removal". ***/-->
                         Projetado por <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distribuído por <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
