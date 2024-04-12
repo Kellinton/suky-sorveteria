@@ -30,50 +30,51 @@
                             <div class="col-6"></div>
                             <div class="col-xl-3">
                                 <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-                                    <label for="fruits">Default Sorting:</label>
+                                    <label for="fruits">Ordenação Padrão:</label>
                                     <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3" form="fruitform">
-                                        <option value="volvo">Nothing</option>
-                                        <option value="saab">Popularity</option>
-                                        <option value="opel">Organic</option>
-                                        <option value="audi">Fantastic</option>
+                                        <option value="volvo">Picolé</option>
+                                        <option value="saab">Sorvete de Pote</option>
+                                        <option value="opel">Açai</option>
+                                        <option value="audi">Mais Vendidos</option>
                                     </select>
                                 </div>
                             </div>
+
                         </div>
                         <div class="row g-4">
                             <div class="col-lg-3">
                                 <div class="row g-4">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <h4>Categories</h4>
+                                            <h4>Categorias</h4>
                                             <ul class="list-unstyled fruite-categorie">
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a>
+                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Chocolate</a>
                                                         <span>(3)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Oranges</a>
+                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Morango</a>
                                                         <span>(5)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Strawbery</a>
+                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Abacaxi</a>
                                                         <span>(2)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Banana</a>
+                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Napolitano</a>
                                                         <span>(8)</span>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="d-flex justify-content-between fruite-name">
-                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Pumpkin</a>
+                                                        <a href="#"><i class="fas fa-apple-alt me-2"></i>Creme</a>
                                                         <span>(5)</span>
                                                     </div>
                                                 </li>
@@ -82,82 +83,82 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <h4 class="mb-2">Price</h4>
+                                            <h4 class="mb-2">Preço</h4>
                                             <input type="range" class="form-range w-100" id="rangeInput" name="rangeInput" min="0" max="500" value="0" oninput="amount.value=rangeInput.value">
                                             <output id="amount" name="amount" min-velue="0" max-value="500" for="rangeInput">0</output>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    {{-- <div class="col-lg-12">
                                         <div class="mb-3">
-                                            <h4>Additional</h4>
+                                            <h4>Adicionais</h4>
                                             <div class="mb-2">
-                                                <input type="radio" class="me-2" id="Categories-1" name="Categories-1" value="Beverages">
-                                                <label for="Categories-1"> Organic</label>
+                                                <input type="radio" class="me-2" id="Categorias-1" name="Categorias-1" value="Bebidas">
+                                                <label for="Categorias-1"> Orgânicos</label>
                                             </div>
                                             <div class="mb-2">
-                                                <input type="radio" class="me-2" id="Categories-2" name="Categories-1" value="Beverages">
-                                                <label for="Categories-2"> Fresh</label>
+                                                <input type="radio" class="me-2" id="Categorias-2" name="Categorias-1" value="Bebidas">
+                                                <label for="Categorias-2"> Frescos</label>
                                             </div>
                                             <div class="mb-2">
-                                                <input type="radio" class="me-2" id="Categories-3" name="Categories-1" value="Beverages">
-                                                <label for="Categories-3"> Sales</label>
+                                                <input type="radio" class="me-2" id="Categorias-3" name="Categorias-1" value="Bebidas">
+                                                <label for="Categorias-3"> Promoções</label>
                                             </div>
                                             <div class="mb-2">
-                                                <input type="radio" class="me-2" id="Categories-4" name="Categories-1" value="Beverages">
-                                                <label for="Categories-4"> Discount</label>
+                                                <input type="radio" class="me-2" id="Categorias-4" name="Categorias-1" value="Bebidas">
+                                                <label for="Categorias-4"> Descontos</label>
                                             </div>
                                             <div class="mb-2">
-                                                <input type="radio" class="me-2" id="Categories-5" name="Categories-1" value="Beverages">
-                                                <label for="Categories-5"> Expired</label>
+                                                <input type="radio" class="me-2" id="Categorias-5" name="Categorias-1" value="Bebidas">
+                                                <label for="Categorias-5"> Vencidos</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-12">
-                                        <h4 class="mb-3">Featured products</h4>
+                                        <h4 class="mb-3">Produtos em Destaque</h4>
                                         <div class="d-flex align-items-center justify-content-start">
                                             <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/featur-1.jpg" class="img-fluid rounded" alt="">
+                                                <img src="img/sorvete-1.jpg" class="img-fluid rounded" alt="">
                                             </div>
                                             <div>
-                                                <h6 class="mb-2">Big Banana</h6>
+                                                <h6 class="mb-2">Sorvete de Morango</h6>
                                                 <div class="d-flex mb-2">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
                                                 </div>
                                                 <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">2.99 $</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                                    <h5 class="fw-bold me-2">R$ 24,99</h5>
+                                                    <h5 class="text-danger text-decoration-line-through">R$ 29,99</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-start">
                                             <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/featur-2.jpg" class="img-fluid rounded" alt="">
+                                                <img src="img/sorvete-2.jpg" class="img-fluid rounded" alt="">
                                             </div>
                                             <div>
-                                                <h6 class="mb-2">Big Banana</h6>
+                                                <h6 class="mb-2">Sorvete de Chocolate</h6>
                                                 <div class="d-flex mb-2">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
                                                 </div>
                                                 <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">2.99 $</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                                    <h5 class="fw-bold me-2">R$ 24,99</h5>
+                                                    <h5 class="text-danger text-decoration-line-through">R$ 29,99</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-start">
                                             <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/featur-3.jpg" class="img-fluid rounded" alt="">
+                                                <img src="img/sorvete-3.jpg" class="img-fluid rounded" alt="">
                                             </div>
                                             <div>
-                                                <h6 class="mb-2">Big Banana</h6>
+                                                <h6 class="mb-2">Sorvete de Baunilha</h6>
                                                 <div class="d-flex mb-2">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
@@ -166,15 +167,16 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                                 <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">2.99 $</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                                    <h5 class="fw-bold me-2">R$ 24,99</h5>
+                                                    <h5 class="text-danger text-decoration-line-through">R$ 29,99</h5>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center my-4">
-                                            <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
+                                            <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Ver Mais</a>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="position-relative">
                                             <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
