@@ -55,10 +55,10 @@
                         </div>
                         <div class="col-lg-7">
                             <form action="" class="">
-                                <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Your Name">
-                                <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Enter Your Email">
-                                <textarea class="w-100 form-control border-0 m'b-4 textarea-form" rows="5" cols="10" placeholder="Your Message"></textarea>
-                                <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Enviar</button>
+                                <input type="text" class="w-100 form-control border-0 py-3 mb-4" placeholder="Seu Nome:">
+                                <input type="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="Seu Email:">
+                                <textarea class="w-100 form-control border-0 mb-4 textarea-form" rows="5" cols="10" placeholder="Sua Mensagem:"></textarea>
+                                <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary" type="submit">Enviar</button>
                             </form>
                         </div>
                         <div class="col-lg-5">
