@@ -30,4 +30,11 @@ Route::get('/carrinho', [ShopController::class, 'carrinho'])->name('carrinho');
 
 Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('shopDetalhes');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+#region Login
+
+// Logar
+Route::get('/admin', [LoginController::class, 'index'])->name('login');
+// Autenticação
+Route::post('/admin', [LoginController::class, 'autenticar'])->name('login.autenticar');
+
+#endregion Login

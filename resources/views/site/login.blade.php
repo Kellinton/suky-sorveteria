@@ -85,21 +85,24 @@
                   <p class="mb-0">Digite seu e-mail e senha para entrar</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form action="{{ route('login.autenticar') }}" role="form" method="POST">
+                    @csrf
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon"  value="{{ old('email') }}">
+                      {{ $errors->has('email') ? $errors->first('email') : '' }}
                     </div>
                     <label>Senha</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="password-addon">
+                      <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="password-addon"  value="{{ old('senha') }}">
+                      {{ $errors->has('password') ? $errors->first('password') : '' }}
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                       <label class="form-check-label" for="rememberMe">Lembrar-me</label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Entrar</button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Entrar</button>
                     </div>
                   </form>
                 </div>
