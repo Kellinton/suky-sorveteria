@@ -117,10 +117,10 @@
                                         <h4 class="mb-3">Produtos em Destaque</h4>
                                         <div class="d-flex align-items-center justify-content-start">
                                             <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/sorvete-1.jpg" class="img-fluid rounded" alt="">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-2.png') }}" class="img-fluid rounded" alt="">
                                             </div>
                                             <div>
-                                                <h6 class="mb-2">Sorvete de Morango</h6>
+                                                <h6 class="mb-2">Sorvete de Coco</h6>
                                                 <div class="d-flex mb-2">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
@@ -136,29 +136,29 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-start">
                                             <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/sorvete-2.jpg" class="img-fluid rounded" alt="">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-4.png') }}" class="img-fluid rounded" alt="">
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-2">Sorvete Napolitano</h6>
+                                                <div class="d-flex mb-2">
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                    <i class="fa fa-star text-secondary"></i>
+                                                </div>
+                                                <div class="d-flex mb-2">
+                                                    <h5 class="fw-bold me-2">R$ 24,99</h5>
+                                                    <h5 class="text-danger text-decoration-line-through">R$ 29,99</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-start">
+                                            <div class="rounded me-4" style="width: 100px; height: 100px;">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-8.png') }}" class="img-fluid rounded" alt="">
                                             </div>
                                             <div>
                                                 <h6 class="mb-2">Sorvete de Chocolate</h6>
-                                                <div class="d-flex mb-2">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                </div>
-                                                <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">R$ 24,99</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">R$ 29,99</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/sorvete-3.jpg" class="img-fluid rounded" alt="">
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-2">Sorvete de Baunilha</h6>
                                                 <div class="d-flex mb-2">
                                                     <i class="fa fa-star text-secondary"></i>
                                                     <i class="fa fa-star text-secondary"></i>
@@ -173,15 +173,15 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center my-4">
-                                            <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Ver Mais</a>
+                                            <a href="{{ url('/home') }}#maisVendidos" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Ver Mais</a>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="position-relative">
-                                            <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
+                                            <img src="img/banner-fruits.png" class="img-fluid w-100 rounded" alt="">
                                             <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                                <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
+                                                {{-- <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3> --}}
                                             </div>
                                         </div>
                                     </div>
