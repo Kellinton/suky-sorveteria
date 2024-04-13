@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\AtendenteController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -33,8 +35,21 @@ Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('sho
 #region Login
 
 // Logar
-Route::get('/admin', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Autenticação
-Route::post('/admin', [LoginController::class, 'autenticar'])->name('login.autenticar');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
 
 #endregion Login
+
+Route::middleware(['autenticacao:administrador'])->group(function(){
+
+     Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
+
+});
+
+Route::middleware(['autenticacao:atendente'])->group(function (){
+
+    Route::get('dashboard/atendente', [AtendenteController::class, 'index'])->name('dashboard.atendente');
+
+});
+

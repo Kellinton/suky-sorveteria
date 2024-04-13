@@ -35,6 +35,7 @@
               <i class="fa fa-home opacity-6 text-dark me-1"></i>
               Acessar Site
             </a>
+
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -70,17 +71,17 @@
       </div>
     </div>
   </div>
-  <main class="main-content  mt-0">
+  <main class="main-content mt-0">
     <section>
       <div class="page-header min-vh-75">
         <div class="container">
           <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto mt-8">
-              <div class="card-header d-flex justify-content-center pb-0 text-left bg-transparent">
-                <img src="img/logo_suky.png" class="w-35">
+            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto mt-6">
+              <div class="card-header d-flex justify-content-center  pb-0 text-left">
+                <img src="img/logo_suky.png" class="w-30">
               </div>
-              <div class="card card-plain mt-2">
-                <div class="card-header pb-0 text-left bg-transparent">
+              <div class="card card-plain mt-0">
+                <div class="card-header pb-0 pt-4 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Bem-vindo!</h3>
                   <p class="mb-0">Digite seu e-mail e senha para entrar</p>
                 </div>
@@ -89,12 +90,12 @@
                     @csrf
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon"  value="{{ old('email') }}">
+                      <input type="email" name="email" required class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon"  value="{{ old('email') }}">
                       {{ $errors->has('email') ? $errors->first('email') : '' }}
                     </div>
                     <label>Senha</label>
                     <div class="mb-3">
-                      <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="password-addon"  value="{{ old('senha') }}">
+                      <input type="password" name="password" required class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="password-addon"  value="{{ old('senha') }}">
                       {{ $errors->has('password') ? $errors->first('password') : '' }}
                     </div>
                     <div class="form-check form-switch">
@@ -106,12 +107,26 @@
                     </div>
                   </form>
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  {{-- <p class="mb-4 text-sm mx-auto">
+                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                 <p class="mb-4 text-sm mx-auto">
                     Não tem uma conta?
                     <a href="javascript:;" class="text-info text-gradient font-weight-bold">Registre-se</a>
-                  </p> --}}
-                </div>
+                  </p>
+                </div> --}}
+                <div class="container">
+                    <div class="row">
+                      <div class="mx-auto text-center">
+                        <a href="{{ url('/') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        <i class="fa fa-home opacity-6 text-dark me"></i>
+                         Acessar Site
+                        </a>
+                        <a href="https://github.com/CodeForgeGroup" target="_blank" class="text-secondary me-xl-4 me-4">
+                          <span class="text-lg fab fa-github"></span>
+                          Code Forge
+                        </a>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -125,30 +140,8 @@
     </section>
   </main>
   <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-  <footer class="footer py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mb-4 mx-auto text-center">
-          <a href="{{ url('/') }}" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-          <i class="fa fa-home opacity-6 text-dark me"></i>
-           Acessar Site
-          </a>
-          <a href="https://github.com/CodeForgeGroup" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-github"></span>
-            Code Forge
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-8 mx-auto text-center mt-1">
-          <p class="mb-0 text-secondary">
-            Direitos autorais © <script>
-              document.write(new Date().getFullYear())
-            </script> Code Forge
-          </p>
-        </div>
-      </div>
-    </div>
+  <footer class="footer py-3">
+
   </footer>
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Arquivos JS Principais   -->

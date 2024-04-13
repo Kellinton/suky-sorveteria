@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Funcionario;
+use App\Models\Usuario;
+
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -33,7 +36,7 @@ class LoginController extends Controller
         $senha = $request->get('password');
 
         // Busca um usuário no banco de dados com base no email fornecido
-        $usuario = Usuario::where('email', $email)->first();
+        $usuario = Usuario::where('emailUsuario', $email)->first();
 
          // Verifica se o usuário existe no banco de dados
         if(!$usuario){
@@ -42,36 +45,40 @@ class LoginController extends Controller
 
 
         // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
-        if($usuario->senha != $senha){
+        if($usuario->senhaUsuario != $senha){
             return back()->withErrors(['password' => 'Senha Incorreta.']);
         }
 
+
         // Obtém o tipo de usuário associado ao usuário autenticado
-        $tipoUsuario = $usuario ->tipo_usuario;
+        $tipoUsuario = $usuario->tipo_usuario;
+
+        // Define a variável de sessão 'email' com o email do usuário autenticado
+        session([
+            'email' => $usuario->emailUsuario,
+        ]);
 
          // Realiza ações diferentes com base no tipo de usuário
       if($tipoUsuario instanceof Funcionario){
 
         // dd($tipoUsuario);
 
-            if($tipoUsuario->tipoFuncionario == 'administrativo'){
+            if($tipoUsuario->tipo_funcionario == 'administrador'){
 
                 session([
                     'id'            => $tipoUsuario->idFuncionario,
                     'nome'          => $tipoUsuario->nomeFuncionario,
-                    'email'         => $tipoUsuario->email,
-                    'tipo_usuario'  => $tipoUsuario->tipoFuncionario,
+                    'tipo_usuario'  => $tipoUsuario->tipo_funcionario,
                ]);
+            //    dd(session('email'));
+               return redirect()->route('dashboard.administrador');
 
-               return redirect()->route('dashboard.administrativo');
-
-            }elseif($tipoUsuario->tipoFuncionario == 'atendente'){
+            }elseif($tipoUsuario->tipo_funcionario == 'atendente'){
 
                 session([
                     'id'            => $tipoUsuario->idFuncionario,
                     'nome'          => $tipoUsuario->nomeFuncionario,
-                    'email'         => $tipoUsuario->email,
-                    'tipo_usuario'  => $tipoUsuario->tipoFuncionario,
+                    'tipo_usuario'  => $tipoUsuario->tipo_funcionario,
                ]);
 
                return redirect()->route('dashboard.atendente');
