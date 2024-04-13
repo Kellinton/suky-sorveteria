@@ -7,7 +7,6 @@
             <h1 class="text-center text-white display-6">Contato</h1>
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="{{ url ('/') }}">Início</a></li>
-                <li class="breadcrumb-item"><a href="#">Páginas</a></li>
                 <li class="breadcrumb-item active text-white">Contato</li>
             </ol>
         </div>
