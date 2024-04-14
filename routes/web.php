@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AssistenteController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ShopController;
@@ -51,7 +52,7 @@ Route::get('/sair', function(){
 Route::middleware(['autenticacao:administrador'])->group(function(){
 
      Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
-
+     Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
 });
 
 Route::middleware(['autenticacao:assistente'])->group(function (){

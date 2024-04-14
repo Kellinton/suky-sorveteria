@@ -95,7 +95,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/rtl.html">
+          <a class="nav-link  " href="{{ route('funcionario.index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Funcionários</title>
@@ -162,7 +162,7 @@
       </ul>
     </div>
     <div class="sidenav-footer mx-3 ">
-      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
+      <div class="card  shadow-none bg-gradient-primary" id="sidenavCard">
         <div class="full-background" style="background-image: url('{{ asset('dashboard/img/curved-images/white-curved.jpg') }}')"></div>
         <div class="card-body text-start p-3 w-100">
           <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
@@ -170,8 +170,8 @@
           </div>
           <div class="docs-info">
             <h6 class="text-white up mb-0">Precisa de ajuda?</h6>
-            <p class="text-xs font-weight-bold">Veja como utilizar a dashboard</p>
-            <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Continuar</a>
+            <p class="text-xs font-weight-bold text-white">Veja como utilizar a dashboard</p>
+            <a href="#" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Continuar</a>
           </div>
         </div>
       </div>
@@ -225,13 +225,13 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="{{ asset('dashboard/img/bruce-mars.jpg') }}" alt="Imagem de Perfil" title="Imagem de Perfil" class="w-100 border-radius-lg shadow-sm">
+              <img src="{{ asset('dashboard/img/cat_perfil.jpg') }}" alt="Imagem de Perfil" title="Imagem de Perfil" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Kellinton Gomes
+                Portgas D. Ace
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
                 Proprietário <span class="text-secondary">( Administrador )</span>

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nomeFuncionario', 255);
+            $table->string('nomeFuncionario', 128);
+            $table->string('sobrenomeFuncionario', 128);
             $table->string('fotoFuncionario', 255)->nullable();
             $table->date('dataNascFuncionario');
             $table->string('foneFuncionario', 20);
