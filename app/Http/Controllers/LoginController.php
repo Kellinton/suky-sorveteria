@@ -40,7 +40,7 @@ class LoginController extends Controller
 
          // Verifica se o usuário existe no banco de dados
         if(!$usuario){
-            return back()->withErrors(['email' => 'O email informado não está cadastrado.']);
+            return back()->withErrors(['email' => 'E-mail inválido.']);
         }
 
 

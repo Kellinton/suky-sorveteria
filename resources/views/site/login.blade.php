@@ -91,12 +91,29 @@
                     <label>Email</label>
                     <div class="mb-3">
                       <input type="email" name="email" required class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon"  value="{{ old('email') }}">
-                      {{ $errors->has('email') ? $errors->first('email') : '' }}
+
+                    @if($errors->has('email'))
+                        <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                            <span class="alert-text text-light"><strong>Erro! </strong>{{ $errors->has('email') ? $errors->first('email') : '' }}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                     @endif
+
                     </div>
                     <label>Senha</label>
                     <div class="mb-3">
                       <input type="password" name="password" required class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="password-addon"  value="{{ old('senha') }}">
-                      {{ $errors->has('password') ? $errors->first('password') : '' }}
+                      @if($errors->has('password'))
+                      <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                          <span class="alert-text text-light"><strong>Erro! </strong>{{ $errors->has('password') ? $errors->first('password') : '' }}</span>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      @endif
+
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
