@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministradorController;
-use App\Http\Controllers\AtendenteController;
+use App\Http\Controllers\AssistenteController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -39,6 +39,13 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Autenticação
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
 
+// logout
+Route::get('/sair', function(){
+    session()->flush();
+    return redirect('/login');
+})->name('sair');
+
+
 #endregion Login
 
 Route::middleware(['autenticacao:administrador'])->group(function(){
@@ -47,9 +54,9 @@ Route::middleware(['autenticacao:administrador'])->group(function(){
 
 });
 
-Route::middleware(['autenticacao:atendente'])->group(function (){
+Route::middleware(['autenticacao:assistente'])->group(function (){
 
-    Route::get('dashboard/atendente', [AtendenteController::class, 'index'])->name('dashboard.atendente');
+    Route::get('dashboard/assistente', [AssistenteController::class, 'index'])->name('dashboard.assistente');
 
 });
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
             $table->string('nomeFuncionario', 255);
+            $table->string('fotoFuncionario', 255)->nullable();
             $table->date('dataNascFuncionario');
             $table->string('foneFuncionario', 20);
             $table->string('enderecoFuncionario', 255);
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->timestamp('dataContratacaoFuncionario');
             $table->string('cargoFuncionario', 100);
             $table->decimal('salarioFuncionario', 10, 2);
-            $table->enum('tipo_funcionario', ['administrador', 'atendente']);
+            $table->enum('tipo_funcionario', ['administrador', 'assistente']);
             $table->enum('statusFuncionario', ['ativo', 'inativo']);
             $table->timestamps();
         });

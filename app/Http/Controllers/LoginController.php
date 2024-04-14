@@ -73,7 +73,7 @@ class LoginController extends Controller
             //    dd(session('email'));
                return redirect()->route('dashboard.administrador');
 
-            }elseif($tipoUsuario->tipo_funcionario == 'atendente'){
+            }elseif($tipoUsuario->tipo_funcionario == 'assistente'){
 
                 session([
                     'id'            => $tipoUsuario->idFuncionario,
@@ -81,7 +81,7 @@ class LoginController extends Controller
                     'tipo_usuario'  => $tipoUsuario->tipo_funcionario,
                ]);
 
-               return redirect()->route('dashboard.atendente');
+               return redirect()->route('dashboard.assistente');
 
             }
         }

@@ -3,6 +3,6 @@
 
 
 @section('conteudo')
-<h1>Atendente</h1>
+<h1>Assistente</h1>
 @endsection
 
