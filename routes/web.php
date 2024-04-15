@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,7 @@ Route::middleware(['autenticacao:administrador'])->group(function(){
 
      Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
      Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
+     Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');
 });
 
 Route::middleware(['autenticacao:assistente'])->group(function (){
