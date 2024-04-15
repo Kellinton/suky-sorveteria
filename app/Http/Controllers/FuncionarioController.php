@@ -24,6 +24,10 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
+        // Quantidade de Funcionários
+        $totalFuncionarios = Funcionario::count();
+        // Quantidade Salário
+        $totalSalario = Funcionario::sum('salarioFuncionario');
         // Obtenha todos os funcionários do banco de dados com paginação
         $funcionarios = $this->funcionario->all();
 
@@ -32,8 +36,10 @@ class FuncionarioController extends Controller
 
         // Passa a lista de funcionários e a lista de emails dos usuários para a view
         return view('dashboard.administrador.funcionario', [
-            'funcionarios' => $funcionarios,
-            'emailsUsuarios' => $emailsUsuarios
+            'funcionarios'      => $funcionarios,
+            'emailsUsuarios'    => $emailsUsuarios,
+            'totalFuncionarios' => $totalFuncionarios,
+            'totalSalario'      => $totalSalario,
         ]);
     }
 

@@ -12,7 +12,7 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Salário Total</p>
                     <h5 class="font-weight-bolder mb-0">
-                    R$ 53,000
+                        R$ {{ number_format($totalSalario, 2, ',', '.') }}
                     </h5>
                 </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
                     <h5 class="font-weight-bolder mb-0">
-                     +5
+                     {{ $totalFuncionarios }}
                     <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                 </div>
