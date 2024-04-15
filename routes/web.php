@@ -26,6 +26,8 @@ Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
+Route::get('/shop2', [ShopController::class, 'shop2'])->name('shop2');
+
 Route::get('/carrinho', [ShopController::class, 'carrinho'])->name('carrinho');
 
 Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('shopDetalhes');

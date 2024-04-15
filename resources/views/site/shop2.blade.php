@@ -336,8 +336,8 @@
                                     <div class="col-12">
                                         <div class="pagination d-flex justify-content-center mt-5">
                                             <a href="#" class="rounded">&laquo;</a>
-                                            <a href="{{ url ('/shop') }}" class="active rounded">1</a>
-                                            <a href="{{ url ('/shop2') }}" class="rounded">2</a>
+                                            <a href="#" class="active rounded">1</a>
+                                            <a href="#" class="rounded">2</a>
                                             <a href="#" class="rounded">3</a>
                                             <a href="#" class="rounded">4</a>
                                             <a href="#" class="rounded">5</a>
