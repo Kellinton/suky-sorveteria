@@ -24,11 +24,10 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">Cart</h1>
+            <h1 class="text-center text-white display-6">Carrinho</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active text-white">Cart</li>
+                <li class="breadcrumb-item"><a href="#">Início</a></li>
+                <li class="breadcrumb-item active text-white">Carrinho</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
@@ -40,14 +39,14 @@
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">Products</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Handle</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Produtos</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Ações</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -57,10 +56,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    <p class="mb-0 mt-4">Big Banana</p>
+                                    <p class="mb-0 mt-4">Grande Banana</p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
+                                    <p class="mb-0 mt-4">R$ 2,99</p>
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
@@ -78,7 +77,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
+                                    <p class="mb-0 mt-4">R$ 2,99</p>
                                 </td>
                                 <td>
                                     <button class="btn btn-md rounded-circle bg-light border mt-4" >
