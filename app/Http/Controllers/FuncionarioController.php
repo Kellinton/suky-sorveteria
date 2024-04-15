@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use App\Http\Controllers\Controller;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
 {
+
+    public $funcionario;
+
+
+    public function __construct(Funcionario $funcionario)
+    {
+        $this->funcionario = $funcionario;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,23 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        // Quantidade de Funcionários
+        $totalFuncionarios = Funcionario::count();
+        // Quantidade Salário
+        $totalSalario = Funcionario::sum('salarioFuncionario');
+        // Obtenha todos os funcionários do banco de dados com paginação
+        $funcionarios = $this->funcionario->all();
+
+        // Obtenha apenas os emails dos usuários do banco de dados
+        $emailsUsuarios = Usuario::pluck('emailUsuario');
+
+        // Passa a lista de funcionários e a lista de emails dos usuários para a view
+        return view('dashboard.administrador.funcionario', [
+            'funcionarios'      => $funcionarios,
+            'emailsUsuarios'    => $emailsUsuarios,
+            'totalFuncionarios' => $totalFuncionarios,
+            'totalSalario'      => $totalSalario,
+        ]);
     }
 
     /**

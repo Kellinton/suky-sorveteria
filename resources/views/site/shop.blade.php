@@ -7,7 +7,7 @@
         <div class="container-fluid page-header py-5">
             <h1 class="text-center text-white display-6">Loja</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url ('/') }}">Home</a></li>
                 <li class="breadcrumb-item active text-white">Loja</li>
             </ol>
         </div>
@@ -177,174 +177,427 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
+                                    {{-- <div class="col-lg-12">
                                         <div class="position-relative">
                                             <img src="img/banner-fruits.png" class="img-fluid w-100 rounded" alt="">
                                             <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                                {{-- <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3> --}}
+                                                <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_1.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Grapes</h4>
+                                                <h4>Açai 1</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_3.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Grapes</h4>
+                                                <h4>Picolé 3</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_8.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Raspberries</h4>
+                                                <h4>Picolé 8</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-5.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Apricots</h4>
+                                                <h4>Bombom</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-3.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_2.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Banana</h4>
+                                                <h4>Açai 2</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-1.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Oranges</h4>
+                                                <h4>Abacaxi ao Vinho</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_1.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Raspberries</h4>
+                                                <h4>Picolé 1</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-4.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Grapes</h4>
+                                                <h4>Napolitano</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
-                                            <div class="fruite-img">
-                                                <img src="img/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_5.png') }}" class="img-fluid w-100 rounded-top" alt="">
                                             </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>Oranges</h4>
+                                                <h4>Açai 5</h4>
                                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_7.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Açai 7</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_4.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Açai 4</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_5.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Picolé 5</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-8.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Chocolate</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-6.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Milho Verde</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_6.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Picolé 6</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_4.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Picolé 4</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_6.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Açai 6</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-2.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Coco</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_2.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Picolé 2</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/picole/picole_7.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Picolé 7</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_3.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Açai 3</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-7.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>3-1 Cioccolato</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/acai/acai_8.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Açai 8</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 4,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-3.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Abacaxi</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-4">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img" style="height: 214px">
+                                                <img src="{{ asset ('img/produtos/sorvetePote/sorvete-7.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>Abacaxi</h4>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">R$ 24,99 / UN</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-12">
                                         <div class="pagination d-flex justify-content-center mt-5">
                                             <a href="#" class="rounded">&laquo;</a>
-                                            <a href="#" class="active rounded">1</a>
-                                            <a href="#" class="rounded">2</a>
+                                            <a href="{{ url ('/shop') }}" class="active rounded">1</a>
+                                            <a href="{{ url ('/shop2') }}" class="rounded">2</a>
                                             <a href="#" class="rounded">3</a>
-                                            <a href="#" class="rounded">4</a>
-                                            <a href="#" class="rounded">5</a>
-                                            <a href="#" class="rounded">6</a>
                                             <a href="#" class="rounded">&raquo;</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

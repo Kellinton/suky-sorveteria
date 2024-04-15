@@ -220,7 +220,7 @@
 
 .page-header {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -523,9 +523,26 @@
     resize: none;
 }
 
-.p-produtos {
+/* .p-produtos {
     min-height: 72px;
     max-height: 72px;
     overflow: hidden;
+} */
+
+.shop-details {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img2.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.page-contact{
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img3.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* #endregion mudanças */

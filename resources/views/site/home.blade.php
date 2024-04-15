@@ -584,7 +584,7 @@
                                                     <h4>Picolé 1</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -600,7 +600,7 @@
                                                     <h4>Picolé 2</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -616,7 +616,7 @@
                                                     <h4>Picolé 3</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -632,7 +632,7 @@
                                                     <h4>Picolé 4</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -648,7 +648,7 @@
                                                     <h4>Picolé 5</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -664,7 +664,7 @@
                                                     <h4>Picolé 6</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
@@ -680,7 +680,7 @@
                                                     <h4>Picolé 7</h4>
                                                     <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>

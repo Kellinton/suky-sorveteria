@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\AssistenteController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ShopController;
@@ -30,4 +33,31 @@ Route::get('/carrinho', [ShopController::class, 'carrinho'])->name('carrinho');
 
 Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('shopDetalhes');
 
+#region Login
+
+// Logar
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+// Autenticação
+Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
+
+// logout
+Route::get('/sair', function(){
+    session()->flush();
+    return redirect('/login');
+})->name('sair');
+
+
+#endregion Login
+
+Route::middleware(['autenticacao:administrador'])->group(function(){
+
+     Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
+     Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
+});
+
+Route::middleware(['autenticacao:assistente'])->group(function (){
+
+    Route::get('dashboard/assistente', [AssistenteController::class, 'index'])->name('dashboard.assistente');
+
+});
+
