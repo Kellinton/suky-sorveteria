@@ -3,7 +3,52 @@
 @section('title', 'Funcionários')
 
 @section('conteudo')
+    <div class="row mb-4">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+            <div class="row">
+                <div class="col-8">
+                <div class="numbers">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Salário Total</p>
+                    <h5 class="font-weight-bolder mb-0">
+                    R$ 53,000
+                    </h5>
+                </div>
+                </div>
+                <div class="col-4 text-end">
+                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+            <div class="row">
+                <div class="col-8">
+                <div class="numbers">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
+                    <h5 class="font-weight-bolder mb-0">
+                     +5
+                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+                    </h5>
+                </div>
+                </div>
+                <div class="col-4 text-end">
+                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
 
+    </div>
     <div class="row">
         <div class="col-12">
         <div class="card mb-4">
@@ -30,27 +75,35 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @foreach($funcionarios as $key => $funcionario)
                     <tr>
                     <td>
                         <div class="d-flex px-2 py-1">
                         <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                            @if ($funcionario->fotoFuncionario == ' ' || $funcionario->fotoFuncionario == null)
+                                <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                            @else
+                                <img src="dashboard/img/team-2.jpg" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                            @endif
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            <h6 class="mb-0 text-sm">{{ $funcionario->nomeFuncionario }} {{ $funcionario->sobrenomeFuncionario }}</h6>
+
+                            <p class="text-xs text-secondary mb-0">{{ $emailsUsuarios[$key] }}</p>
+
                         </div>
                         </div>
                     </td>
                     <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
+                        <p class="text-xs font-weight-bold mb-1">{{ $funcionario->cargoFuncionario }}</p>
+                        <p class="text-xs text-secondary mb-0">{{ ucfirst($funcionario->tipo_funcionario) }}</p>
                     </td>
                     <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Ativo</span>
+                        <span class="badge badge-sm bg-gradient-success">{{ $funcionario->statusFuncionario }}</span>
                     </td>
                     <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{ $funcionario->dataContratacaoFuncionario }}</span>
                     </td>
                     <td class="align-middle text-center">
                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs d-flex align-items-center gap-1" data-toggle="tooltip" data-original-title="Editar">
@@ -59,154 +112,15 @@
                         </a>
                     </td>
                     </tr>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Inativo</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                    </td>
-                    <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs d-flex align-items-center gap-1" data-toggle="tooltip" data-original-title="Editar">
-                        <i class="fas fa-pencil-alt text-dark cursor-pointer p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Editar" data-bs-original-title="Editar"></i>
-                        <p class="p-0 m-0 text-sm">Editar</p>
-                        </a>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user3">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                            <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0">Executive</p>
-                        <p class="text-xs text-secondary mb-0">Projects</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Ativo</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                    </td>
-                    <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                        </a>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user4">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Michael Levi</h6>
-                            <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Ativo</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                    </td>
-                    <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                        </a>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user5">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Richard Gran</h6>
-                            <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Executive</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Inativo</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                    </td>
-                    <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Editar">
-                        Editar
-                        </a>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user6">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                            <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                        </div>
-                        </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Inativo</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                    </td>
-                    <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Editar">
-                        Editar
-                        </a>
-                    </td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
                 </table>
             </div>
-            </div>
-        </div>
         </div>
     </div>
+</div>
+</div>
 
 @endsection
 
