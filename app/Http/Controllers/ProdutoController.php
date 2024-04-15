@@ -15,7 +15,14 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         //
+=======
+        $produtos = Produto::orderBy('id', 'desc')->get();
+        return view('dashboard.administrador.produto', [
+            'produtos'   => $produtos
+        ]);
+>>>>>>> ab6776f607ce37d1a95b39bb2baf7703065ea0b9
     }
 
     /**
