@@ -10,10 +10,6 @@ class ShopController extends Controller
         return view ('site.shop');
     }
 
-    public function shop2() {
-        return view('site.shop2');
-    }
-
     public function shopDetalhes() {
         return view ('site.shop-detalhes');
     }
