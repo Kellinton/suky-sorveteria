@@ -26,8 +26,9 @@
             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                 <div class="card card-blog card-plain">
                     <div class="position-relative">
-                        <a class="d-block shadow-xl border-radius-xl">
-                        <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                        <a class="d-block shadow-xl border-radius-xl position-relative">
+                            <span class="badge badge-sm bg-gradient-success position-absolute m-3">ativo</span>
+                            <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                         </a>
                     </div>
                     <div class="card-body px-1 pb-0 mb-5">
@@ -48,7 +49,7 @@
                         </p>
                         <div class="d-flex align-items-center justify-content-between">
                         <p class="mb-0 text-bolder text-2xl">R$ {{ $produto->valorProduto }}</p>
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-0">Editar</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mb-0 bg-gradient-primary">Editar</button>
                         </div>
                     </div>
                 </div>
