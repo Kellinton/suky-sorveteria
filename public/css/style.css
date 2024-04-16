@@ -545,4 +545,11 @@
     background-size: cover;
 }
 
+.cart-shop{
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img4.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* #endregion mudanças */
