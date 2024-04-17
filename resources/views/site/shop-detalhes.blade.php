@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +299,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +318,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
@@ -356,7 +356,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
@@ -375,7 +375,7 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <h5 class="fw-bold me-2">R$ 2,50</h5>
-                                        <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
+                                        <h5 class="text-danger text-decoration-line-through">R$ 3,00</h5>
                                     </div>
                                 </div>
                             </div>
