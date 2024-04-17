@@ -30,7 +30,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+
+                            <tr id="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
                                         <img src="{{ asset ('img/produtos/acai/acai_3.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
@@ -61,13 +62,14 @@
                                     <p class="mb-0 mt-4">R$ 4,99</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4" id="removerDoCarrinho">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
 
                             </tr>
-                            <tr>
+
+                            <tr id="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
                                         <img src="{{ asset ('img/produtos/sorvetePote/sorvete-8.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
@@ -103,7 +105,8 @@
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
+
+                            <tr id="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
                                         <img src="{{ asset ('img/produtos/picole/picole_7.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
@@ -139,6 +142,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            
                         </tbody>
                     </table>
                 </div>

@@ -1,3 +1,4 @@
+// #region global
 (function ($) {
     "use strict";
 
@@ -26,10 +27,10 @@
             } else {
                 $('.fixed-top').removeClass('shadow').css('top', 0);
             }
-        } 
+        }
     });
-    
-    
+
+
    // Back to top button
    $(window).scroll(function () {
     if ($(this).scrollTop() > 300) {
@@ -149,3 +150,14 @@
 
 })(jQuery);
 
+// #endregion global
+
+// #region mudanças
+// Seu JavaScript
+document.getElementById("removerDoCarrinho").addEventListener("click", function() {
+    // Aqui você pode inserir o código para remover o item do carrinho
+    var itemDoCarrinho = document.getElementById("itemCarrinho");
+    itemDoCarrinho.parentNode.removeChild(itemDoCarrinho);
+});
+
+// #endregion mudanças
