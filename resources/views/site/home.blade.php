@@ -806,7 +806,7 @@
                                 <img src="{{ asset ('img/featur-3.png') }}" class="img-fluid rounded-top w-100" alt="">
                                 <div class="px-4 rounded-bottom">
                                     <div class="service-content bg-secondary text-center p-4 rounded">
-                                        <h5 class="text-white">Açai</h5>
+                                        <h5 class="text-white">Açai's Deliciosos</h5>
                                         <h3 class="mb-0">Desconto a partir de R$ 30</h3>
                                     </div>
                                 </div>
