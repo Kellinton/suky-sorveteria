@@ -172,7 +172,7 @@ a:not([href]):not([class]),a:not([href]):not([class]):hover{
 pre,code,kbd,samp{
     font-family:var(--bs-font-monospace);
     font-size:1em;
-    direction:ltr 
+    direction:ltr
     /* rtl:ignore */
     ;
     unicode-bidi:bidi-override
@@ -2872,20 +2872,20 @@ textarea.form-control-lg{
     --bs-position: start
 }
 .dropdown-menu-start[data-bs-popper]{
-    right:auto 
+    right:auto
     /* rtl:ignore */
     ;
-    left:0 
+    left:0
     /* rtl:ignore */
 }
 .dropdown-menu-end{
     --bs-position: end
 }
 .dropdown-menu-end[data-bs-popper]{
-    right:0 
+    right:0
     /* rtl:ignore */
     ;
-    left:auto 
+    left:auto
     /* rtl:ignore */
 }
 @media(min-width: 576px){
@@ -2893,20 +2893,20 @@ textarea.form-control-lg{
         --bs-position: start
     }
     .dropdown-menu-sm-start[data-bs-popper]{
-        right:auto 
+        right:auto
         /* rtl:ignore */
         ;
-        left:0 
+        left:0
         /* rtl:ignore */
     }
     .dropdown-menu-sm-end{
         --bs-position: end
     }
     .dropdown-menu-sm-end[data-bs-popper]{
-        right:0 
+        right:0
         /* rtl:ignore */
         ;
-        left:auto 
+        left:auto
         /* rtl:ignore */
     }
 }
@@ -2915,20 +2915,20 @@ textarea.form-control-lg{
         --bs-position: start
     }
     .dropdown-menu-md-start[data-bs-popper]{
-        right:auto 
+        right:auto
         /* rtl:ignore */
         ;
-        left:0 
+        left:0
         /* rtl:ignore */
     }
     .dropdown-menu-md-end{
         --bs-position: end
     }
     .dropdown-menu-md-end[data-bs-popper]{
-        right:0 
+        right:0
         /* rtl:ignore */
         ;
-        left:auto 
+        left:auto
         /* rtl:ignore */
     }
 }
@@ -2937,20 +2937,20 @@ textarea.form-control-lg{
         --bs-position: start
     }
     .dropdown-menu-lg-start[data-bs-popper]{
-        right:auto 
+        right:auto
         /* rtl:ignore */
         ;
-        left:0 
+        left:0
         /* rtl:ignore */
     }
     .dropdown-menu-lg-end{
         --bs-position: end
     }
     .dropdown-menu-lg-end[data-bs-popper]{
-        right:0 
+        right:0
         /* rtl:ignore */
         ;
-        left:auto 
+        left:auto
         /* rtl:ignore */
     }
 }
@@ -2959,20 +2959,20 @@ textarea.form-control-lg{
         --bs-position: start
     }
     .dropdown-menu-xl-start[data-bs-popper]{
-        right:auto 
+        right:auto
         /* rtl:ignore */
         ;
-        left:0 
+        left:0
         /* rtl:ignore */
     }
     .dropdown-menu-xl-end{
         --bs-position: end
     }
     .dropdown-menu-xl-end[data-bs-popper]{
-        right:0 
+        right:0
         /* rtl:ignore */
         ;
-        left:auto 
+        left:auto
         /* rtl:ignore */
     }
 }
@@ -2981,20 +2981,20 @@ textarea.form-control-lg{
         --bs-position: start
     }
     .dropdown-menu-xxl-start[data-bs-popper]{
-        right:auto 
+        right:auto
         /* rtl:ignore */
         ;
-        left:0 
+        left:0
         /* rtl:ignore */
     }
     .dropdown-menu-xxl-end{
         --bs-position: end
     }
     .dropdown-menu-xxl-end[data-bs-popper]{
-        right:0 
+        right:0
         /* rtl:ignore */
         ;
-        left:auto 
+        left:auto
         /* rtl:ignore */
     }
 }
@@ -3847,7 +3847,7 @@ textarea.form-control-lg{
     float:left;
     padding-right:.5rem;
     color:#6c757d;
-    content:var(--bs-breadcrumb-divider, "/") 
+    content:var(--bs-breadcrumb-divider, "/")
     /* rtl: var(--bs-breadcrumb-divider, "/") */
 }
 .breadcrumb-item.active{
@@ -4846,7 +4846,7 @@ textarea.form-control-lg{
 .popover{
     position:absolute;
     top:0;
-    left:0 
+    left:0
     /* rtl:ignore */
     ;
     z-index:1070;
@@ -5136,7 +5136,7 @@ textarea.form-control-lg{
 }
 @keyframes spinner-border{
     to{
-        transform:rotate(360deg) 
+        transform:rotate(360deg)
         /* rtl:ignore */
     }
 }
@@ -9570,4 +9570,3 @@ textarea.form-control-lg{
         display:none !important
     }
 }
- 

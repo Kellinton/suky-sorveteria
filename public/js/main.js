@@ -153,11 +153,97 @@
 // #endregion global
 
 // #region mudanças
-// Seu JavaScript
-document.getElementById("removerDoCarrinho").addEventListener("click", function() {
-    // Aqui você pode inserir o código para remover o item do carrinho
-    var itemDoCarrinho = document.getElementById("itemCarrinho");
-    itemDoCarrinho.parentNode.removeChild(itemDoCarrinho);
+
+// document.getElementById("removerDoCarrinho").addEventListener("click", function() {
+//     // Aqui você pode inserir o código para remover o item do carrinho
+//     var itemDoCarrinho = document.getElementById("itemCarrinho");
+//     itemDoCarrinho.parentNode.removeChild(itemDoCarrinho);
+// });
+
+// Seleciona todos os itens do carrinho
+const itensCarrinho = document.querySelectorAll(".itemCarrinho");
+
+// Restaura o estado do carrinho ao carregar a página
+document.addEventListener("DOMContentLoaded", restaurarCarrinho);
+
+// Adiciona um ouvinte de evento de clique a cada item do carrinho
+itensCarrinho.forEach(function(item) {
+    // Verifica o estado do item e configura a visibilidade
+    const estado = localStorage.getItem("item_" + item.id);
+    if (estado === "removido") {
+        item.style.display = "none";
+    }
+
+    item.addEventListener("click", function() {
+        // Alterna o estado do item
+        if (item.style.display !== "none") {
+            item.style.display = "none";
+            localStorage.setItem("item_" + item.id, "removido");
+        } else {
+            item.style.display = "";
+            localStorage.setItem("item_" + item.id, "nao_removido");
+        }
+    });
 });
+
+// Função para restaurar o estado do carrinho a partir do armazenamento local
+function restaurarCarrinho() {
+    // Percorre todos os itens do carrinho
+    itensCarrinho.forEach(function(item) {
+        // Restaura o estado do item com base no armazenamento local
+        const estado = localStorage.getItem("item_" + item.id);
+        if (estado === "removido") {
+            item.style.display = "none";
+        }
+    });
+}
+
+// function adicionarAoCarrinho(nome, preco) {
+//     // Cria um objeto representando o item
+//     const item = {
+//         nome: nome,
+//         preco: preco
+//     };
+
+//     // Recupera o carrinho do armazenamento local ou cria um novo array se não existir
+//     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+//     // Adiciona o item ao carrinho
+//     carrinho.push(item);
+
+//     // Salva o carrinho de volta no armazenamento local
+//     localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+//     // Redireciona o usuário para a página do carrinho
+//     const carrinhoUrl = document.querySelector('meta[name="carrinho-url"]').getAttribute('content');
+//     window.location.href = carrinhoUrl;
+// }
+
+function adicionarAoCarrinho(nome, preco) {
+    // Cria um objeto representando o item
+    const item = {
+        nome: nome,
+        preco: preco
+    };
+
+    // Adiciona o item ao carrinho
+    adicionarItemAoCarrinho(item);
+}
+
+function adicionarItemAoCarrinho(item) {
+    // Cria um elemento HTML para representar o item no carrinho
+    const novoItemHTML = `
+        <div class="item-carrinho">
+            <p>${item.nome} - R$${item.preco}</p>
+        </div>
+    `;
+
+    // Adiciona o novo item ao carrinho
+    const carrinho = document.getElementById('carrinho');
+    carrinho.insertAdjacentHTML('beforeend', novoItemHTML);
+
+}
+
+
 
 // #endregion mudanças

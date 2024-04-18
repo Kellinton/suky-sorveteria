@@ -552,4 +552,9 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.fruite .fruite-item {
+    height: 100%;
+
+}
 /* #endregion mudanças */

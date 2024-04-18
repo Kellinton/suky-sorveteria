@@ -31,10 +31,10 @@
                         </thead>
                         <tbody>
 
-                            <tr id="itemCarrinho">
+                            <tr class="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset ('img/produtos/acai/acai_3.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
+                                        <img src="{{ asset ('img/produtos/acai/acai_3.png') }}" class="img-fluid me-5 remover-item" style="width: 120px; height: 100px; border-radius: 10px" alt="">
                                     </div>
                                 </th>
                                 <td>
@@ -62,17 +62,16 @@
                                     <p class="mb-0 mt-4">R$ 4,99</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" id="removerDoCarrinho">
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4 remover-item">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
-
                             </tr>
 
-                            <tr id="itemCarrinho">
+                            <tr class="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset ('img/produtos/sorvetePote/sorvete-8.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
+                                        <img src="{{ asset ('img/produtos/sorvetePote/sorvete-8.png') }}" class="img-fluid me-5 remover-item" style="width: 120px; height: 100px; border-radius: 10px" alt="">
                                     </div>
                                 </th>
                                 <td>
@@ -100,16 +99,16 @@
                                     <p class="mb-0 mt-4">R$ 24,99</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4 remover-item">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
                             </tr>
 
-                            <tr id="itemCarrinho">
+                            <tr class="itemCarrinho">
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset ('img/produtos/picole/picole_7.png') }}" class="img-fluid me-5" style="width: 120px; height: 100px; border-radius: 10px" alt="">
+                                        <img src="{{ asset ('img/produtos/picole/picole_7.png') }}" class="img-fluid me-5 remover-item\" style="width: 120px; height: 100px; border-radius: 10px" alt="">
                                     </div>
                                 </th>
                                 <td>
@@ -137,12 +136,12 @@
                                     <p class="mb-0 mt-4">R$ 2,99</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4 remover-item">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
