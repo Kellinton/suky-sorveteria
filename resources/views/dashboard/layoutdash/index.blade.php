@@ -8,6 +8,9 @@
   <link rel="icon" type="image/png" href="{{ asset('img/logo_suky.png') }}">
   <title>@yield('title') | Suky</title>
 
+
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Remixicon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
   <!--     Fonts and icons     -->
@@ -219,7 +222,7 @@
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
       <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{ asset('dashboard/img/banner/banner_perfil.png') }}'); background-position-y: 60%; background-size: cover;">
-        <span class="mask bg-gradient-primary opacity-6"></span>
+        <span class="mask bg-gradient-primary opacity-4"></span>
       </div>
       <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
         <div class="row gx-4">
@@ -375,6 +378,15 @@
   <script src="{{ asset('dashboard/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('dashboard/js/plugins/perfect-scrollbar.min.js') }}"></script>
   <script src="{{ asset('dashboard/js/plugins/smooth-scrollbar.min.js') }}"></script>
+
+
+    <!-- jQuery (plugins JavaScript do Bootstrap) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Pacote de JavaScript do Bootstrap (inclui Popper) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- biblioteca Axios para fazer requisições AJAX -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

@@ -54,7 +54,10 @@ Route::middleware(['autenticacao:administrador'])->group(function(){
 
      Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
      Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
+
+     // Produtos
      Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');
+     
 });
 
 Route::middleware(['autenticacao:assistente'])->group(function (){
