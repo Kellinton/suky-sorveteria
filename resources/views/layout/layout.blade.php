@@ -29,6 +29,9 @@
         <link href="{{ asset ('css/style.css') }}" rel="stylesheet">
 
         <link rel="shortcut icon" href="{{ asset ('img/fav.png') }}" type="image/x-icon">
+        
+        <meta name="carrinho-url" content="{{ route('carrinho') }}">
+
     </head>
 
     <body>

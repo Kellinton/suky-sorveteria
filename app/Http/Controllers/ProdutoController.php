@@ -16,6 +16,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        //
         $produtos = Produto::orderBy('id', 'desc')->get();
         return view('dashboard.administrador.produto', [
             'produtos'   => $produtos
@@ -76,10 +77,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
+
     public function show(Produto $produto)
     {
-        //
     }
+
 
     /**
      * Show the form for editing the specified resource.

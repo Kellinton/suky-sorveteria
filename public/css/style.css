@@ -195,7 +195,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 25px;
-    background: linear-gradient(rgba(255, 181, 36, 0.7), rgba(255, 181, 36, 0.7));
+    background: linear-gradient(rgba(52, 164, 255, 0.7), rgba(36, 175, 255, 0.7));
 }
 
 .carousel-control-next,
@@ -545,4 +545,16 @@
     background-size: cover;
 }
 
+.cart-shop{
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img4.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fruite .fruite-item {
+    height: 100%;
+
+}
 /* #endregion mudanças */
