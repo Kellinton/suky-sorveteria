@@ -446,142 +446,33 @@
 
 
 
-                        <div id="tab-4" class="tab-pane fade show p-0 active">
+                        <div id="tab-4" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 <div class="col-lg-12">
                                     <div class="row g-4">
+                                        @foreach ($produtos as $produto)
                                         <div class="col-md-6 col-lg-4 col-xl-3">
                                             <div class="rounded position-relative fruite-item">
                                                 <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_1.png') }}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 1</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                    <h4>{{ $produto->nomeProduto }}</h4>
+                                                    <p class="p-produtos">{{ $produto->descricaoProduto }}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <button href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_2.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 2</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <button href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_3.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 3</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <button href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_4.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 4</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <button href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_5.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 5</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <button href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_6.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 6</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($produto->valorProduto, 2, ',', '.') }} / UN</p>
                                                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_7.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 7</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ 2,99 / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/picole/picole_8.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Picolé</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Picolé 8</h4>
-                                                    <p class="p-produtos">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$3,50 / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div id="tab-5" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 <div class="col-lg-12">

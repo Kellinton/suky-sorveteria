@@ -219,30 +219,30 @@ function restaurarCarrinho() {
 //     window.location.href = carrinhoUrl;
 // }
 
-function adicionarAoCarrinho(nome, preco) {
-    // Cria um objeto representando o item
-    const item = {
-        nome: nome,
-        preco: preco
-    };
+// function adicionarAoCarrinho(nome, preco) {
+//     // Cria um objeto representando o item
+//     const item = {
+//         nome: nome,
+//         preco: preco
+//     };
 
-    // Adiciona o item ao carrinho
-    adicionarItemAoCarrinho(item);
-}
+//     // Adiciona o item ao carrinho
+//     adicionarItemAoCarrinho(item);
+// }
 
-function adicionarItemAoCarrinho(item) {
-    // Cria um elemento HTML para representar o item no carrinho
-    const novoItemHTML = `
-        <div class="item-carrinho">
-            <p>${item.nome} - R$${item.preco}</p>
-        </div>
-    `;
+// function adicionarItemAoCarrinho(item) {
+//     // Cria um elemento HTML para representar o item no carrinho
+//     const novoItemHTML = `
+//         <div class="item-carrinho">
+//             <p>${item.nome} - R$${item.preco}</p>
+//         </div>
+//     `;
 
-    // Adiciona o novo item ao carrinho
-    const carrinho = document.getElementById('carrinho');
-    carrinho.insertAdjacentHTML('beforeend', novoItemHTML);
+//     // Adiciona o novo item ao carrinho
+//     const carrinho = document.getElementById('carrinho');
+//     carrinho.insertAdjacentHTML('beforeend', novoItemHTML);
 
-}
+// }
 
 
 
