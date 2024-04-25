@@ -21,7 +21,7 @@ class AuthSorveteriaMiddleware
 
         $email = session('email');
 
-        // dd($email);
+        //dd($email);
 
         if($email){
 
@@ -37,9 +37,20 @@ class AuthSorveteriaMiddleware
                 $tipo = null;
 
                 if($tipoUsuario instanceof Funcionario) {
-
+                    // dd($tipoUsuario); // informações do funcionário logado
                     $tipo = $tipoUsuario->tipo_funcionario;
+                    $nome =  $tipoUsuario->nomeFuncionario;
+                    $sobrenome =  $tipoUsuario->sobrenomeFuncionario;
+                    $cargo = $tipoUsuario->cargoFuncionario;
 
+                    // Armazenando as informações do funcionário na sessõa para poder acessar em outras views
+
+                    session([
+                        'nomeFuncionario'       => $nome,
+                        'sobrenomeFuncionario'  => $sobrenome,
+                        'cargoFuncionario'      => $cargo,
+                        'tipoFuncionario'       => $tipo
+                    ]);
                 }
             }
 
@@ -49,6 +60,7 @@ class AuthSorveteriaMiddleware
 
                 session(['tipo_usuario_id' => $usuario->tipo_usuario_id]);
 
+                dd($tipo);
                 return $next($request);
 
 

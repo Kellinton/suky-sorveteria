@@ -234,7 +234,7 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Portgas D. Ace
+                {{ $funcionario->nomeFuncionario }}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
                 Proprietário <span class="text-secondary">( Administrador )</span>
