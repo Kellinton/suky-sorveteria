@@ -25,7 +25,7 @@ class AuthSorveteriaMiddleware
 
         if($email){
 
-            $usuario = Usuario::where('emailUsuario', $email)->first();
+            $usuario = Usuario::where('email', $email)->first();
 
             if(!$usuario) {
                 return redirect()->route('login')->withErrors(['email' => 'Não autenticado']);
@@ -34,39 +34,39 @@ class AuthSorveteriaMiddleware
             $tipoUsuario = $usuario->tipo_usuario;
 
             if($tipoUsuario){
-                $tipo = null;
+                $tipoFuncionario = null;
 
                 if($tipoUsuario instanceof Funcionario) {
                     // dd($tipoUsuario); // informações do funcionário logado
-                    $tipo = $tipoUsuario->tipo_funcionario;
+                    $tipoFuncionario = $tipoUsuario->tipo_funcionario;
                     $nome =  $tipoUsuario->nomeFuncionario;
                     $sobrenome =  $tipoUsuario->sobrenomeFuncionario;
                     $cargo = $tipoUsuario->cargoFuncionario;
 
-                    // Armazenando as informações do funcionário na sessõa para poder acessar em outras views
+                    // Armazenando as informações do funcionário na sessão para poder acessar em outras views
 
                     session([
                         'nomeFuncionario'       => $nome,
                         'sobrenomeFuncionario'  => $sobrenome,
                         'cargoFuncionario'      => $cargo,
-                        'tipoFuncionario'       => $tipo
+                        'tipoFuncionario'       => $tipoFuncionario
                     ]);
                 }
             }
 
-            $tipoUser = session('tipo_usuario');
+            // $tipoUser = session('tipo_usuario');
 
-            if($tipo === $tipoUser){
 
+            if($tipoFuncionario === $tipoUser){
                 session(['tipo_usuario_id' => $usuario->tipo_usuario_id]);
 
-                dd($tipo);
+                // dd($tipoFuncionario);
                 return $next($request);
 
 
             }else{
 
-                return back()->withErrors(['email' => 'Não autorizado.']);
+                return back()->withErrors(['email' => 'Acesso não autorizado.']);
 
             }
 

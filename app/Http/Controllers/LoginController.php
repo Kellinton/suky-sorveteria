@@ -36,7 +36,7 @@ class LoginController extends Controller
         $senha = $request->get('password');
 
         // Busca um usuário no banco de dados com base no email fornecido
-        $usuario = Usuario::where('emailUsuario', $email)->first();
+        $usuario = Usuario::where('email', $email)->first();
 
          // Verifica se o usuário existe no banco de dados
         if(!$usuario){
@@ -45,7 +45,7 @@ class LoginController extends Controller
 
 
         // Verifica se a senha fornecida corresponde à senha armazenada no banco de dados
-        if($usuario->senhaUsuario != $senha){
+        if($usuario->senha != $senha){
             return back()->withErrors(['password' => 'Senha Incorreta.']);
         }
 
@@ -55,28 +55,26 @@ class LoginController extends Controller
 
         // Define a variável de sessão 'email' com o email do usuário autenticado
         session([
-            'email' => $usuario->emailUsuario,
+            'email' => $usuario->email,
         ]);
 
          // Realiza ações diferentes com base no tipo de usuário
       if($tipoUsuario instanceof Funcionario){
 
-        // dd($tipoUsuario);
-
             if($tipoUsuario->tipo_funcionario == 'administrador'){
 
                 session([
-                    'id'            => $tipoUsuario->idFuncionario,
+                    'id'            => $tipoUsuario->id,
                     'nome'          => $tipoUsuario->nomeFuncionario,
                     'tipo_usuario'  => $tipoUsuario->tipo_funcionario,
                ]);
-            //    dd(session('email'));
+            // dd(session('tipo_usuario'));
                return redirect()->route('dashboard.administrador');
 
             }elseif($tipoUsuario->tipo_funcionario == 'assistente'){
 
                 session([
-                    'id'            => $tipoUsuario->idFuncionario,
+                    'id'            => $tipoUsuario->id,
                     'nome'          => $tipoUsuario->nomeFuncionario,
                     'tipo_usuario'  => $tipoUsuario->tipo_funcionario,
                ]);

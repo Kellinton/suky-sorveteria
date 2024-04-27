@@ -24,23 +24,40 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
+        //recuperando o id do funcionario da sessão
+        $id = session('id');
+
+        // recuperando os dados do funcionário autenticado
+        $funcionarioAutenticado = Funcionario::find($id);
+
         // Quantidade de Funcionários
         $totalFuncionarios = Funcionario::count();
+
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
-        // Obtenha todos os funcionários do banco de dados com paginação
-        $funcionarios = $this->funcionario->all();
 
-        // Obtenha apenas os emails dos usuários do banco de dados
-        $emailsUsuarios = Usuario::pluck('emailUsuario');
+        // Obtenha todos os funcionários do banco de dados com paginação
+        // $funcionarios = $this->funcionario->all();
+        // $funcionariosComUsuarios = Funcionario::with('usuario')->get();
+        // dd($funcionariosComUsuarios);
+
+        $funcionario = Funcionario::find(2); // Substitua 2 pelo ID do funcionário desejado
+        $usuario = $funcionario->usuario;
+        dd($usuario);
+
+
+        // Obtendo o email do usuário associado
+        $emailsUsuarios = Funcionario::with('usuario')->get()->pluck('usuario.senha');
+        // dd($emailsUsuarios);
 
         // Passa a lista de funcionários e a lista de emails dos usuários para a view
-        return view('dashboard.administrador.funcionario', [
-            'funcionarios'      => $funcionarios,
-            'emailsUsuarios'    => $emailsUsuarios,
-            'totalFuncionarios' => $totalFuncionarios,
-            'totalSalario'      => $totalSalario,
-        ]);
+        return view('dashboard.administrador.funcionario', compact(
+            'funcionarioAutenticado',
+            'funcionarios',
+            'emailsUsuarios',
+            'totalFuncionarios',
+            'totalSalario',
+        ));
     }
 
     /**
