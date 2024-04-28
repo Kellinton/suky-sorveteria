@@ -18,7 +18,7 @@ class VerificarAdministrador
     public function handle(Request $request, Closure $next)
     {
         // Verificar se o usuário é administrador
-        dd(session('tipoFuncionario'));
+        // dd(session('tipoFuncionario'));
         if (session('tipoFuncionario') !== 'administrador') {
 
              dd('chegou aqui, ele é assistente');

@@ -374,6 +374,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Script -->
+  <script src="{{ asset('dashboard/js/main.js') }}"></script>
   <!--   Core JS Files   -->
   <script src="{{ asset('dashboard/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('dashboard/js/core/bootstrap.min.js') }}"></script>
