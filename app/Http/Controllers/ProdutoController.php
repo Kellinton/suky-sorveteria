@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\Funcionario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ProdutoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +18,26 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+
+        //recuperando o id do funcionario da sessão
+        $id = session('id');
+
+        // recuperando os dados do funcionário autenticado
+        $funcionarioAutenticado = Funcionario::find($id);
+
         $produtos = Produto::orderBy('id', 'desc')->get();
-        return view('dashboard.administrador.produto', [
-            'produtos'   => $produtos
-        ]);
+
+        // filtrar
+        // $acai = Produto::where('categoriaProduto', 'acai')->get();
+        // $sorvetePote = Produto::where('categoriaProduto', 'sorvetePote')->get();
+        // $picole = Produto::where('categoriaProduto', 'picole')->get();
+
+
+        return view('dashboard.administrador.produto', compact(
+            'funcionarioAutenticado',
+            'produtos',
+
+        ));
     }
 
     /**
@@ -76,10 +94,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
+
     public function show(Produto $produto)
     {
-        //
     }
+
 
     /**
      * Show the form for editing the specified resource.

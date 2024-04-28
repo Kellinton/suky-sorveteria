@@ -234,10 +234,10 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Portgas D. Ace
+                {{ $funcionarioAutenticado->nomeFuncionario }}  {{ $funcionarioAutenticado->sobrenomeFuncionario }}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                Proprietário <span class="text-secondary">( Administrador )</span>
+                {{ $funcionarioAutenticado->cargoFuncionario }} <span class="text-secondary">(  {{ $funcionarioAutenticado->tipoFuncionario }} )</span>
               </p>
             </div>
           </div>
@@ -271,11 +271,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('sair') }}" class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                    <i class="ri-logout-circle-r-line"></i>
-                    </svg>
-                    <span class="ms-1">Sair</span>
-                  </a>
+                    <form method="POST" action="{{ route('sair') }}">
+                        @csrf  <button type="submit" class="nav-link mb-0 px-0 py-1">
+                          <i class="ri-logout-circle-r-line"></i>
+                          <span class="ms-1">Sair</span>
+                        </button>
+                      </form>
                 </li>
               </ul>
             </div>
@@ -373,6 +374,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Script -->
+  <script src="{{ asset('dashboard/js/main.js') }}"></script>
   <!--   Core JS Files   -->
   <script src="{{ asset('dashboard/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('dashboard/js/core/bootstrap.min.js') }}"></script>

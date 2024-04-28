@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nomeUsuario', 255);
-            $table->string('emailUsuario', 255)->unique();
-            $table->string('senhaUsuario', 255);
+            $table->string('nome', 255);
+            $table->string('email', 255)->unique();
+            $table->string('senha', 255);
             $table->unsignedBigInteger('tipo_usuario_id');
-            $table->string('tipo_usuario_type', 255);
+            $table->enum('tipo_usuario_type', ['administrador', 'assistente']);
             $table->timestamp('email_verificado_em')->nullable();
             $table->string('token_lembrete', 100);
             $table->timestamps();
+
         });
     }
 
