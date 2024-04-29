@@ -11,7 +11,7 @@ class HomeController extends Controller
 
 
             $produtos = Produto::all();
-
+            
             // dd($produtos);
 
                 // Atribui os dados do produto às variáveis

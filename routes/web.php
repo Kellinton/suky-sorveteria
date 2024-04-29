@@ -41,25 +41,29 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Autenticação
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
 
-// logout
-Route::get('/sair', function(){
-    session()->flush();
-    return redirect('/login');
-})->name('sair');
 
 
 #endregion Login
 
-Route::middleware(['autenticacao:administrador'])->group(function(){
+Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->group(function(){
 
      Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
      Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
+
+     // Produtos
      Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');
+
 });
 
 Route::middleware(['autenticacao:assistente'])->group(function (){
 
-    Route::get('dashboard/assistente', [AssistenteController::class, 'index'])->name('dashboard.assistente');
+    Route::get('/dashboard/assistente', [AssistenteController::class, 'index'])->name('dashboard.assistente');
 
 });
 
+// logout
+Route::post('/sair', function(){
+
+    session()->flush();
+    return redirect('/login');
+})->name('sair');

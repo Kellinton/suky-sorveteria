@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('nomeFuncionario', 128);
             $table->string('sobrenomeFuncionario', 128);
             $table->string('fotoFuncionario', 255)->nullable();
-            $table->date('dataNascFuncionario');
             $table->string('foneFuncionario', 20);
             $table->string('enderecoFuncionario', 255);
             $table->string('cidadeFuncionario', 100);
             $table->string('estadoFuncionario', 50);
             $table->string('cepFuncionario', 10);
-            $table->timestamp('dataContratacaoFuncionario');
+            $table->date('dataNascFuncionario');
+            $table->timestamp('dataContratacaoFuncionario')->nullable();
             $table->string('cargoFuncionario', 100);
             $table->decimal('salarioFuncionario', 10, 2);
             $table->enum('tipo_funcionario', ['administrador', 'assistente']);

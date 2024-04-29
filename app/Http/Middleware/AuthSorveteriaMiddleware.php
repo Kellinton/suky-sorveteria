@@ -21,11 +21,11 @@ class AuthSorveteriaMiddleware
 
         $email = session('email');
 
-        // dd($email);
+        //dd($email);
 
         if($email){
 
-            $usuario = Usuario::where('emailUsuario', $email)->first();
+            $usuario = Usuario::where('email', $email)->first();
 
             if(!$usuario) {
                 return redirect()->route('login')->withErrors(['email' => 'Não autenticado']);
@@ -34,27 +34,39 @@ class AuthSorveteriaMiddleware
             $tipoUsuario = $usuario->tipo_usuario;
 
             if($tipoUsuario){
-                $tipo = null;
+                $tipoFuncionario = null;
 
                 if($tipoUsuario instanceof Funcionario) {
+                    // dd($tipoUsuario); // informações do funcionário logado
+                    $tipoFuncionario = $tipoUsuario->tipo_funcionario;
+                    $nome =  $tipoUsuario->nomeFuncionario;
+                    $sobrenome =  $tipoUsuario->sobrenomeFuncionario;
+                    $cargo = $tipoUsuario->cargoFuncionario;
 
-                    $tipo = $tipoUsuario->tipo_funcionario;
+                    // Armazenando as informações do funcionário na sessão para poder acessar em outras views
 
+                    session([
+                        'nomeFuncionario'       => $nome,
+                        'sobrenomeFuncionario'  => $sobrenome,
+                        'cargoFuncionario'      => $cargo,
+                        'tipoFuncionario'       => $tipoFuncionario
+                    ]);
                 }
             }
 
-            $tipoUser = session('tipo_usuario');
+            // $tipoUser = session('tipo_usuario');
 
-            if($tipo === $tipoUser){
 
+            if($tipoFuncionario === $tipoUser){
                 session(['tipo_usuario_id' => $usuario->tipo_usuario_id]);
 
+                // dd($tipoFuncionario);
                 return $next($request);
 
 
             }else{
 
-                return back()->withErrors(['email' => 'Não autorizado.']);
+                return back()->withErrors(['email' => 'Acesso não autorizado.']);
 
             }
 

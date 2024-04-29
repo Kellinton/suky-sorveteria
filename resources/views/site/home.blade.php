@@ -1,5 +1,14 @@
 @extends('layout.layout')
 @section('title','Início')
+<style>
+    .filtro-ativo{
+        background-color: #BA34AC !important;
+        color: #fff!important;
+    }
+    button{
+        border: none;
+    }
+</style>
 @section('conteudo')
 
 
@@ -110,29 +119,31 @@
                         <div class="col-lg-4 text-start">
                             <h1>Nossas Opções</h1>
                         </div>
+
+                        <!-- Botões de filtro -->
                         <div class="col-lg-8 text-end">
-                            <ul class="nav nav-pills d-inline-flex text-center mb-5">
-                                {{-- <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
-                                        <span class="text-dark" style="width: 130px;">Todos os Produtos</span>
-                                    </a>
-                                </li> --}}
-                                <li class="nav-item">
-                                    <a class="d-flex py-2 m-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-4">
-                                        <span class="text-dark" style="width: 130px;">Picolé</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                        <span class="text-dark" style="width: 130px;">Sorvete de Pote</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                        <span class="text-dark" style="width: 130px;">Açai</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <div class="nav nav-pills d-inline-flex text-center mb-5 filtro-btn-menu">
+
+                                <button id="filtro-btn-todos" class="d-flex m-2 py-2 rounded-pill filtro-ativo" data-categoria="todos">
+                                    <span style="width: 130px;">Todos</span>
+                                </button>
+
+
+                                <button id="filtro-btn-acai"  class="d-flex py-2 m-2 rounded-pill" data-categoria="acai">
+                                    <span style="width: 130px;">Açaí</span>
+                                </button>
+
+
+                                <button id="filtro-btn-sorvetePote" class="d-flex m-2 py-2 rounded-pill" data-categoria="sorvetePote">
+                                    <span style="width: 130px;">Sorvete de Pote</span>
+                                </button>
+
+
+                                <button id="filtro-btn-picole" class="d-flex m-2 py-2 rounded-pill" data-categoria="picole">
+                                    <span style="width: 130px;">Picolé</span>
+                                </button>
+
+                            </div>
                         </div>
                     </div>
 
@@ -279,256 +290,44 @@
                             </div>
                         </div> --}}
 
-                        <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="p-0">
                             <div class="row g-4">
                                 <div class="col-lg-12">
-                                    <div class="row g-4">
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_1.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 1</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_2.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 2</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_3.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 3</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_4.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 4</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_5.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 5</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_6.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 6</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_7.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 7</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/acai/acai_2.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Açai</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>Açai 2</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <div id="produtos-container" class="row g-4">
 
-
-                        <div id="tab-3" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="row g-4">
                                         @foreach ($produtos as $produto)
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
+                                        <div class="col-md-6 col-lg-4 col-xl-3 produto-filtrar" data-categoria="{{ $produto->categoriaProduto }}">
+                                            <div class="rounded position-relative">
                                                 <div class="fruite-img">
-                                                    <img src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img src="{{ asset ('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
+                                                    @if ($produto->categoriaProduto == 'acai')
+                                                        Açaí
+                                                    @elseif ($produto->categoriaProduto == 'sorvetePote')
+                                                        Sorvete de Pote
+                                                    @else
+                                                        Picolé
+                                                    @endif
+                                                </div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>{{ $produto->nomeProduto }}</h4>
-                                                    <p class="p-produtos">{{ $produto->descricaoProduto }}</p>
+                                                    <h4 style="min-height: 70px;">{{ $produto->nomeProduto }}</h4>
+                                                    <p style="min-height: 70px;">{{ $produto->descricaoProduto }}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($produto->valorProduto, 2, ',', '.') }} / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ {{ $produto->valorProduto }}</p>
+                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>iFood</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         @endforeach
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
 
-
-                        <div id="tab-4" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="row g-4">
-                                        @foreach ($produtos as $produto)
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Sorvete</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom p-produtos">
-                                                    <h4>{{ $produto->nomeProduto }}</h4>
-                                                    <p class="p-produtos">{{ $produto->descricaoProduto }}</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$ {{ number_format($produto->valorProduto, 2, ',', '.') }} / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Adicionar ao carrinho</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="tab-5" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="row g-4">
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/fruite-item-3.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Banana</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/fruite-item-2.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Raspberries</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="{{ asset ('img/fruite-item-1.png') }}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Oranges</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">R$4.99 / UN</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
