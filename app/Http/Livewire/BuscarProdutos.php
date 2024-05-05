@@ -26,7 +26,8 @@ class BuscarProdutos extends Component
         }
 
         if ($this->selectedCategoria) {
-            $produtos->where('categoriaProduto', $this->selectedCategoria);
+            $produtos->where('categoriaProduto', $this->selectedCategoria)
+                     ->orWhere('statusProduto', $this->selectedCategoria);
         }
 
         return $produtos->get();

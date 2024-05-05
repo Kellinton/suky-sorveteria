@@ -25,8 +25,14 @@ class ProdutoController extends Controller
         // recuperando os dados do funcionário autenticado
         $funcionarioAutenticado = Funcionario::find($id);
 
-        $produtos = Produto::orderBy('id', 'desc')->get();
+        // Quantidade de Funcionários
+        $totalProdutos = Produto::count();
 
+        // Quantidade Salário
+        $totalValorProdutos = Produto::sum('valorProduto');
+
+        $produtos = Produto::orderBy('id', 'desc')->get();
+        
         // filtrar
         // $acai = Produto::where('categoriaProduto', 'acai')->get();
         // $sorvetePote = Produto::where('categoriaProduto', 'sorvetePote')->get();
@@ -36,6 +42,8 @@ class ProdutoController extends Controller
         return view('dashboard.administrador.produto', compact(
             'funcionarioAutenticado',
             'produtos',
+            'totalProdutos',
+            'totalValorProdutos'
 
         ));
     }
