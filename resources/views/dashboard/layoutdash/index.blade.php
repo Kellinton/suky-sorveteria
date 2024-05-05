@@ -39,7 +39,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active " href="{{ route('dashboard.administrador') }}">
+          <a class="nav-link {{ request()->routeIs('dashboard.administrador') ? 'active' : '' }} " href="{{ route('dashboard.administrador') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Página Inicial</title>
@@ -59,7 +59,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/tables.html">
+          <a class="nav-link  {{ request()->routeIs('estoque.index') ? 'active' : '' }}" href="../pages/tables.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Estoque</title>
@@ -79,7 +79,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('produto.index') }}">
+          <a class="nav-link  {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Menu</title>
@@ -99,7 +99,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('funcionario.index') }}">
+          <a class="nav-link  {{ request()->routeIs('funcionario.index') ? 'active' : '' }}" href="{{ route('funcionario.index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Funcionários</title>
