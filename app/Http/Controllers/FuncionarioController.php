@@ -37,13 +37,13 @@ class FuncionarioController extends Controller
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
         // Obtenha todos os funcionários do banco de dados com paginação
-        // $funcionarios = $this->funcionario->all();
+        $funcionarios = $this->funcionario->all();
         // $funcionariosComUsuarios = Funcionario::with('usuario')->get();
         // dd($funcionariosComUsuarios);
 
         $funcionario = Funcionario::find(2); // Substitua 2 pelo ID do funcionário desejado
         $usuario = $funcionario->usuario;
-        dd($usuario);
+        //dd($usuario);
 
 
         // Obtendo o email do usuário associado
