@@ -557,6 +557,7 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Http\\Controllers\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShopController.php',
         'App\\Http\\Controllers\\SobreController' => __DIR__ . '/../..' . '/app/Http/Controllers/SobreController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Livewire\\BuscarProdutos' => __DIR__ . '/../..' . '/app/Http/Livewire/BuscarProdutos.php',
         'App\\Http\\Middleware\\AuthSorveteriaMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthSorveteriaMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

@@ -20,6 +20,7 @@ return array(
     'App\\Http\\Controllers\\ShopController' => $baseDir . '/app/Http/Controllers/ShopController.php',
     'App\\Http\\Controllers\\SobreController' => $baseDir . '/app/Http/Controllers/SobreController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Livewire\\BuscarProdutos' => $baseDir . '/app/Http/Livewire/BuscarProdutos.php',
     'App\\Http\\Middleware\\AuthSorveteriaMiddleware' => $baseDir . '/app/Http/Middleware/AuthSorveteriaMiddleware.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
