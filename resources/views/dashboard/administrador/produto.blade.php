@@ -72,5 +72,7 @@
 
 </div>
 
+@include('sweetalert::alert')
+
 @include('dashboard.administrador.produto.create')
 @endsection

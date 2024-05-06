@@ -1,45 +1,41 @@
-<div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{ $produto->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header d-flex justify-content-center">
-                <h5 class="modal-title" id="exampleModalLabel">Novo Produto</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Atualizar Produto</h5>
             </div>
             <div class="modal-body">
 
                 <div class="container">
                     <div class="inserir-container">
-                        <form class="form-container" action="{{ route('produto.store') }}" method="POST"
+                        <form class="form-container" action="{{ route('produto.update', ['id' => $produto->id]) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6 w-100 d-flex justify-content-center">
                                         <div class="form-group w-100">
-                                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="inputGroupFile01"><i class="ri-add-fill"></i> Adicionar Imagem</label>
+                                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="fotoProduto{{ $produto->id }}"><i class="ri-add-fill"></i>Escolher Imagem</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                    name="fotoProduto" style="display:none;" required onchange="previewFile()">
+                                                <input type="file" class="custom-file-input" id="fotoProduto{{ $produto->id }}"
+                                                    name="fotoProduto" onchange="exibirImagem(this, {{ $produto->id }})" style="display: none;">
                                             </div>
                                         </div>
 
                                         </div>
 
                                         <div class="form-group d-flex flex-column justify-content-center">
-                                            <img src="#" id="preview" class="img-fluid " alt="Preview da Imagem"
-                                                style="display: none;">
-                                            <p id="filename" style="display: none;"></p>
+                                            <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto">
                                         </div>
                                         <div class="form-group">
-
-                                            <input type="text" class="form-control" id="nomeProduto"
-                                                name="nomeProduto" maxlength="20" placeholder="Título do produto"
-                                                required>
+                                            <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" maxlength="20" placeholder="Título do produto" required value="{{ $produto->nomeProduto }}">
                                         </div>
                                         <div class="form-group">
 
                                             <textarea class="form-control" id="descricaoProduto" name="descricaoProduto" rows="4" maxlength="100"
-                                                placeholder="Descrição do produto" required></textarea>
+                                                placeholder="Descrição do produto" required>{{ $produto->descricaoProduto }}</textarea>
                                         </div>
 
                                             <div class="form-group">
@@ -71,7 +67,7 @@
                                                 </div>
                                                 <input type="text" class="form-control" id="valorProduto"
                                                     name="valorProduto" pattern="^[0-9]+(\.[0-9]{1,2})?$" maxlength="7"
-                                                    placeholder="Preço do produto" required>
+                                                    placeholder="Preço do produto" required value="{{ $produto->valorProduto }}">
                                             </div>
                                         </div>
 
@@ -98,28 +94,20 @@
 
 <script>
 
-     function previewFile() {
-        var preview = document.getElementById('preview');
-        var file = document.querySelector('input[type=file]').files[0];
-        var filename = document.getElementById('filename');
 
-        var reader = new FileReader();
+    function exibirImagem(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // Montar o ID da imagem atual usando o ID do produto
+                var imagemAtualId = '#imagemAtual' + id;
 
-        reader.onloadend = function () {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-            preview.style.borderRadius = '20px'; // Adicionando bordas arredondadas
-            filename.textContent = file.name;
-            filename.style.display = 'block';
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = '';
-            filename.textContent = '';
-            preview.style.display = 'none';
-            filename.style.display = 'none';
+                // Exibir a imagem atualizada no modal
+                $(imagemAtualId)
+                    .attr('src', e.target.result)
+                    .removeClass('d-none'); // Remover a classe d-none para exibir a imagem
+            };
+            reader.readAsDataURL(input.files[0]);
         }
     }
 
