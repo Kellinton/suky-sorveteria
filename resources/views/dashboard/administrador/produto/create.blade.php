@@ -9,7 +9,7 @@
 
                 <div class="container">
                     <div class="inserir-container">
-                        <form class="form-container" action="" method="POST"
+                        <form class="form-container" action="{{ route('produto.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="container">

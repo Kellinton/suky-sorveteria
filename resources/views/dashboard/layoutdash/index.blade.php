@@ -10,6 +10,7 @@
 
 
   <!-- SweetAlert -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Remixicon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
@@ -26,6 +27,7 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  @livewireStyles
 </head>
 
 <body class="g-sidenav-show bg-gray-100 ">
@@ -38,7 +40,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active " href="{{ route('dashboard.administrador') }}">
+          <a class="nav-link {{ request()->routeIs('dashboard.administrador') ? 'active' : '' }} " href="{{ route('dashboard.administrador') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Página Inicial</title>
@@ -58,7 +60,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/tables.html">
+          <a class="nav-link  {{ request()->routeIs('estoque.index') ? 'active' : '' }}" href="../pages/tables.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Estoque</title>
@@ -78,7 +80,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('produto.index') }}">
+          <a class="nav-link  {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Menu</title>
@@ -98,7 +100,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ route('funcionario.index') }}">
+          <a class="nav-link  {{ request()->routeIs('funcionario.index') ? 'active' : '' }}" href="{{ route('funcionario.index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Gerenciar Funcionários</title>
@@ -404,6 +406,9 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('dashboard/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
+
+  <!-- Script para funcionamento do livewire-->
+  @livewireScripts
 </body>
 
 </html>
