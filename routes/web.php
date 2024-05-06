@@ -52,6 +52,10 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
 
      // Produtos
      Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');
+     Route::post('/dashboard/administrador/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
+     Route::get('/dashboard/administrador/produto/show/{id}', [ProdutoController::class, 'show'])->name('produto.show');
+     Route::post('/dashboard/administrador/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
+
 
 });
 
