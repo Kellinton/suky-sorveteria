@@ -10,6 +10,7 @@
 
 
   <!-- SweetAlert -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Remixicon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>

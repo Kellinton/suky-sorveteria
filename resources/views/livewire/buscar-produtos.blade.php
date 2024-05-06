@@ -42,39 +42,34 @@
         @if ($produtos->count())
 
                 @foreach ($produtos as $produto)
+
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                         <div class="card card-blog card-plain">
                             <div class="position-relative">
                                 <a class="d-block shadow-xl border-radius-xl position-relative">
                                     <span class="badge badge-lg bg-gradient-{{ $produto->statusProduto === 'inativo' ? 'danger' : 'success' }} position-absolute m-3" style="font-size: 1rem;">{{ $produto->statusProduto === 'inativo' ? 'Indisponível' : 'Disponível' }}</span>
-                                    <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                    <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
                                 </a>
                             </div>
                             <div class="card-body px-1 pb-0 mb-5">
-                                {{-- @if ($produto->categoriaProduto == 'sorvetePote')
-                                    <p class="text-gradient text-dark mb-2 text-sm">Sorvete de pote</p>
-                                @elseif ($produto->categoriaProduto == 'picole')
-                                    <p class="text-gradient text-dark mb-2 text-sm">Picolé</p>
-                                @elseif ($produto->categoriaProduto == 'acai')
-                                    <p class="text-gradient text-dark mb-2 text-sm">Açaí</p>
-                                @endif --}}
                                 <a href="javascript:;">
-                                    <h5>
+                                    <h5 style="min-height: 25px;">
                                         {{ $produto->nomeProduto }}
                                     </h5>
                                 </a>
-                                <p class="mb-4 text-sm">
+                                <p class="mb-4 text-sm" style="min-height: 50px;">
                                     {{ $produto->descricaoProduto }}
                                 </p>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <p class="mb-0 text-bolder text-2xl">R$ {{ $produto->valorProduto }}</p>
-                                    <button type="button" class="btn btn-outline-primary btn-sm mb-0 bg-gradient-primary">Editar</button>
+                                        <a href="" class="btn btn-outline-primary btn-sm mb-0 bg-gradient-primary" data-toggle="modal" data-target="#edit{{ $produto->id }}">Editar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
 
+                        {{-- @include('dashboard.administrador.produto.edit', ['id' => $produto->id]) --}}
+                    @endforeach
         @else
        <div class="col-xl-9 col-md-6 mb-xl-0 mb-4">
             <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
