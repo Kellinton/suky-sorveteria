@@ -34,7 +34,7 @@ class ProdutoController extends Controller
         // Quantidade Salário
         $totalValorProdutos = Produto::sum('valorProduto');
 
-        $produtos = Produto::orderBy('id', 'desc')->get();
+        $produtos = Produto::all();
 
         // filtrar
         // $acai = Produto::where('categoriaProduto', 'acai')->get();
@@ -225,7 +225,7 @@ class ProdutoController extends Controller
 
         Alert::success('Produto Atualizado!', 'O item foi atualizado com sucesso.');
 
-        return redirect()->route('dashboard.administrador.produto');
+        return redirect()->route('produto.index');
     }
 
     /**

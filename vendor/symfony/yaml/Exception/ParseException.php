@@ -29,7 +29,7 @@ class ParseException extends RuntimeException
      * @param string|null $snippet    The snippet of code near the problem
      * @param string|null $parsedFile The file name where the error occurred
      */
-    public function __construct(string $message, int $parsedLine = -1, string $snippet = null, string $parsedFile = null, \Throwable $previous = null)
+    public function __construct(string $message, int $parsedLine = -1, ?string $snippet = null, ?string $parsedFile = null, ?\Throwable $previous = null)
     {
         $this->parsedFile = $parsedFile;
         $this->parsedLine = $parsedLine;
@@ -52,7 +52,7 @@ class ParseException extends RuntimeException
     /**
      * Sets the snippet of code near the error.
      */
-    public function setSnippet(string $snippet)
+    public function setSnippet(string $snippet): void
     {
         $this->snippet = $snippet;
 
@@ -72,7 +72,7 @@ class ParseException extends RuntimeException
     /**
      * Sets the filename where the error occurred.
      */
-    public function setParsedFile(string $parsedFile)
+    public function setParsedFile(string $parsedFile): void
     {
         $this->parsedFile = $parsedFile;
 
@@ -90,19 +90,19 @@ class ParseException extends RuntimeException
     /**
      * Sets the line where the error occurred.
      */
-    public function setParsedLine(int $parsedLine)
+    public function setParsedLine(int $parsedLine): void
     {
         $this->parsedLine = $parsedLine;
 
         $this->updateRepr();
     }
 
-    private function updateRepr()
+    private function updateRepr(): void
     {
         $this->message = $this->rawMessage;
 
         $dot = false;
-        if ('.' === substr($this->message, -1)) {
+        if (str_ends_with($this->message, '.')) {
             $this->message = substr($this->message, 0, -1);
             $dot = true;
         }

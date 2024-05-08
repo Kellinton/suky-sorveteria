@@ -41,7 +41,7 @@
         </div>
         @if ($produtos->count())
 
-                @foreach ($produtos as $produto)
+                @foreach ($produtos->sortByDesc('id') as $produto)
 
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                         <div class="card card-blog card-plain">
@@ -65,11 +65,21 @@
                                         <a href="" class="btn btn-outline-primary btn-sm mb-0 bg-gradient-primary" data-toggle="modal" data-target="#edit{{ $produto->id }}">Editar</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
-                        {{-- @include('dashboard.administrador.produto.edit', ['id' => $produto->id]) --}}
-                    @endforeach
+
+
+
+                @endforeach
+
+                @foreach ($produtos->sortByDesc('id') as $produto)
+
+                    @include('dashboard.administrador.produto.edit', ['id' => $produto->id])
+
+                @endforeach
+
         @else
        <div class="col-xl-9 col-md-6 mb-xl-0 mb-4">
             <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">

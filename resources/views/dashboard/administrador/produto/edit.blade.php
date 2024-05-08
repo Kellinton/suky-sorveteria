@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div class="col-md-6 w-100 d-flex justify-content-center">
                                         <div class="form-group w-100">
-                                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="fotoProduto{{ $produto->id }}"><i class="ri-add-fill"></i>Escolher Imagem</label>
+                                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="fotoProduto{{ $produto->id }}"><i class="ri-add-fill"></i> Trocar Imagem</label>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="fotoProduto{{ $produto->id }}"
                                                     name="fotoProduto" onchange="exibirImagem(this, {{ $produto->id }})" style="display: none;">
@@ -27,7 +27,7 @@
                                         </div>
 
                                         <div class="form-group d-flex flex-column justify-content-center">
-                                            <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto">
+                                            <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto" style="width: 100%; height: 250px;">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" maxlength="20" placeholder="Título do produto" required value="{{ $produto->nomeProduto }}">
@@ -41,19 +41,19 @@
                                             <div class="form-group">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sorvetePote"
-                                                        name="categoriaProduto" value="sorvetePote" required>
+                                                        name="categoriaProduto" value="sorvetePote" required {{ $produto->categoriaProduto == 'sorvetePote' ? 'checked' : '' }}>
                                                     <label class="form-check-label categoria-btn"
                                                         for="sorvetePote">Sorvete de pote</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="picole"
-                                                        name="categoriaProduto" value="picole" required>
+                                                        name="categoriaProduto" value="picole" required {{ $produto->categoriaProduto == 'picole' ? 'checked' : '' }}>
                                                     <label class="form-check-label categoria-btn"
                                                         for="picole">Picolé</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="acai"
-                                                        name="categoriaProduto" value="acai" required>
+                                                        name="categoriaProduto" value="acai" required {{ $produto->categoriaProduto == 'acai' ? 'checked' : '' }}>
                                                     <label class="form-check-label categoria-btn"
                                                         for="acai">Açaí</label>
                                                 </div>
