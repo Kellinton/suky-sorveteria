@@ -65,11 +65,21 @@
                                         <a href="" class="btn btn-outline-primary btn-sm mb-0 bg-gradient-primary" data-toggle="modal" data-target="#edit{{ $produto->id }}">Editar</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
-                        {{-- @include('dashboard.administrador.produto.edit', ['id' => $produto->id]) --}}
+
+
+
                     @endforeach
+
+                    @foreach ($produtos as $produto)
+
+                     @include('dashboard.administrador.produto.edit', ['id' => $produto->id])
+
+                     @endforeach
+
         @else
        <div class="col-xl-9 col-md-6 mb-xl-0 mb-4">
             <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
