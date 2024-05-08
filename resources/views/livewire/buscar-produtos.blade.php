@@ -41,7 +41,7 @@
         </div>
         @if ($produtos->count())
 
-                @foreach ($produtos as $produto)
+                @foreach ($produtos->sortByDesc('id') as $produto)
 
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                         <div class="card card-blog card-plain">
@@ -72,13 +72,13 @@
 
 
 
-                    @endforeach
+                @endforeach
 
-                    @foreach ($produtos as $produto)
+                @foreach ($produtos->sortByDesc('id') as $produto)
 
-                     @include('dashboard.administrador.produto.edit', ['id' => $produto->id])
+                    @include('dashboard.administrador.produto.edit', ['id' => $produto->id])
 
-                     @endforeach
+                @endforeach
 
         @else
        <div class="col-xl-9 col-md-6 mb-xl-0 mb-4">

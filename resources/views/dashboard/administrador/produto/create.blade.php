@@ -19,7 +19,7 @@
                                             <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="inputGroupFile01"><i class="ri-add-fill"></i> Adicionar Imagem</label>
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                    name="fotoProduto" style="display:none;" required onchange="previewFile()">
+                                                    name="fotoProduto" style="opacity: 0;" required  onchange="previewFile()">
                                             </div>
                                         </div>
 
@@ -28,7 +28,6 @@
                                         <div class="form-group d-flex flex-column justify-content-center">
                                             <img src="#" id="preview" class="img-fluid " alt="Preview da Imagem"
                                                 style="display: none;">
-                                            <p id="filename" style="display: none;"></p>
                                         </div>
                                         <div class="form-group">
 
@@ -99,27 +98,27 @@
 <script>
 
      function previewFile() {
-        var preview = document.getElementById('preview');
-        var file = document.querySelector('input[type=file]').files[0];
-        var filename = document.getElementById('filename');
+        let preview = document.getElementById('preview');
+        let file = document.getElementById('inputGroupFile01').files[0];
 
-        var reader = new FileReader();
+        console.log(file);
+        let reader = new FileReader();
 
         reader.onloadend = function () {
+
             preview.src = reader.result;
             preview.style.display = 'block';
-            preview.style.borderRadius = '20px'; // Adicionando bordas arredondadas
-            filename.textContent = file.name;
-            filename.style.display = 'block';
+            preview.style.width= '100%';
+            preview.style.height= '250px';
+            preview.style.borderRadius = '10px';
         }
 
         if (file) {
             reader.readAsDataURL(file);
         } else {
+
             preview.src = '';
-            filename.textContent = '';
             preview.style.display = 'none';
-            filename.style.display = 'none';
         }
     }
 
