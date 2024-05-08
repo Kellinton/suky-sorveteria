@@ -27,7 +27,7 @@
                                         </div>
 
                                         <div class="form-group d-flex flex-column justify-content-center">
-                                            <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto" style="width: 100%; height: 250px;">
+                                            <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto" style="width: 100%; height: 250px; border-radius: 15px;">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" maxlength="20" placeholder="Título do produto" required value="{{ $produto->nomeProduto }}">
