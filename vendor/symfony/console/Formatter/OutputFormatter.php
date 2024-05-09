@@ -13,8 +13,6 @@ namespace Symfony\Component\Console\Formatter;
 
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 
-use function Symfony\Component\String\b;
-
 /**
  * Formatter class for console output.
  *
@@ -25,7 +23,7 @@ class OutputFormatter implements WrappableOutputFormatterInterface
 {
     private bool $decorated;
     private array $styles = [];
-    private OutputFormatterStyleStack $styleStack;
+    private $styleStack;
 
     public function __clone()
     {
@@ -84,31 +82,40 @@ class OutputFormatter implements WrappableOutputFormatterInterface
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function setDecorated(bool $decorated)
     {
         $this->decorated = $decorated;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function isDecorated(): bool
     {
         return $this->decorated;
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function setStyle(string $name, OutputFormatterStyleInterface $style)
     {
         $this->styles[strtolower($name)] = $style;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function hasStyle(string $name): bool
     {
         return isset($this->styles[strtolower($name)]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getStyle(string $name): OutputFormatterStyleInterface
     {
         if (!$this->hasStyle($name)) {
@@ -118,13 +125,16 @@ class OutputFormatter implements WrappableOutputFormatterInterface
         return $this->styles[strtolower($name)];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function format(?string $message): ?string
     {
         return $this->formatAndWrap($message, 0);
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function formatAndWrap(?string $message, int $width)
     {
@@ -151,7 +161,7 @@ class OutputFormatter implements WrappableOutputFormatterInterface
             $offset = $pos + \strlen($text);
 
             // opening tag?
-            if ($open = '/' !== $text[1]) {
+            if ($open = '/' != $text[1]) {
                 $tag = $matches[1][$i][0];
             } else {
                 $tag = $matches[3][$i][0] ?? '';
@@ -243,10 +253,10 @@ class OutputFormatter implements WrappableOutputFormatterInterface
         }
 
         preg_match('~(\\n)$~', $text, $matches);
-        $text = $prefix.$this->addLineBreaks($text, $width);
+        $text = $prefix.preg_replace('~([^\\n]{'.$width.'})\\ *~', "\$1\n", $text);
         $text = rtrim($text, "\n").($matches[1] ?? '');
 
-        if (!$currentLineLength && '' !== $current && !str_ends_with($current, "\n")) {
+        if (!$currentLineLength && '' !== $current && "\n" !== substr($current, -1)) {
             $text = "\n".$text;
         }
 
@@ -266,12 +276,5 @@ class OutputFormatter implements WrappableOutputFormatterInterface
         }
 
         return implode("\n", $lines);
-    }
-
-    private function addLineBreaks(string $text, int $width): string
-    {
-        $encoding = mb_detect_encoding($text, null, true) ?: 'UTF-8';
-
-        return b($text)->toCodePointString($encoding)->wordwrap($width, "\n", true)->toByteString($encoding);
     }
 }

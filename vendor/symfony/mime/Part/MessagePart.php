@@ -21,7 +21,7 @@ use Symfony\Component\Mime\RawMessage;
  */
 class MessagePart extends DataPart
 {
-    private RawMessage $message;
+    private $message;
 
     public function __construct(RawMessage $message)
     {
@@ -65,7 +65,7 @@ class MessagePart extends DataPart
         return ['message'];
     }
 
-    public function __wakeup(): void
+    public function __wakeup()
     {
         $this->__construct($this->message);
     }

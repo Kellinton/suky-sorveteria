@@ -13,8 +13,8 @@ namespace Symfony\Component\HttpKernel\Bundle;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 /**
@@ -24,35 +24,32 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
  */
 abstract class Bundle implements BundleInterface
 {
+    use ContainerAwareTrait;
+
     protected $name;
     protected $extension;
     protected $path;
     private string $namespace;
 
     /**
-     * @var ContainerInterface|null
-     */
-    protected $container;
-
-    /**
-     * @return void
+     * {@inheritdoc}
      */
     public function boot()
     {
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function shutdown()
     {
     }
 
     /**
+     * {@inheritdoc}
+     *
      * This method can be overridden to register compilation passes,
      * other extensions, ...
-     *
-     * @return void
      */
     public function build(ContainerBuilder $container)
     {
@@ -65,7 +62,7 @@ abstract class Bundle implements BundleInterface
      */
     public function getContainerExtension(): ?ExtensionInterface
     {
-        if (!isset($this->extension)) {
+        if (null === $this->extension) {
             $extension = $this->createContainerExtension();
 
             if (null !== $extension) {
@@ -90,6 +87,9 @@ abstract class Bundle implements BundleInterface
         return $this->extension ?: null;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getNamespace(): string
     {
         if (!isset($this->namespace)) {
@@ -99,9 +99,12 @@ abstract class Bundle implements BundleInterface
         return $this->namespace;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getPath(): string
     {
-        if (!isset($this->path)) {
+        if (null === $this->path) {
             $reflected = new \ReflectionObject($this);
             $this->path = \dirname($reflected->getFileName());
         }
@@ -114,16 +117,13 @@ abstract class Bundle implements BundleInterface
      */
     final public function getName(): string
     {
-        if (!isset($this->name)) {
+        if (null === $this->name) {
             $this->parseClassName();
         }
 
         return $this->name;
     }
 
-    /**
-     * @return void
-     */
     public function registerCommands(Application $application)
     {
     }
@@ -146,15 +146,12 @@ abstract class Bundle implements BundleInterface
         return class_exists($class = $this->getContainerExtensionClass()) ? new $class() : null;
     }
 
-    private function parseClassName(): void
+    private function parseClassName()
     {
         $pos = strrpos(static::class, '\\');
         $this->namespace = false === $pos ? '' : substr(static::class, 0, $pos);
-        $this->name ??= false === $pos ? static::class : substr(static::class, $pos + 1);
-    }
-
-    public function setContainer(?ContainerInterface $container): void
-    {
-        $this->container = $container;
+        if (null === $this->name) {
+            $this->name = false === $pos ? static::class : substr(static::class, $pos + 1);
+        }
     }
 }

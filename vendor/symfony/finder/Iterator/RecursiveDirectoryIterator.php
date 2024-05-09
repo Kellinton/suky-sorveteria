@@ -18,13 +18,11 @@ use Symfony\Component\Finder\SplFileInfo;
  * Extends the \RecursiveDirectoryIterator to support relative paths.
  *
  * @author Victor Berchet <victor@suumit.com>
- *
- * @extends \RecursiveDirectoryIterator<string, SplFileInfo>
  */
 class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
 {
     private bool $ignoreUnreadableDirs;
-    private bool $ignoreFirstRewind = true;
+    private ?bool $rewindable = null;
 
     // these 3 properties take part of the performance optimization to avoid redoing the same work in all iterations
     private string $rootPath;
@@ -83,7 +81,7 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
             parent::getChildren();
 
             return true;
-        } catch (\UnexpectedValueException) {
+        } catch (\UnexpectedValueException $e) {
             // If directory is unreadable and finder is set to ignore it, skip children
             return false;
         }
@@ -102,6 +100,7 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
                 $children->ignoreUnreadableDirs = $this->ignoreUnreadableDirs;
 
                 // performance optimization to avoid redoing the same work in all children
+                $children->rewindable = &$this->rewindable;
                 $children->rootPath = $this->rootPath;
             }
 
@@ -111,23 +110,36 @@ class RecursiveDirectoryIterator extends \RecursiveDirectoryIterator
         }
     }
 
-    public function next(): void
-    {
-        $this->ignoreFirstRewind = false;
-
-        parent::next();
-    }
-
+    /**
+     * Do nothing for non rewindable stream.
+     */
     public function rewind(): void
     {
-        // some streams like FTP are not rewindable, ignore the first rewind after creation,
-        // as newly created DirectoryIterator does not need to be rewound
-        if ($this->ignoreFirstRewind) {
-            $this->ignoreFirstRewind = false;
-
+        if (false === $this->isRewindable()) {
             return;
         }
 
         parent::rewind();
+    }
+
+    /**
+     * Checks if the stream is rewindable.
+     */
+    public function isRewindable(): bool
+    {
+        if (null !== $this->rewindable) {
+            return $this->rewindable;
+        }
+
+        if (false !== $stream = @opendir($this->getPath())) {
+            $infos = stream_get_meta_data($stream);
+            closedir($stream);
+
+            if ($infos['seekable']) {
+                return $this->rewindable = true;
+            }
+        }
+
+        return $this->rewindable = false;
     }
 }

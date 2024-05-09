@@ -1,4 +1,4 @@
-# EmailValidator Changelog
+# EmailValidator v3 Changelog
 
 ## New Features
 
@@ -30,3 +30,4 @@ PHP version upgrade requirement will happen via MINOR (3.x) version upgrades of 
 
 ## Thanks
 To contributors, be it with PRs, reporting issues or supporting otherwise.
+

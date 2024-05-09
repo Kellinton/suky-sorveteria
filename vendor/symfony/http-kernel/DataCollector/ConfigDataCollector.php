@@ -16,7 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\VarDumper\Caster\ClassStub;
-use Symfony\Component\VarDumper\Cloner\Data;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
@@ -25,24 +24,23 @@ use Symfony\Component\VarDumper\Cloner\Data;
  */
 class ConfigDataCollector extends DataCollector implements LateDataCollectorInterface
 {
-    private KernelInterface $kernel;
+    private $kernel;
 
     /**
      * Sets the Kernel associated with this Request.
      */
-    public function setKernel(?KernelInterface $kernel = null): void
+    public function setKernel(KernelInterface $kernel = null)
     {
-        if (1 > \func_num_args()) {
-            trigger_deprecation('symfony/http-kernel', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
-        }
-
         $this->kernel = $kernel;
     }
 
-    public function collect(Request $request, Response $response, ?\Throwable $exception = null): void
+    /**
+     * {@inheritdoc}
+     */
+    public function collect(Request $request, Response $response, \Throwable $exception = null)
     {
-        $eom = \DateTimeImmutable::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE);
-        $eol = \DateTimeImmutable::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE);
+        $eom = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE);
+        $eol = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE);
 
         $this->data = [
             'token' => $response->headers->get('X-Debug-Token'),
@@ -59,15 +57,15 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
             'php_intl_locale' => class_exists(\Locale::class, false) && \Locale::getDefault() ? \Locale::getDefault() : 'n/a',
             'php_timezone' => date_default_timezone_get(),
             'xdebug_enabled' => \extension_loaded('xdebug'),
-            'apcu_enabled' => \extension_loaded('apcu') && filter_var(\ini_get('apc.enabled'), \FILTER_VALIDATE_BOOL),
-            'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOL),
+            'apcu_enabled' => \extension_loaded('apcu') && filter_var(\ini_get('apc.enabled'), \FILTER_VALIDATE_BOOLEAN),
+            'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN),
             'bundles' => [],
             'sapi_name' => \PHP_SAPI,
         ];
 
         if (isset($this->kernel)) {
             foreach ($this->kernel->getBundles() as $name => $bundle) {
-                $this->data['bundles'][$name] = new ClassStub($bundle::class);
+                $this->data['bundles'][$name] = new ClassStub(\get_class($bundle));
             }
         }
 
@@ -77,7 +75,15 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
         }
     }
 
-    public function lateCollect(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function reset()
+    {
+        $this->data = [];
+    }
+
+    public function lateCollect()
     {
         $this->data = $this->cloneVar($this->data);
     }
@@ -189,19 +195,11 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
     }
 
     /**
-     * Returns true if the Xdebug is enabled.
+     * Returns true if the XDebug is enabled.
      */
-    public function hasXdebug(): bool
+    public function hasXDebug(): bool
     {
         return $this->data['xdebug_enabled'];
-    }
-
-    /**
-     * Returns true if the function xdebug_info is available.
-     */
-    public function hasXdebugInfo(): bool
-    {
-        return \function_exists('xdebug_info');
     }
 
     /**
@@ -220,7 +218,7 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
         return $this->data['zend_opcache_enabled'];
     }
 
-    public function getBundles(): array|Data
+    public function getBundles()
     {
         return $this->data['bundles'];
     }
@@ -233,6 +231,9 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
         return $this->data['sapi_name'];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName(): string
     {
         return 'config';
@@ -240,9 +241,9 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
 
     private function determineSymfonyState(): string
     {
-        $now = new \DateTimeImmutable();
-        $eom = \DateTimeImmutable::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE)->modify('last day of this month');
-        $eol = \DateTimeImmutable::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE)->modify('last day of this month');
+        $now = new \DateTime();
+        $eom = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE)->modify('last day of this month');
+        $eol = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE)->modify('last day of this month');
 
         if ($now > $eol) {
             $versionState = 'eol';

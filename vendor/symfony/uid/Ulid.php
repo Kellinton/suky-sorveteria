@@ -18,29 +18,32 @@ namespace Symfony\Component\Uid;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Ulid extends AbstractUid implements TimeBasedUidInterface
+class Ulid extends AbstractUid
 {
     protected const NIL = '00000000000000000000000000';
-    protected const MAX = '7ZZZZZZZZZZZZZZZZZZZZZZZZZ';
 
     private static string $time = '';
     private static array $rand = [];
 
-    public function __construct(?string $ulid = null)
+    public function __construct(string $ulid = null)
     {
         if (null === $ulid) {
             $this->uid = static::generate();
-        } elseif (self::NIL === $ulid) {
-            $this->uid = $ulid;
-        } elseif (self::MAX === strtr($ulid, 'z', 'Z')) {
-            $this->uid = $ulid;
-        } else {
-            if (!self::isValid($ulid)) {
-                throw new \InvalidArgumentException(sprintf('Invalid ULID: "%s".', $ulid));
-            }
 
-            $this->uid = strtoupper($ulid);
+            return;
         }
+
+        if (self::NIL === $ulid) {
+            $this->uid = $ulid;
+
+            return;
+        }
+
+        if (!self::isValid($ulid)) {
+            throw new \InvalidArgumentException(sprintf('Invalid ULID: "%s".', $ulid));
+        }
+
+        $this->uid = strtoupper($ulid);
     }
 
     public static function isValid(string $ulid): bool
@@ -56,6 +59,9 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
         return $ulid[0] <= '7';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function fromString(string $ulid): static
     {
         if (36 === \strlen($ulid) && preg_match('{^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$}Di', $ulid)) {
@@ -65,11 +71,11 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
         }
 
         if (16 !== \strlen($ulid)) {
-            return match (strtr($ulid, 'z', 'Z')) {
-                self::NIL => new NilUlid(),
-                self::MAX => new MaxUlid(),
-                default => new static($ulid),
-            };
+            if (self::NIL === $ulid) {
+                return new NilUlid();
+            }
+
+            return new static($ulid);
         }
 
         $ulid = bin2hex($ulid);
@@ -87,12 +93,8 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
             return new NilUlid();
         }
 
-        if (self::MAX === $ulid = strtr($ulid, 'abcdefghijklmnopqrstuv', 'ABCDEFGHJKMNPQRSTVWXYZ')) {
-            return new MaxUlid();
-        }
-
         $u = new static(self::NIL);
-        $u->uid = $ulid;
+        $u->uid = strtr($ulid, 'abcdefghijklmnopqrstuv', 'ABCDEFGHJKMNPQRSTVWXYZ');
 
         return $u;
     }
@@ -114,13 +116,6 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
         return hex2bin($ulid);
     }
 
-    /**
-     * Returns the identifier as a base32 case insensitive string.
-     *
-     * @see https://tools.ietf.org/html/rfc4648#section-6
-     *
-     * @example 09EJ0S614A9FXVG9C5537Q9ZE1 (len=26)
-     */
     public function toBase32(): string
     {
         return $this->uid;
@@ -148,7 +143,7 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
         return \DateTimeImmutable::createFromFormat('U.u', substr_replace($time, '.', -3, 0));
     }
 
-    public static function generate(?\DateTimeInterface $time = null): string
+    public static function generate(\DateTimeInterface $time = null): string
     {
         if (null === $mtime = $time) {
             $time = microtime(false);
@@ -159,15 +154,15 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
 
         if ($time > self::$time || (null !== $mtime && $time !== self::$time)) {
             randomize:
-            $r = unpack('n*', random_bytes(10));
-            $r[1] |= ($r[5] <<= 4) & 0xF0000;
-            $r[2] |= ($r[5] <<= 4) & 0xF0000;
-            $r[3] |= ($r[5] <<= 4) & 0xF0000;
-            $r[4] |= ($r[5] <<= 4) & 0xF0000;
-            unset($r[5]);
-            self::$rand = $r;
+            $r = unpack('nr1/nr2/nr3/nr4/nr', random_bytes(10));
+            $r['r1'] |= ($r['r'] <<= 4) & 0xF0000;
+            $r['r2'] |= ($r['r'] <<= 4) & 0xF0000;
+            $r['r3'] |= ($r['r'] <<= 4) & 0xF0000;
+            $r['r4'] |= ($r['r'] <<= 4) & 0xF0000;
+            unset($r['r']);
+            self::$rand = array_values($r);
             self::$time = $time;
-        } elseif ([1 => 0xFFFFF, 0xFFFFF, 0xFFFFF, 0xFFFFF] === self::$rand) {
+        } elseif ([0xFFFFF, 0xFFFFF, 0xFFFFF, 0xFFFFF] === self::$rand) {
             if (\PHP_INT_SIZE >= 8 || 10 > \strlen($time = self::$time)) {
                 $time = (string) (1 + $time);
             } elseif ('999999999' === $mtime = substr($time, -9)) {
@@ -178,7 +173,7 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
 
             goto randomize;
         } else {
-            for ($i = 4; $i > 0 && 0xFFFFF === self::$rand[$i]; --$i) {
+            for ($i = 3; $i >= 0 && 0xFFFFF === self::$rand[$i]; --$i) {
                 self::$rand[$i] = 0;
             }
 
@@ -199,10 +194,10 @@ class Ulid extends AbstractUid implements TimeBasedUidInterface
 
         return strtr(sprintf('%010s%04s%04s%04s%04s',
             $time,
+            base_convert(self::$rand[0], 10, 32),
             base_convert(self::$rand[1], 10, 32),
             base_convert(self::$rand[2], 10, 32),
-            base_convert(self::$rand[3], 10, 32),
-            base_convert(self::$rand[4], 10, 32)
+            base_convert(self::$rand[3], 10, 32)
         ), 'abcdefghijklmnopqrstuv', 'ABCDEFGHJKMNPQRSTVWXYZ');
     }
 }
