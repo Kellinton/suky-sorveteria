@@ -90,7 +90,7 @@
                         <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ $funcionario->nomeFuncionario }} {{ $funcionario->sobrenomeFuncionario }}</h6>
 
-                            <p class="text-xs text-secondary mb-0">{{ $emailsUsuarios[$key] }}</p>
+                            <p class="text-xs text-secondary mb-0">{{ $funcionario->email }}</p>
 
                         </div>
                         </div>

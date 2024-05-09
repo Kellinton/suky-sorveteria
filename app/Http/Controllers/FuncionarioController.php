@@ -36,25 +36,21 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
-        // Obtenha todos os funcionários do banco de dados com paginação
-        $funcionarios = $this->funcionario->all();
-        // $funcionariosComUsuarios = Funcionario::with('usuario')->get();
-        // dd($funcionariosComUsuarios);
 
-        $funcionario = Funcionario::find(2); // Substitua 2 pelo ID do funcionário desejado
-        $usuario = $funcionario->usuario;
-        //dd($usuario);
+        // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
+        $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
+                            ->select('funcionarios.*', 'usuarios.email')
+                            ->get();
 
+        //dd($funcionarios);
 
-        // Obtendo o email do usuário associado
-        $emailsUsuarios = Funcionario::with('usuario')->get()->pluck('usuario.senha');
-        // dd($emailsUsuarios);
+        // $funcionario = Funcionario::find(2);  ID do funcionário desejado
+
 
         // Passa a lista de funcionários e a lista de emails dos usuários para a view
         return view('dashboard.administrador.funcionario', compact(
             'funcionarioAutenticado',
             'funcionarios',
-            'emailsUsuarios',
             'totalFuncionarios',
             'totalSalario',
         ));
