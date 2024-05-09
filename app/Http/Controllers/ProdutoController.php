@@ -228,6 +228,46 @@ class ProdutoController extends Controller
         return redirect()->route('produto.index');
     }
 
+    public function ativar($id)
+    {
+        $produto = Produto::find($id);
+
+        if ($produto) {
+
+            $produto->statusProduto = 'ativo';
+            $produto->save();
+
+            Alert::success('Alterado para disponível.');
+
+            return redirect()->route('produto.index');
+
+        } else {
+            Alert::error('Erro!', 'Ocorreu um erro ao ativar o item.');
+            return redirect()->route('produto.index');
+        }
+    }
+
+
+    public function desativar($id)
+    {
+        $produto = Produto::find($id);
+
+
+        if ($produto) {
+
+            $produto->statusProduto = 'inativo';
+            $produto->save();
+
+            Alert::success('Alterado para indisponível.');
+
+            return redirect()->route('produto.index');
+        } else {
+
+            return redirect()->route('produto.index');
+        }
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *

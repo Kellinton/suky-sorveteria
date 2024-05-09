@@ -11,8 +11,8 @@
 
 namespace Symfony\Component\HttpKernel\Bundle;
 
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 /**
@@ -20,19 +20,15 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface BundleInterface
+interface BundleInterface extends ContainerAwareInterface
 {
     /**
      * Boots the Bundle.
-     *
-     * @return void
      */
     public function boot();
 
     /**
      * Shutdowns the Bundle.
-     *
-     * @return void
      */
     public function shutdown();
 
@@ -40,8 +36,6 @@ interface BundleInterface
      * Builds the bundle.
      *
      * It is only ever called once when the cache is empty.
-     *
-     * @return void
      */
     public function build(ContainerBuilder $container);
 
@@ -66,9 +60,4 @@ interface BundleInterface
      * The path should always be returned as a Unix path (with /).
      */
     public function getPath(): string;
-
-    /**
-     * @return void
-     */
-    public function setContainer(?ContainerInterface $container);
 }

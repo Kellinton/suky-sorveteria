@@ -25,7 +25,7 @@ final class ProcessStream extends AbstractStream
 {
     private string $command;
 
-    public function setCommand(string $command): void
+    public function setCommand(string $command)
     {
         $this->command = $command;
     }
@@ -35,7 +35,7 @@ final class ProcessStream extends AbstractStream
         $descriptorSpec = [
             0 => ['pipe', 'r'],
             1 => ['pipe', 'w'],
-            2 => ['pipe', '\\' === \DIRECTORY_SEPARATOR ? 'a' : 'w'],
+            2 => ['pipe', 'w'],
         ];
         $pipes = [];
         $this->stream = proc_open($this->command, $descriptorSpec, $pipes);
@@ -45,20 +45,14 @@ final class ProcessStream extends AbstractStream
         }
         $this->in = &$pipes[0];
         $this->out = &$pipes[1];
-        $this->err = &$pipes[2];
     }
 
     public function terminate(): void
     {
         if (null !== $this->stream) {
             fclose($this->in);
-            $out = stream_get_contents($this->out);
             fclose($this->out);
-            $err = stream_get_contents($this->err);
-            fclose($this->err);
-            if (0 !== $exitCode = proc_close($this->stream)) {
-                throw new TransportException('Process failed with exit code '.$exitCode.': '.$out.$err);
-            }
+            proc_close($this->stream);
         }
 
         parent::terminate();

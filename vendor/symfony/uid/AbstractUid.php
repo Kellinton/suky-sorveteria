@@ -14,7 +14,7 @@ namespace Symfony\Component\Uid;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-abstract class AbstractUid implements \JsonSerializable, \Stringable
+abstract class AbstractUid implements \JsonSerializable
 {
     /**
      * The identifier in its canonic representation.
@@ -88,8 +88,6 @@ abstract class AbstractUid implements \JsonSerializable, \Stringable
 
     /**
      * Returns the identifier as a base58 case sensitive string.
-     *
-     * @example 2AifFTC3zXgZzK5fPrrprL (len=22)
      */
     public function toBase58(): string
     {
@@ -98,10 +96,6 @@ abstract class AbstractUid implements \JsonSerializable, \Stringable
 
     /**
      * Returns the identifier as a base32 case insensitive string.
-     *
-     * @see https://tools.ietf.org/html/rfc4648#section-6
-     *
-     * @example 09EJ0S614A9FXVG9C5537Q9ZE1 (len=26)
      */
     public function toBase32(): string
     {
@@ -121,10 +115,6 @@ abstract class AbstractUid implements \JsonSerializable, \Stringable
 
     /**
      * Returns the identifier as a RFC4122 case insensitive string.
-     *
-     * @see https://tools.ietf.org/html/rfc4122#section-3
-     *
-     * @example 09748193-048a-4bfb-b825-8528cf74fdc1 (len=36)
      */
     public function toRfc4122(): string
     {
@@ -135,16 +125,6 @@ abstract class AbstractUid implements \JsonSerializable, \Stringable
         $uuid = substr_replace($uuid, '-', 18, 0);
 
         return substr_replace($uuid, '-', 23, 0);
-    }
-
-    /**
-     * Returns the identifier as a prefixed hexadecimal case insensitive string.
-     *
-     * @example 0x09748193048a4bfbb8258528cf74fdc1 (len=34)
-     */
-    public function toHex(): string
-    {
-        return '0x'.bin2hex($this->toBinary());
     }
 
     /**
