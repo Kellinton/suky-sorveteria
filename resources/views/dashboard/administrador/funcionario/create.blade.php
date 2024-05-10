@@ -3,124 +3,169 @@
 @section('title', 'Funcionários')
 
 @section('conteudo')
-    <div class="row mb-4">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-            <div class="card-body p-3">
-            <div class="row">
-                <div class="col-8">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Salário Total</p>
-                    <h5 class="font-weight-bolder mb-0">
-                        R$ {{ number_format($totalSalario, 2, ',', '.') }}
-                    </h5>
-                </div>
-                </div>
-                <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-            <div class="card-body p-3">
-            <div class="row">
-                <div class="col-8">
-                <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
-                    <h5 class="font-weight-bolder mb-0">
-                     {{ $totalFuncionarios }}
-                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                    </h5>
-                </div>
-                </div>
-                <div class="col-4 text-end">
-                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div>
 
-    </div>
-    <div class="row">
-        <div class="col-12">
-        <div class="card mb-4">
-            <div class="card-header pb-0">
-            <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                <h6 class="mb-0">Funcionários</h6>
-                </div>
-                <div class="col-6 text-end">
-                <a class="btn bg-gradient-primary mb-0" href="javascript:;"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Adicionar</a>
-                </div>
-            </div>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                <thead>
-                    <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ocupação</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data / Contrato</th>
-                    <th class="text-secondary opacity-7"></th>
-                    </tr>
-                </thead>
-                <tbody>
 
-                    @foreach($funcionarios as $key => $funcionario)
-                    <tr>
-                    <td>
-                        <div class="d-flex px-2 py-1">
-                        <div>
-                            @if ($funcionario->fotoFuncionario == ' ' || $funcionario->fotoFuncionario == null)
-                                <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
-                            @else
-                                <img src="dashboard/img/team-2.jpg" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
-                            @endif
+
+        <div class="card col-12 mt-4 p-4">
+
+            <div class="p-4">
+                <div class="pb-4 text-center">
+
+                    <h5 class="modal-title" id="cadastroFuncionarioModalLabel">Cadastro de Funcionário</h5>
+
+                </div>
+
+                <!-- Formulário de cadastro -->
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <div class="form-group w-100">
+                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="inputGroupFile01"><i class="ri-add-fill"></i> Adicionar Imagem</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    name="fotoFuncionario" style="opacity: 0;" required  onchange="previewFile()">
+                            </div>
                         </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{ $funcionario->nomeFuncionario }} {{ $funcionario->sobrenomeFuncionario }}</h6>
+                    </div>
+                    <!-- Div para exibir a miniatura da imagem -->
+                    <div class="form-group w-100 d-flex justify-content-center">
+                        <img src="#" id="preview" class="img-fluid" alt="Preview da Imagem"
+                            style="display: none; width: 250px; border-radius: 15px;">
+                    </div>
 
-                            <p class="text-xs text-secondary mb-0">{{ $emailsUsuarios[$key] }}</p>
-
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="nomeFuncionario" class="form-label d-flex">Nome</label>
+                            <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" required>
                         </div>
+                        <div class="mb-3 w-50">
+                            <label for="sobrenomeFuncionario" class="form-label">Sobrenome</label>
+                            <input type="text" class="form-control" id="sobrenomeFuncionario" name="sobrenomeFuncionario" required>
                         </div>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-1">{{ $funcionario->cargoFuncionario }}</p>
-                        <p class="text-xs text-secondary mb-0">{{ ucfirst($funcionario->tipo_funcionario) }}</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">{{ $funcionario->statusFuncionario }}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{ $funcionario->dataContratacaoFuncionario }}</span>
-                    </td>
-                    <td class="align-middle text-center">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs d-flex align-items-center gap-1" data-toggle="tooltip" data-original-title="Editar">
-                        <i class="fas fa-pencil-alt text-dark cursor-pointer p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Editar" data-bs-original-title="Editar"></i>
-                        <p class="p-0 m-0 text-sm">Editar</p>
-                        </a>
-                    </td>
-                    </tr>
-                    @endforeach
+                    </div>
 
-                </tbody>
-                </table>
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="email" class="form-label d-flex">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="text" class="form-control" id="senha" name="senha" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="foneFuncionario" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" id="foneFuncionario" name="foneFuncionario">
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="dataNascimentoFuncionario" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimentoFuncionario" name="dataNascimentoFuncionario">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="enderecoFuncionario" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="enderecoFuncionario" name="enderecoFuncionario">
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="cidadeFuncionario" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="cidadeFuncionario" name="cidadeFuncionario">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="estadoFuncionario" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="estadoFuncionario" name="estadoFuncionario">
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="cepFuncionario" class="form-label">CEP</label>
+                            <input type="text" class="form-control" id="cepFuncionario" name="cepFuncionario">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="cargoFuncionario" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargoFuncionario" name="cargoFuncionario">
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="dataContratacaoFuncionario" class="form-label">Data de Contratação</label>
+                            <input type="date" class="form-control" id="dataContratacaoFuncionario" name="dataContratacaoFuncionario">
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-100">
+                            <label for="salarioFuncionario" class="form-label">Salário</label>
+                            <input type="text" class="form-control" id="salarioFuncionario" name="salarioFuncionario">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 d-flex w-100 gap-4">
+                        <div class="mb-3 w-50">
+                            <label for="tipo_funcionario" class="form-label">Tipo de Funcionário</label>
+                            <select class="form-select" id="tipo_funcionario" name="tipo_funcionario">
+                                <option value="administrador">Administrador</option>
+                                <option value="assistente">Assistente</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="statusFuncionario" class="form-label">Status do Funcionário</label>
+                            <select class="form-select" id="statusFuncionario" name="statusFuncionario">
+                                <option value="ativo">Disponível</option>
+                                <option value="inativo">Indisponível</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="w-100">
+
+                    <a href="{{ route('funcionario.index') }}" class="btn btn-secondary float-start w-30">Cancelar</a>
+
+                    <a href="{{ route('funcionario.index') }}" class="btn btn-primary float-end w-30">Cadastrar</a>
+
+                </div>
+
+                </form>
+
             </div>
+
         </div>
-    </div>
-</div>
-</div>
+
+
+
+
+
 
 @endsection
+
+          <script>
+            // Função para exibir a miniatura da imagem selecionada
+            function previewFile() {
+               var preview = document.getElementById('preview');
+               var file = document.querySelector('input[type=file]').files[0];
+
+               var reader = new FileReader();
+
+               reader.onloadend = function () {
+                   preview.src = reader.result;
+                   preview.style.display = 'block';
+               }
+
+               if (file) {
+                   reader.readAsDataURL(file);
+               } else {
+                   preview.src = '';
+                   preview.style.display = 'none';
+               }
+           }
+        </script>
 

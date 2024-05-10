@@ -58,7 +58,7 @@
                 <h6 class="mb-0">Funcionários</h6>
                 </div>
                 <div class="col-6 text-end">
-                <a class="btn bg-gradient-primary mb-0" href="javascript:;"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Adicionar</a>
+                    <a href="{{ route('funcionario.create') }}" class="btn bg-gradient-primary mb-0"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;&nbsp; Cadastrar Funcionário</a>
                 </div>
             </div>
             </div>
@@ -121,6 +121,7 @@
     </div>
 </div>
 </div>
+
 
 @endsection
 
