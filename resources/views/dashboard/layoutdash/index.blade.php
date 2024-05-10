@@ -239,7 +239,7 @@
                 {{ $funcionarioAutenticado->nomeFuncionario }}  {{ $funcionarioAutenticado->sobrenomeFuncionario }}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                {{ $funcionarioAutenticado->cargoFuncionario }} <span class="text-secondary">(  {{ $funcionarioAutenticado->tipoFuncionario }} )</span>
+                {{ $funcionarioAutenticado->cargoFuncionario }} <span class="text-secondary">(  {{ Str::ucfirst($funcionarioAutenticado->tipo_funcionario) }} )</span>
               </p>
             </div>
           </div>

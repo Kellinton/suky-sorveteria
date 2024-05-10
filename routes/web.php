@@ -48,7 +48,11 @@ Route::post('/login', [LoginController::class, 'autenticar'])->name('login.auten
 Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->group(function(){
 
      Route::get('/dashboard/administrador', [AdministradorController::class, 'index'])->name('dashboard.administrador');
+
+     //Funcionários
      Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
+     Route::get('/dashboard/administrador/funcionario/create', [FuncionarioController::class, 'create'])->name('funcionario.create');
+     Route::post('/dashboard/administrador/funcionario/store', [FuncionarioController::class, 'store'])->name('funcionario.store');
 
      // Produtos
      Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');
@@ -57,6 +61,8 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::put('/dashboard/administrador/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
      Route::get('/dashboard/administrativo/produto/ativar/{id}', [ProdutoController::class, 'ativar'])->name('produto.ativar');
      Route::get('/dashboard/administrativo/produto/desativar/{id}', [ProdutoController::class, 'desativar'])->name('produto.desativar');
+
+
 
 
 });

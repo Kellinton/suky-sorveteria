@@ -16,7 +16,7 @@ class AdministradorController extends Controller
          // recuperando os dados do funcionário autenticado
          $funcionarioAutenticado = Funcionario::find($id);
 
-        //   dd($funcionarioAutenticado);
+        //dd($funcionarioAutenticado);
 
          if (!$funcionarioAutenticado) {
             abort(404, 'Funcionario não encontrado!');
