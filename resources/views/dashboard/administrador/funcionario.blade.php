@@ -84,7 +84,7 @@
                             @if ($funcionario->fotoFuncionario == ' ' || $funcionario->fotoFuncionario == null)
                                 <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
                             @else
-                                <img src="dashboard/img/team-2.jpg" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                                <img src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
                             @endif
                         </div>
                         <div class="d-flex flex-column justify-content-center">

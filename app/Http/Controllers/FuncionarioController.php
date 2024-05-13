@@ -109,53 +109,50 @@ class FuncionarioController extends Controller
         ]);
 
         $request->validate([
-            'nomeFuncionario'       => 'required|string|max:255',
-            'sobrenomeFuncionario'  => 'required|string|max:255',
-            'email'                 => 'required|email|max:255',
-            'senha'                 => 'required|senha|max:255',
-            'foneFuncionario'       => 'required|string|max:20',
+            'nomeFuncionario'           => 'required|string|max:255',
+            'sobrenomeFuncionario'      => 'required|string|max:255',
+            'email'                     => 'required|email|max:255',
+            'foneFuncionario'           => 'required|string|max:20',
             'dataNascimentoFuncionario' => 'required|date',
-            'enderecoFuncionario'   => 'required|string|max:255',
-            'cidadeFuncionario'     => 'required|string|max:100',
-            'estadoFuncionario'     => 'required|string|max:50',
-            'cepFuncionario'        => 'required|string|max:10',
-            'dataContratacao'       => 'required|date',
-            'cargoFuncionario'      => 'required|string|max:100',
-            'salarioFuncionario'    => 'required|numeric',
-            'tipo_funcionario'      => 'required|in:administrador,assistente',
-            'statusFuncionario'     => 'required|in:ativo,inativo',
-            'fotoFuncionario'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'enderecoFuncionario'       => 'required|string|max:255',
+            'cidadeFuncionario'         => 'required|string|max:100',
+            'estadoFuncionario'         => 'required|string|max:50',
+            'cepFuncionario'            => 'required|string|max:10',
+            'dataContratacao'           => 'required|date',
+            'cargoFuncionario'          => 'required|string|max:100',
+            'salarioFuncionario'        => 'required|numeric',
+            'tipo_funcionario'          => 'required|in:administrador,assistente',
+            'statusFuncionario'         => 'required|in:ativo,inativo',
+            'fotoFuncionario'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $ultimoFuncionario = Funcionario::latest('id')->first();
-        $ultimoID = $ultimoFuncionario ? $ultimoFuncionario->id : 0;
+        $ultimoID = $ultimoFuncionario ? $ultimoFuncionario->idFuncionario : 0;
 
         $proximoID = $ultimoID + 1;
 
+
+        // Criando um novo funcionário
         $funcionario = new Funcionario();
 
-        $funcionario->nomeFuncionario           = $request->input('nomeFuncionario');
-        $funcionario->sobrenomeFuncionario      = $request->input('sobrenomeFuncionario');
-        $funcionario->email                     = $request->input('email');
-        $funcionario->senha                     = $request->input('senha');
-        $funcionario->foneFuncionario           = $request->input('foneFuncionario');
-        $funcionario->dataNascimentoFuncionario = $request->input('dataNascimento');
-        $funcionario->enderecoFuncionario       = $request->input('enderecoFuncionario');
-        $funcionario->cidadeFuncionario         = $request->input('cidadeFuncionario');
-        $funcionario->estadoFuncionario         = $request->input('estadoFuncionario');
-        $funcionario->cepFuncionario            = $request->input('cepFuncionario');
-        $funcionario->dataContratacaoFuncionario = $request->input('dataContratacaoFuncionario');
-        $funcionario->cargoFuncionario          = $request->input('cargoFuncionario');
-        $funcionario->salarioFuncionario        = $request->input('salarioFuncionario');
-        $funcionario->tipo_funcionario           = $request->input('tipo_funcionario');
-        $funcionario->statusFuncionario         = $request->input('statusFuncionario');
-        $funcionario->fotoFuncionario           = $request->input('fotoFuncionario');
-
+        $funcionario->nomeFuncionario               = $request->input('nomeFuncionario');
+        $funcionario->sobrenomeFuncionario          = $request->input('sobrenomeFuncionario');
+        $funcionario->foneFuncionario               = $request->input('foneFuncionario');
+        $funcionario->dataNascFuncionario           = $request->input('dataNascimentoFuncionario');
+        $funcionario->enderecoFuncionario           = $request->input('enderecoFuncionario');
+        $funcionario->cidadeFuncionario             = $request->input('cidadeFuncionario');
+        $funcionario->estadoFuncionario             = $request->input('estadoFuncionario');
+        $funcionario->cepFuncionario                = $request->input('cepFuncionario');
+        $funcionario->dataContratacaoFuncionario    = $request->input('dataContratacaoFuncionario');
+        $funcionario->cargoFuncionario              = $request->input('cargoFuncionario');
+        $funcionario->salarioFuncionario            = $request->input('salarioFuncionario');
+        $funcionario->tipo_funcionario              = $request->input('tipo_funcionario');
+        $funcionario->statusFuncionario             = $request->input('statusFuncionario');
 
         if ($request->hasFile('fotoFuncionario')) {
             $fotoFuncionario = $request->file('fotoFuncionario');
             $nomeArquivo = $proximoID . '_' . str_replace(' ', '_', $funcionario->nomeFuncionario) . '.' . $fotoFuncionario->getClientOriginalExtension();
-            $caminhoDestino = public_path('assets/images/funcionarios/');
+            $caminhoDestino = public_path('img/funcionarios/');
 
             $fotoFuncionario->move($caminhoDestino, $nomeArquivo);
 
@@ -164,9 +161,22 @@ class FuncionarioController extends Controller
 
         $funcionario->save();
 
-        Alert::success('Funcionario Cadastrado!', 'O funcionario foi cadastrado com sucesso.');
+        // Criando um novo usuário
+        $usuario = new Usuario();
+
+        $usuario->nome              = $request->input('nomeFuncionario');
+        $usuario->email             = $request->input('email');
+        $usuario->senha             = $request->input('senha');
+        $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
+        $usuario->tipo_usuario_id   = $funcionario->id;
+        $usuario->token_lembrete = Str::random(100);
+
+        $usuario->save();
+
+        Alert::success('Funcionário Cadastrado!', 'O funcionário foi cadastrado com sucesso.');
 
         return redirect()->route('funcionario.index');
+
     }
 
     /**
