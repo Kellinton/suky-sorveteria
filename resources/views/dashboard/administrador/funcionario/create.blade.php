@@ -16,7 +16,7 @@
                 </div>
 
                 <!-- Formulário de cadastro -->
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('funcionario.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <div class="form-group w-100">
@@ -130,7 +130,8 @@
 
                     <a href="{{ route('funcionario.index') }}" class="btn btn-secondary float-start w-30">Cancelar</a>
 
-                    <a href="{{ route('funcionario.index') }}" class="btn btn-primary float-end w-30">Cadastrar</a>
+                    <button class="btn btn-primary float-end w-30" type="submit">Cadastrar</button>
+
 
                 </div>
 
