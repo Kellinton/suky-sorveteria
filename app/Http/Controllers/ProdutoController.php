@@ -144,7 +144,7 @@ class ProdutoController extends Controller
     {
         $produto = Produto::findOrfail($id);
 
-        return redirect()->route('produto.index', compact('cardapio'));
+        return redirect()->route('produto.index', compact('produto'));
 
     }
 
