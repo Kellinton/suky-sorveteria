@@ -161,17 +161,20 @@ class FuncionarioController extends Controller
 
         $funcionario->save();
 
-        // Criando um novo usuário
-        $usuario = new Usuario();
 
-        $usuario->nome              = $request->input('nomeFuncionario');
-        $usuario->email             = $request->input('email');
-        $usuario->senha             = $request->input('senha');
-        $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
-        $usuario->tipo_usuario_id   = $funcionario->id;
-        $usuario->token_lembrete = Str::random(100);
 
-        $usuario->save();
+            // Criando um novo usuário
+            $usuario = new Usuario();
+
+            $usuario->nome              = $request->input('nomeFuncionario');
+            $usuario->email             = $request->input('email');
+            $usuario->senha             = $request->input('senha');
+            $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
+            $usuario->tipo_usuario_id   = $funcionario->id;
+            $usuario->token_lembrete = Str::random(100);
+
+            $usuario->save();
+
 
         Alert::success('Funcionário Cadastrado!', 'O funcionário foi cadastrado com sucesso.');
 
@@ -185,9 +188,11 @@ class FuncionarioController extends Controller
      * @param  \App\Models\Funcionario  $funcionario
      * @return \Illuminate\Http\Response
      */
-    public function show(Funcionario $funcionario)
+    public function show($id)
     {
-        //
+        $funcionario = Funcionario::findOrfail($id);
+
+        return redirect()->route('funcionario.index', compact('funcionario'));
     }
 
     /**

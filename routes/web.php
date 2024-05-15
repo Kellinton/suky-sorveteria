@@ -53,6 +53,8 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::get('/dashboard/administrador/funcionario', [FuncionarioController::class, 'index'])->name('funcionario.index');
      Route::get('/dashboard/administrador/funcionario/create', [FuncionarioController::class, 'create'])->name('funcionario.create');
      Route::post('/dashboard/administrador/funcionario/store', [FuncionarioController::class, 'store'])->name('funcionario.store');
+     Route::get('/dashboard/administrador/funcionario/show/{id}', [FuncionarioController::class, 'show'])->name('funcionario.show');
+
 
      // Produtos
      Route::get('/dashboard/administrador/produto', [ProdutoController::class, 'index'])->name('produto.index');

@@ -10,9 +10,10 @@
             <div class="row">
                 <div class="col-8">
                 <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Salário Total</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Despesa com funcionários / mensal</p>
                     <h5 class="font-weight-bolder mb-0">
                         R$ {{ number_format($totalSalario, 2, ',', '.') }}
+                        <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                 </div>
                 </div>
@@ -34,7 +35,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
                     <h5 class="font-weight-bolder mb-0">
                      {{ $totalFuncionarios }}
-                    <span class="text-success text-sm font-weight-bolder">+3%</span>
+
                     </h5>
                 </div>
                 </div>
