@@ -223,14 +223,14 @@
   </nav>
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
-      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{ asset('dashboard/img/banner/banner_perfil.png') }}'); background-position-y: 60%; background-size: cover;">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{{ asset('dashboard/img/banner/sorvete_banner.png') }}'); background-position-y: 60%; background-size: cover;">
         <span class="mask bg-gradient-primary opacity-4"></span>
       </div>
       <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="{{ asset('dashboard/img/cat_perfil.jpg') }}" alt="Imagem de Perfil" title="Imagem de Perfil" class="w-100 border-radius-lg shadow-sm">
+              <img src="{{ asset('img/funcionarios/' . $funcionarioAutenticado->fotoFuncionario) }}" alt="Imagem de Perfil" title="Imagem de Perfil" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">

@@ -54,6 +54,7 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::get('/dashboard/administrador/funcionario/create', [FuncionarioController::class, 'create'])->name('funcionario.create');
      Route::post('/dashboard/administrador/funcionario/store', [FuncionarioController::class, 'store'])->name('funcionario.store');
      Route::get('/dashboard/administrador/funcionario/show/{id}', [FuncionarioController::class, 'show'])->name('funcionario.show');
+     Route::put('/dashboard/administrador/funcionario/update/{id}', [FuncionarioController::class, 'update'])->name('funcionario.update');
 
 
      // Produtos
@@ -61,8 +62,8 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::post('/dashboard/administrador/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
      Route::get('/dashboard/administrador/produto/show/{id}', [ProdutoController::class, 'show'])->name('produto.show');
      Route::put('/dashboard/administrador/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
-     Route::get('/dashboard/administrativo/produto/ativar/{id}', [ProdutoController::class, 'ativar'])->name('produto.ativar');
-     Route::get('/dashboard/administrativo/produto/desativar/{id}', [ProdutoController::class, 'desativar'])->name('produto.desativar');
+     Route::get('/dashboard/administratador/produto/ativar/{id}', [ProdutoController::class, 'ativar'])->name('produto.ativar');
+     Route::get('/dashboard/administratador/produto/desativar/{id}', [ProdutoController::class, 'desativar'])->name('produto.desativar');
 
 
 
