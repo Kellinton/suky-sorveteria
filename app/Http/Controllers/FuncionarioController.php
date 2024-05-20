@@ -118,7 +118,7 @@ class FuncionarioController extends Controller
             'cidadeFuncionario'         => 'required|string|max:100',
             'estadoFuncionario'         => 'required|string|max:50',
             'cepFuncionario'            => 'required|string|max:10',
-            'dataContratacao'           => 'required|date',
+            'dataContratacaoFuncionario'=> 'required|date',
             'cargoFuncionario'          => 'required|string|max:100',
             'salarioFuncionario'        => 'required|numeric',
             'tipo_funcionario'          => 'required|in:administrador,assistente',
@@ -190,9 +190,35 @@ class FuncionarioController extends Controller
      */
     public function show($id)
     {
-        $funcionario = Funcionario::findOrfail($id);
+        //recuperando o id do funcionario da sessão
+        $session_id = session('id');
 
-        return redirect()->route('funcionario.index', compact('funcionario'));
+        // recuperando os dados do funcionário autenticado
+        $funcionarioAutenticado = Funcionario::find($session_id);
+
+        // Quantidade de Funcionários
+        $totalFuncionarios = Funcionario::count();
+
+        // Quantidade Salário
+        $totalSalario = Funcionario::sum('salarioFuncionario');
+
+
+        // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
+        $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
+                            ->select('funcionarios.*', 'usuarios.email')
+                            ->get();
+       // dd($id);
+        $funcionario = Funcionario::findOrfail($id);
+        $usuario = Usuario::findOrfail($id);
+       //dd($usuario, $funcionario);
+
+       return view('dashboard.administrador.funcionario.show', compact(
+        'funcionario',
+        'usuario',
+        'funcionarioAutenticado',
+        'totalFuncionarios',
+        'totalSalario' ));
+
     }
 
     /**
@@ -213,9 +239,83 @@ class FuncionarioController extends Controller
      * @param  \App\Models\Funcionario  $funcionario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Funcionario $funcionario)
+    public function update(Request $request, $id)
     {
-        //
+
+        $request->merge([
+            'dataContratacao' => now(),
+            'criado_em' => now(),
+            'atualizado_em' => now()
+        ]);
+
+        $request->validate([
+            'nomeFuncionario'           => 'required|string|max:255',
+            'sobrenomeFuncionario'      => 'required|string|max:255',
+            'email'                     => 'required|email|max:255',
+            'foneFuncionario'           => 'required|string|max:20',
+            'dataNascimentoFuncionario' => 'required|date',
+            'enderecoFuncionario'       => 'required|string|max:255',
+            'cidadeFuncionario'         => 'required|string|max:100',
+            'estadoFuncionario'         => 'required|string|max:50',
+            'cepFuncionario'            => 'required|string|max:10',
+            'dataContratacaoFuncionario'=> 'required|date',
+            'cargoFuncionario'          => 'required|string|max:100',
+            'salarioFuncionario'        => 'required|numeric',
+            'tipo_funcionario'          => 'required|in:administrador,assistente',
+            'statusFuncionario'         => 'required|in:ativo,inativo',
+            'fotoFuncionario'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        $funcionario = Funcionario::findOrFail($id);
+        $usuario = Usuario::where('tipo_usuario_id', $id)->firstOrFail(); // ajustar o relacionamento entre Funcionario e Usuario
+ 
+
+        // Verificar se uma nova imagem foi enviada
+        if ($request->hasFile('fotoFuncionario')) {
+            // Se uma nova imagem foi enviada, mova-a para o diretório e atualize o nome da imagem no produto
+            $imagem = $request->file('fotoFuncionario');
+
+            $nomeArquivo = Str::slug($funcionario->nomeFuncionario) . '_' . $id . '.' . $imagem->getClientOriginalExtension();
+
+            // Move a imagem para o diretório de destino
+            $imagem->move(public_path('img/funcionarios/'), $nomeArquivo);
+            // Define o nome da imagem no objeto do produto
+            $funcionario->fotoFuncionario = $nomeArquivo;
+
+            $funcionario->fotoFuncionario = $nomeArquivo;
+        }
+
+        $funcionario->nomeFuncionario               = $request->input('nomeFuncionario');
+        $funcionario->sobrenomeFuncionario          = $request->input('sobrenomeFuncionario');
+        $funcionario->foneFuncionario               = $request->input('foneFuncionario');
+        $funcionario->dataNascFuncionario           = $request->input('dataNascimentoFuncionario');
+        $funcionario->enderecoFuncionario           = $request->input('enderecoFuncionario');
+        $funcionario->cidadeFuncionario             = $request->input('cidadeFuncionario');
+        $funcionario->estadoFuncionario             = $request->input('estadoFuncionario');
+        $funcionario->cepFuncionario                = $request->input('cepFuncionario');
+        $funcionario->dataContratacaoFuncionario    = $request->input('dataContratacaoFuncionario');
+        $funcionario->cargoFuncionario              = $request->input('cargoFuncionario');
+        $funcionario->salarioFuncionario            = $request->input('salarioFuncionario');
+        $funcionario->tipo_funcionario              = $request->input('tipo_funcionario');
+        $funcionario->statusFuncionario             = $request->input('statusFuncionario');
+
+        $funcionario->save();
+
+
+        $usuario->nome              = $request->input('nomeFuncionario');
+        $usuario->email             = $request->input('email');
+        $usuario->senha             = $request->input('senha');
+        $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
+        $usuario->tipo_usuario_id   = $funcionario->id;
+        $usuario->token_lembrete = Str::random(100);
+
+        $usuario->save();
+
+
+        Alert::success('Funcionario Atualizado!', 'Foi atualizado com sucesso.');
+
+        return redirect()->route('funcionario.index');
     }
 
     /**
