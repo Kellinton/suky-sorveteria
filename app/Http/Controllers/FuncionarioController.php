@@ -243,33 +243,14 @@ class FuncionarioController extends Controller
     {
 
         $request->merge([
-            'dataContratacao' => now(),
-            'criado_em' => now(),
             'atualizado_em' => now()
         ]);
 
-        $request->validate([
-            'nomeFuncionario'           => 'required|string|max:255',
-            'sobrenomeFuncionario'      => 'required|string|max:255',
-            'email'                     => 'required|email|max:255',
-            'foneFuncionario'           => 'required|string|max:20',
-            'dataNascimentoFuncionario' => 'required|date',
-            'enderecoFuncionario'       => 'required|string|max:255',
-            'cidadeFuncionario'         => 'required|string|max:100',
-            'estadoFuncionario'         => 'required|string|max:50',
-            'cepFuncionario'            => 'required|string|max:10',
-            'dataContratacaoFuncionario'=> 'required|date',
-            'cargoFuncionario'          => 'required|string|max:100',
-            'salarioFuncionario'        => 'required|numeric',
-            'tipo_funcionario'          => 'required|in:administrador,assistente',
-            'statusFuncionario'         => 'required|in:ativo,inativo',
-            'fotoFuncionario'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
 
         $funcionario = Funcionario::findOrFail($id);
         $usuario = Usuario::where('tipo_usuario_id', $id)->firstOrFail(); // ajustar o relacionamento entre Funcionario e Usuario
- 
+
 
         // Verificar se uma nova imagem foi enviada
         if ($request->hasFile('fotoFuncionario')) {
