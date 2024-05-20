@@ -101,7 +101,7 @@
                         <p class="text-xs text-secondary mb-0">{{ ucfirst($funcionario->tipo_funcionario) }}</p>
                     </td>
                     <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">{{ $funcionario->statusFuncionario }}</span>
+                        <span class="badge badge-sm bg-gradient-{{ $funcionario->statusFuncionario === 'inativo' ? 'danger' : 'success' }}">{{ $funcionario->statusFuncionario }}</span>
                     </td>
                     <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{ $funcionario->dataContratacaoFuncionario }}</span>
