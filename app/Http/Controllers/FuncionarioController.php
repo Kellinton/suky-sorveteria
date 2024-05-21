@@ -103,7 +103,6 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-            'dataContratacao' => now(),
             'criado_em' => now(),
             'atualizado_em' => now()
         ]);
@@ -127,7 +126,7 @@ class FuncionarioController extends Controller
         ]);
 
         $ultimoFuncionario = Funcionario::latest('id')->first();
-        $ultimoID = $ultimoFuncionario ? $ultimoFuncionario->idFuncionario : 0;
+        $ultimoID = $ultimoFuncionario ? $ultimoFuncionario->id : 0;
 
         $proximoID = $ultimoID + 1;
 
@@ -151,7 +150,7 @@ class FuncionarioController extends Controller
 
         if ($request->hasFile('fotoFuncionario')) {
             $fotoFuncionario = $request->file('fotoFuncionario');
-            $nomeArquivo = $proximoID . '_' . str_replace(' ', '_', $funcionario->nomeFuncionario) . '.' . $fotoFuncionario->getClientOriginalExtension();
+            $nomeArquivo = Str::slug($funcionario->nomeFuncionario) . '_' . $proximoID . '.' . $fotoFuncionario->getClientOriginalExtension();
             $caminhoDestino = public_path('img/funcionarios/');
 
             $fotoFuncionario->move($caminhoDestino, $nomeArquivo);

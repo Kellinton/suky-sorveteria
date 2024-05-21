@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('estadoFuncionario', 50);
             $table->string('cepFuncionario', 10);
             $table->date('dataNascFuncionario');
-            $table->timestamp('dataContratacaoFuncionario')->nullable();
+            $table->date('dataContratacaoFuncionario')->nullable();
             $table->string('cargoFuncionario', 100);
             $table->decimal('salarioFuncionario', 10, 2);
             $table->enum('tipo_funcionario', ['administrador', 'assistente']);
