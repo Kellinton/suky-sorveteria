@@ -6,6 +6,7 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SobreController;
@@ -66,6 +67,8 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::get('/dashboard/administratador/produto/desativar/{id}', [ProdutoController::class, 'desativar'])->name('produto.desativar');
 
 
+     // Mensagens
+     Route::get('/dashboard/administrador/mensagem', [ContatoController::class, 'index'])->name('contato.index');
 
 
 });

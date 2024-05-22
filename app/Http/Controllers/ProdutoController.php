@@ -28,10 +28,10 @@ class ProdutoController extends Controller
         // recuperando os dados do funcionário autenticado
         $funcionarioAutenticado = Funcionario::find($id);
 
-        // Quantidade de Funcionários
+        // Quantidade de Produtos
         $totalProdutos = Produto::count();
 
-        // Quantidade Salário
+        // Quantidade valor em produtos
         $totalValorProdutos = Produto::sum('valorProduto');
 
         $produtos = Produto::all();
