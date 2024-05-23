@@ -33,7 +33,7 @@ class ContatoController extends Controller
         $funcionarioAutenticado = Funcionario::find($id);
 
 
-        $contatos = Contato::orderBy('id', 'desc')->paginate(5); // Retorna 5 contatos por página
+        $contatos = Contato::orderBy('id', 'desc')->get();
 
         return view('dashboard.administrador.mensagem', compact(
             'funcionarioAutenticado',

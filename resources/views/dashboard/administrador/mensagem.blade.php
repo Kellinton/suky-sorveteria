@@ -5,7 +5,7 @@
     /* Estilização paginação */
     .pagination-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
     }
 
@@ -14,23 +14,23 @@
     }
 
     .pagination-link {
-        padding: 5px 10px;
-        font-size: 1.5rem;
+        padding: 2px 10px;
+        font-size: 1.7rem;
         margin-right: 10px;
-        color: var(--white);
-        background-color: var(--blue);
+        color: #fff;
+        background-color: #cb0c9f;
         border-radius: 9999px;
         text-decoration: none;
     }
 
     .pagination-link:hover {
-        background-color: var(--blue);
-        color: var(--white);
+        background-color: #cb0c9f;
+        color: #fff;
         text-decoration: none;
     }
 
     .pagination-link.disabled {
-        color: var(--gray);
+        color: gray;
         background: none;
         cursor: not-allowed;
     }
@@ -42,7 +42,23 @@
     .message-counter p {
         margin: 0;
         font-size: 14px;
-        color: var(--gray);
+        color: #fff;
+    }
+
+    /* Estilização Filtro */
+    .filtro-btn-mensagem button {
+        background: none;
+        color: #67748e;
+        border: none;
+        border-bottom: solid 3px transparent;
+        padding: 5px;
+        margin-right: 10px;
+
+    }
+    .filtro-ativo{
+        border-bottom: solid 3px #cb0c9f!important;
+        padding: 4px;
+        background-color: red;
     }
 
 
@@ -72,10 +88,10 @@
         color: var(--fundo);
     }
     .m-info div p{
-    font-size: 1rem;
-    color: var(--gray);
-    font-weight: 500;
-    margin-bottom: 0;
+        font-size: 1rem;
+        color: var(--gray);
+        font-weight: 500;
+        margin-bottom: 0;
     }
     .m-data{
         display: flex;
@@ -97,13 +113,13 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Mensagens</p>
                     <h5 class="font-weight-bolder mb-0">
-                        {{-- R$ {{ number_format($totalSalario, 2, ',', '.') }} --}}
+                        20
                     </h5>
                 </div>
                 </div>
                 <div class="col-4 text-end">
                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-email-83 text-lg opacity-10" aria-hidden="true"></i>
                 </div>
                 </div>
             </div>
@@ -118,14 +134,14 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Favoritos</p>
                     <h5 class="font-weight-bolder mb-0">
-                    {{-- {{ $totalFuncionarios }} --}}
+                    10
 
                     </h5>
                 </div>
                 </div>
                 <div class="col-4 text-end">
                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ri-bard-fill text-lg opacity-10" aria-hidden="true"></i>
                 </div>
                 </div>
             </div>
@@ -139,94 +155,122 @@
         <div class="col-12">
         <div class="card mb-4">
             <div class="card-header pb-0">
-            <div class="row">
-
-                {{-- Paginação --}}
-                <div role="navigation" aria-label="Pagination Navigation" class="pagination-container">
-                    <div class="pagination">
-                        @if ($contatos->previousPageUrl())
-                            <a href="{{ $contatos->previousPageUrl() }}" class="pagination-link">
-                                <i class="ri-arrow-drop-left-line"></i>
-                            </a>
-                        @else
-                            <span class="pagination-link disabled">
-                                <i class="ri-arrow-drop-left-line"></i>
-                            </span>
-                        @endif
-
-                        @if ($contatos->nextPageUrl())
-                            <a href="{{ $contatos->nextPageUrl() }}" class="pagination-link">
-                                <i class="ri-arrow-drop-right-line"></i>
-                            </a>
-                        @else
-                            <span class="pagination-link disabled">
-                                <i class="ri-arrow-drop-right-line"></i>
-                            </span>
-                        @endif
-                    </div>
-
-                    <div class="message-counter">
-                        <p>
-                            <span>{{ $contatos->firstItem() }}</span> - <span>{{ $contatos->lastItem() }}</span>
-                            de
-                            <span>{{ $contatos->total() }}</span>
-                            mensagens
-                        </p>
-                    </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-6 d-flex align-items-center filtro-btn-mensagem">
+                    <button id="filtro-btn-principal" data-categoria="principal"  class="filtro-ativo">
+                        <i class="ri-home-6-line" aria-hidden="true"></i>&nbsp;&nbsp;<span class="text-bold">Principal</span>
+                    </button>
+                    <button id="filtro-btn-favorito" data-categoria="favorito" class="">
+                        <i class="ri-star-line" aria-hidden="true"></i>&nbsp;&nbsp;<span class="text-bold">Favoritos</span>
+                    </button>
+                    <button id="filtro-btn-lixeira" data-categoria="lixeira" class="">
+                        <i class="ri-delete-bin-line" aria-hidden="true"></i>&nbsp;&nbsp;<span class="text-bold">Lixeira</span>
+                    </button>
                 </div>
 
-                <div class="col-6 d-flex align-items-center">
-                <h6 class="mb-0">Mensagens</h6>
-                </div>
-                <div class="col-6 text-end">
-                    <a href="{{ route('funcionario.create') }}" class="btn bg-gradient-primary mb-0"><i class="fas fa-plus" aria-hidden="true"></i>&nbsp;&nbsp; Cadastrar Funcionário</a>
-                </div>
             </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                <thead>
-                    <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mensagem</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach($contatos as $contato)
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                    <thead>
                         <tr>
-                        <td>
-                            <div class="d-flex px-2 py-1">
-                            <div>
-                                <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">{{ $contato->nomeContato }}</h6>
-                                <p class="text-xs text-secondary mb-0">{{ $contato->emailContato }}</p>
-                            </div>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-1">{{ $contato->assuntoContato }}: </p>
-                            <p class="text-xs text-secondary mb-0">{{ Str::limit($contato->mensagemContato, 25, '...') }}</p>
-                        </td>
-                        <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($contato->created_at)->diffForHumans() }} atrás</span>
-                        </td>
-                        <td class="align-middle text-center">
-                            {{-- <a href="{{ route('funcionario.show', ['id' => $funcionario->id]) }}" class="text-secondary font-weight-bold text-xs d-flex align-items-center gap-1" data-toggle="tooltip" data-original-title="Editar">
-                            <i class="fas fa-pencil-alt text-dark cursor-pointer p-0 m-0" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Editar" data-bs-original-title="Editar"></i>
-                            <p class="p-0 m-0 text-sm">Editar</p>
-                            </a> --}}
-                        </td>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mensagem</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ações</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody>
 
-                </tbody>
-                </table>
+                        @foreach($contatos as $contato)
+                            <tr class="mensagem-filtrar" data-removido="{{ $contato->removidoContato }}" data-favorito="{{ $contato->favoritoContato }}">
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                    <div class="d-flex align-items-center">
+                                        @if ($contato->favoritoContato === 1)
+                                        <a href="">
+                                            <i class="ri-star-fill text-2xl p-1 me-2" style="cursor: pointer; color: #F0BB40"></i>
+                                        </a>
+                                        @else
+                                        <a href="">
+                                            <i class="ri-star-line text-2xl p-1 me-2" style="cursor: pointer; color: #67748e"></i>
+                                        </a>
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{ $contato->nomeContato }}</h6>
+                                        <p class="text-xs text-secondary mb-0">{{ $contato->emailContato }}</p>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bolder mb-1">{{ $contato->assuntoContato }}: </p>
+                                    <p class="text-xs text-secondary mb-0">{{ Str::limit($contato->mensagemContato, 25, '...') }}</p>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM') }}</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <a href="" class="text-secondary font-weight-bold text-xs" data-original-title="Excluir">
+                                    <i class="ri-delete-bin-line text-lg"></i>
+                                    <p class="p-0 m-0 text-sm">Excluir</p>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
     </div>
 @endsection
+
+<script>
+
+    // Filtro mensagens Principal/Favoritos/Lixeira
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.filtro-btn-mensagem button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+
+            // Remove a classe 'filtro-ativo' de todos os botões
+            buttons.forEach(btn => btn.classList.remove('filtro-ativo'));
+
+            // Adiciona a classe 'filtro-ativo' ao botão clicado
+            button.classList.add('filtro-ativo');
+
+            const categoria = button.getAttribute('data-categoria');
+            filtrar(categoria); // principal, favorito, lixeira
+        });
+    });
+
+    function filtrar(categoria) {
+        const contatos = document.querySelectorAll('.mensagem-filtrar');
+
+        contatos.forEach(contato => {
+            const removido = contato.getAttribute('data-removido') === '1';
+            const favorito = contato.getAttribute('data-favorito') === '1';
+
+            switch (categoria) {
+                case 'principal':
+                    contato.style.display = removido ? 'none' : 'table-row';
+                    break;
+                case 'favorito':
+                    contato.style.display = favorito ? 'table-row' : 'none';
+                    break;
+                case 'lixeira':
+                    contato.style.display = removido ? 'table-row' : 'none';
+                    break;
+            }
+        });
+    }
+});
+
+</script>
