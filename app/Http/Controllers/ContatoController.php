@@ -35,9 +35,15 @@ class ContatoController extends Controller
 
         $contatos = Contato::orderBy('id', 'desc')->get();
 
+        $totalMensagens = Contato::count();
+
+        $totalMensagensComFavorito = Contato::where('favoritoContato', 1)->count();
+
         return view('dashboard.administrador.mensagem', compact(
             'funcionarioAutenticado',
             'contatos',
+            'totalMensagens',
+            'totalMensagensComFavorito'
         ));
     }
 
@@ -68,9 +74,12 @@ class ContatoController extends Controller
      * @param  \App\Models\Contato  $contato
      * @return \Illuminate\Http\Response
      */
-    public function show(Contato $contato)
+    public function show($id)
     {
-        //
+        $contato = Contato::findOrFail($id);
+
+        return view('dashboard.administrador.mensagem.show', compact('contato'));
+
     }
 
     /**

@@ -60,47 +60,16 @@
         padding: 4px;
         background-color: red;
     }
+    .mensagem-filtrar{
+        cursor: pointer;
+    }
+    .mensagem-filtrar:hover{
+        background-color: #a59f9f17;
+    }
+    .lido{
+        opacity: 0.5
+    }
 
-
-    /* Estilização Modal */
-
-    .m-container{
-        padding: 10px;
-    }
-    .m-info{
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .m-info img{
-        background-color: #5c5858;
-        border-radius: 9999px;
-        width: 50px;
-        height: 50px;
-    }
-    .m-info div{
-        display: flex;
-        flex-direction: column;
-        margin-left: 20px;
-    }
-    .m-info div span{
-        font-size: 1.2rem;
-        color: var(--fundo);
-    }
-    .m-info div p{
-        font-size: 1rem;
-        color: var(--gray);
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-    .m-data{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .m-data p{
-        color: var(--fundo);
-    }
 
 </style>
 @section('conteudo')
@@ -113,7 +82,7 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Mensagens</p>
                     <h5 class="font-weight-bolder mb-0">
-                        20
+                        {{ $totalMensagens }}
                     </h5>
                 </div>
                 </div>
@@ -134,8 +103,7 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Favoritos</p>
                     <h5 class="font-weight-bolder mb-0">
-                    10
-
+                        {{ $totalMensagensComFavorito }}
                     </h5>
                 </div>
                 </div>
@@ -184,7 +152,7 @@
                     <tbody>
 
                         @foreach($contatos as $contato)
-                            <tr class="mensagem-filtrar" data-removido="{{ $contato->removidoContato }}" data-favorito="{{ $contato->favoritoContato }}">
+                            <tr class="mensagem-filtrar {{ $contato->lidoContato == '1' ? 'lido' : '' }}" data-removido="{{ $contato->removidoContato }}" data-favorito="{{ $contato->favoritoContato }}" data-id="{{ $contato->id }}" data-toggle="modal" data-target="#show{{ $contato->id }}">
                                 <td>
                                     <div class="d-flex px-2 py-1">
                                     <div class="d-flex align-items-center">
@@ -221,6 +189,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            @include('dashboard.administrador.mensagem.show', ['id' => $contato->id])
                         @endforeach
 
                     </tbody>
