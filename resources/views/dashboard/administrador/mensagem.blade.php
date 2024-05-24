@@ -69,6 +69,10 @@
     .lido{
         opacity: 0.5
     }
+    .favoritar-btn{
+        background: none;
+        border: none;
+    }
 
 
 </style>
@@ -156,15 +160,17 @@
                                 <td>
                                     <div class="d-flex px-2 py-1">
                                     <div class="d-flex align-items-center">
-                                        @if ($contato->favoritoContato === 1)
-                                        <a href="">
-                                            <i class="ri-star-fill text-2xl p-1 me-2" style="cursor: pointer; color: #F0BB40"></i>
-                                        </a>
-                                        @else
-                                        <a href="">
-                                            <i class="ri-star-line text-2xl p-1 me-2" style="cursor: pointer; color: #67748e"></i>
-                                        </a>
-                                        @endif
+                                        <form action="{{ route('contato.favoritar', $contato->id) }}" method="POST" class="favoritar-form">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="favoritar-btn">
+                                                @if ($contato->favoritoContato === 1)
+                                                    <i class="ri-star-fill text-2xl p-1 me-2" style="cursor: pointer; color: #F0BB40"></i>
+                                                @else
+                                                    <i class="ri-star-line text-2xl p-1 me-2" style="cursor: pointer; color: #67748e"></i>
+                                                @endif
+                                            </button>
+                                        </form>
                                     </div>
                                     <div>
                                         <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
@@ -198,6 +204,8 @@
             </div>
     </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
 
@@ -241,5 +249,38 @@
         });
     }
 });
+
+// $(document).ready(function() {
+//     // Manipulador de eventos de envio do formulário
+//     $('.favoritar-form').submit(function(event) {
+//         event.preventDefault(); // Previne o envio padrão do formulário
+
+//         var form = $(this); // Obtém o formulário atual
+//         var url = form.attr('action'); // Obtém a URL do formulário
+
+//         // Faz a requisição AJAX
+//         $.ajax({
+//             url: url,
+//             type: 'PUT', // Método PUT para atualizar o status do contato
+//             data: form.serialize(), // Serializa os dados do formulário
+//             success: function(response) {
+//                 var botaoEstrela = form.find('.favoritar-btn');
+//                 var iconeEstrela = botaoEstrela.find('i');
+//                 if (response.favorito) {
+//                     // Se o contato foi favoritado, altera o ícone para estrela preenchida
+//                     iconeEstrela.removeClass('ri-star-line').addClass('ri-star-fill').css('color', '#F0BB40');
+//                 } else {
+//                     // Se o contato foi desfavoritado, altera o ícone para estrela vazia
+//                     iconeEstrela.removeClass('ri-star-fill').addClass('ri-star-line').css('color', '#67748e');
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error(error);
+//             }
+//         });
+//     });
+// });
+
+
 
 </script>

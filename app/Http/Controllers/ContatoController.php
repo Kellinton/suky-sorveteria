@@ -6,6 +6,7 @@ use App\Models\Contato;
 use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
 
 class ContatoController extends Controller
@@ -115,4 +116,22 @@ class ContatoController extends Controller
     {
         //
     }
+
+    public function favoritar($id)
+    {
+        $contato = Contato::find($id);
+
+
+        if ($contato) {
+            $contato->favoritoContato = !$contato->favoritoContato; // Inverte o valor de favoritoContato
+            $contato->save();
+
+            return redirect()->route('contato.index');
+
+            // return response()->json(['favorito' => $contato->favoritoContato]);
+        } else {
+            // return response()->json(['error' => 'Contato não encontrado'], 404);
+        }
+    }
+
 }
