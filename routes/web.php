@@ -70,6 +70,8 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      // Mensagens
      Route::get('/dashboard/administrador/mensagem', [ContatoController::class, 'index'])->name('contato.index');
      Route::get('/dashboard/administrador/mensagem/show/{id}', [ContatoController::class, 'show'])->name('contato.show');
+     Route::put('/dashboard/administrador/mensagem/favoritar/{id}', [ContatoController::class, 'favoritar'])->name('contato.favoritar');
+
 
 });
 
