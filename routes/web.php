@@ -71,6 +71,9 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::get('/dashboard/administrador/mensagem', [ContatoController::class, 'index'])->name('contato.index');
      Route::get('/dashboard/administrador/mensagem/show/{id}', [ContatoController::class, 'show'])->name('contato.show');
      Route::put('/dashboard/administrador/mensagem/favoritar/{id}', [ContatoController::class, 'favoritar'])->name('contato.favoritar');
+     Route::put('/dashboard/administrador/mensagem/remover/{id}', [ContatoController::class, 'remover'])->name('contato.remover');
+     Route::get('/dashboard/administrador/mensagem/verificar-lido/{id}', [ContatoController::class, 'verificarLido'])->name('contato.verificar-lido');
+     Route::put('/dashboard/administrador/mensagem/atualizar-lido/{id}', [ContatoController::class, 'atualizarLido'])->name('contato.atualizar-lido');
 
 
 });

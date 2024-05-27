@@ -67,7 +67,7 @@
         background-color: #a59f9f17;
     }
     .lido{
-        opacity: 0.5
+        opacity: 0.5;
     }
     .favoritar-btn{
         background: none;
@@ -139,7 +139,6 @@
                         <i class="ri-delete-bin-line" aria-hidden="true"></i>&nbsp;&nbsp;<span class="text-bold">Lixeira</span>
                     </button>
                 </div>
-
             </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -163,7 +162,7 @@
                                         <form action="{{ route('contato.favoritar', $contato->id) }}" method="POST" class="favoritar-form">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="favoritar-btn">
+                                            <button type="submit" class="favoritar-btn prevent-modal">
                                                 @if ($contato->favoritoContato === 1)
                                                     <i class="ri-star-fill text-2xl p-1 me-2" style="cursor: pointer; color: #F0BB40"></i>
                                                 @else
@@ -189,10 +188,14 @@
                                     <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM') }}</span>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="" class="text-secondary font-weight-bold text-xs" data-original-title="Excluir">
-                                    <i class="ri-delete-bin-line text-lg"></i>
-                                    <p class="p-0 m-0 text-sm">Excluir</p>
-                                    </a>
+                                    <form action="{{ route('contato.remover', $contato->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="text-secondary font-weight-bold text-xs favoritar-btn prevent-modal">
+                                            <i class="{{ $contato->removidoContato === 1 ? 'ri-arrow-go-back-line' : 'ri-delete-bin-line text-lg' }}"></i>
+                                            <p class="p-0 m-0 text-sm">{{ $contato->removidoContato === 1 ? 'Recuperar' : 'Excluir' }}</p>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @include('dashboard.administrador.mensagem.show', ['id' => $contato->id])
@@ -208,6 +211,45 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+
+$(document).ready(function() {
+    // Verificar cada contato na página ao carregar
+    $('.mensagem-filtrar').each(function() {
+        var id = $(this).data('id');
+        var contatoElement = $(this);
+
+        $.get('/dashboard/administrador/mensagem/verificar-lido/' + id, function(data) {
+            if (data.lido) {
+                contatoElement.addClass('lido');
+            }
+        });
+    });
+
+    // Captura o evento de fechamento do modal
+    $('.modal').on('hidden.bs.modal', function () {
+        var id = $(this).attr('id').replace('show', '');
+
+        // Marca o contato como lido
+        $('.mensagem-filtrar[data-id="' + id + '"]').addClass('lido');
+
+        // Atualiza o status de lido no servidor
+        $.ajax({
+            url: '/dashboard/administrador/mensagem/atualizar-lido/' + id,
+            type: 'PUT',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'), // Inclui o CSRF token
+                lidoContato: true
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+});
+
 
     // Filtro mensagens Principal/Favoritos/Lixeira
 
@@ -248,39 +290,20 @@
             }
         });
     }
+    // Chama a função filtrar para a categoria 'principal' ao carregar a página
+    filtrar('principal');
 });
 
-// $(document).ready(function() {
-//     // Manipulador de eventos de envio do formulário
-//     $('.favoritar-form').submit(function(event) {
-//         event.preventDefault(); // Previne o envio padrão do formulário
+// Função para desativar a ação de abrir o modal, o elemento que tiver a classe prevent-modal terá a ação do modal interrompida
+document.addEventListener('DOMContentLoaded', function () {
+        const preventModalButtons = document.querySelectorAll('.prevent-modal');
 
-//         var form = $(this); // Obtém o formulário atual
-//         var url = form.attr('action'); // Obtém a URL do formulário
-
-//         // Faz a requisição AJAX
-//         $.ajax({
-//             url: url,
-//             type: 'PUT', // Método PUT para atualizar o status do contato
-//             data: form.serialize(), // Serializa os dados do formulário
-//             success: function(response) {
-//                 var botaoEstrela = form.find('.favoritar-btn');
-//                 var iconeEstrela = botaoEstrela.find('i');
-//                 if (response.favorito) {
-//                     // Se o contato foi favoritado, altera o ícone para estrela preenchida
-//                     iconeEstrela.removeClass('ri-star-line').addClass('ri-star-fill').css('color', '#F0BB40');
-//                 } else {
-//                     // Se o contato foi desfavoritado, altera o ícone para estrela vazia
-//                     iconeEstrela.removeClass('ri-star-fill').addClass('ri-star-line').css('color', '#67748e');
-//                 }
-//             },
-//             error: function(xhr, status, error) {
-//                 console.error(error);
-//             }
-//         });
-//     });
-// });
-
+        preventModalButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+        });
+    });
 
 
 </script>

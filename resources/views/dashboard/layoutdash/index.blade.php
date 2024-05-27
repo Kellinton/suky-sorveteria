@@ -8,6 +8,8 @@
   <link rel="icon" type="image/png" href="{{ asset('img/logo_suky.png') }}">
   <title>@yield('title') | Suky</title>
 
+  <!-- tag CSRF do token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- SweetAlert -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
