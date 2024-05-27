@@ -134,4 +134,45 @@ class ContatoController extends Controller
         }
     }
 
+    public function remover($id)
+    {
+        $contato = Contato::find($id);
+
+
+        if ($contato) {
+            $contato->removidoContato = !$contato->removidoContato;
+            $contato->save();
+
+            return redirect()->route('contato.index');
+
+        } else {
+
+        }
+    }
+
+
+    public function verificarLido($id)
+    {
+        $contato = Contato::find($id);
+        if ($contato) {
+            return response()->json(['lido' => $contato->lidoContato]);
+        } else {
+            return response()->json(['error' => 'Contato não encontrado'], 404);
+        }
+    }
+
+    public function atualizarLido($id)
+    {
+        $contato = Contato::find($id);
+        if ($contato) {
+            $contato->lidoContato = true;
+            $contato->save();
+            return response()->json(['success' => 'Status de leitura atualizado com sucesso']);
+        } else {
+            return response()->json(['error' => 'Contato não encontrado'], 404);
+        }
+    }
+
+
+
 }
