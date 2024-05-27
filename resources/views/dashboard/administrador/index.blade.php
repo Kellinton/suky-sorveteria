@@ -57,23 +57,78 @@
         </div>
 
         <div class="col-xl-12 mb-xl-0 mb-4 mt-4">
-            <div class="card bg-transparent shadow-xl">
-            <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('img/curved-images/curved14.jpg'); height: 250px;">
-                <span class="mask bg-gradient-dark"></span>
-                <div class="card-body position-relative z-index-1 p-3">
-                <div class="d-flex">
-                    <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                        <h5 class="text-white font-weight-bolder mb-4 pt-2">Gerenciar Estoque</h5>
-                        <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-                        <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                          Acessar
-                          <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                        </a>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner overflow-hidden position-relative border-radius-xl" style="height: 250px;">
+
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="First slide">
+
+                    <div class="mask bg-gradient-primary">
+                        <div class="card-body position-relative z-index-1 px-5 py-4">
+                            <div class="d-flex">
+                                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                                    <h5 class="text-white font-weight-bolder mb-4 pt-2">Gerenciar Estoque</h5>
+                                    <p class="text-white">Controle facilmente os ingredientes e insumos da sua sorveteria em um só lugar.</p>
+                                    <a class="text-white text-lg font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                                      Acessar
+                                      <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+                  </div>
+
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="First slide">
+
+                    <div class="mask bg-gradient-primary">
+                        <div class="card-body position-relative z-index-1 px-5 py-4">
+                            <div class="d-flex">
+                                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                                    <h5 class="text-white font-weight-bolder mb-4 pt-2">Gerenciar Menu</h5>
+                                    <p class="text-white">Edite e atualize facilmente os sorvetes que aparecem no site da sua sorveteria.</p>
+                                    <a class="text-white text-lg font-weight-bold mb-0 icon-move-right mt-auto" href="{{ route('produto.index') }}">
+                                      Acessar
+                                      <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="Third slide">
+                    <div class="mask bg-gradient-primary">
+                        <div class="card-body position-relative z-index-1 px-5 py-4">
+                            <div class="d-flex">
+                                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                                    <h5 class="text-white font-weight-bolder mb-4 pt-2">Visualizar Mensagens</h5>
+                                    <p class="text-white">Visualize às mensagens dos clientes da sua sorveteria rapidamente.
+                                    </p>
+                                    <a class="text-white text-lg font-weight-bold mb-0 icon-move-right mt-auto" href="{{ route('contato.index') }}">
+                                      Acessar
+                                      <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
                 </div>
-                </div>
-            </div>
-            </div>
+                <a class="carousel-control-prev w-6" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next w-6" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+              </div>
         </div>
 
         </div>
