@@ -13,7 +13,7 @@
     <h2>Email: {{ $contato -> emailContato }}</h2>
     <h2>Fone: {{ $contato -> foneContato }}</h2>
     <h2>Assunto: {{ $contato -> assuntoContato }}</h2>
-    <h2>Mensagem: {{ $contato -> mensContato }}</h2>
+    <h2>Mensagem: {{ $contato -> mensagemContato }}</h2>
 
 </body>
 </html>
