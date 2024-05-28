@@ -43,7 +43,7 @@ class AdministradorController extends Controller
 
          $produtos = Produto::orderBy('id', 'desc')->take(4)->get();
 
-         $contatos = Contato::all()->take(6);
+         $contatos = Contato::orderBy('id', 'desc')->take(6)->get();
 
          return view('dashboard.administrador.index', compact(
             'funcionarioAutenticado', 'totalValorProdutos', 'totalFuncionarios', 'produtos', 'contatos'
