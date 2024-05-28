@@ -24,15 +24,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::post('/contato/enviar', [HomeController::class, 'salvarNoBanco'])->name('contato.enviar');
 Route::get('/sobre', [SobreController::class, 'index'])->name('sobre');
-
-Route::get('/contato', [ContatoController::class, 'index'])->name('contato');
-
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
-
 Route::get('/carrinho', [ShopController::class, 'carrinho'])->name('carrinho');
-
 Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('shopDetalhes');
 
 #region Login
