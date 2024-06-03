@@ -19,19 +19,20 @@
                 <form action="{{ route('funcionario.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <div class="form-group w-100">
-                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="inputGroupFile01"><i class="ri-add-fill"></i> Adicionar Imagem</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                    name="fotoFuncionario" style="opacity: 0;" required  onchange="previewFile()">
-                            </div>
+                                                <!-- Div para exibir a miniatura da imagem -->
+                        <div class="form-group w-100 d-flex justify-content-center">
+                            <img src="#" id="preview" class="img-fluid" alt="Preview da Imagem"
+                                style="display: none; width: 100px; border-radius: 15px;">
+                        </div>
+                        <div class="form-group w-100 d-flex justify-content-center w-100">
+                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-50 w-sm-20 w-lg-20 text-center text-sm" for="inputGroupFile01"><i class="ri-add-fill"></i> Adicionar Imagem</label>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                name="fotoFuncionario" style="opacity: 0;" required  onchange="previewFile()">
                         </div>
                     </div>
-                    <!-- Div para exibir a miniatura da imagem -->
-                    <div class="form-group w-100 d-flex justify-content-center">
-                        <img src="#" id="preview" class="img-fluid" alt="Preview da Imagem"
-                            style="display: none; width: 250px; border-radius: 15px;">
-                    </div>
+
 
                     <div class="mb-3 d-flex w-100 gap-4">
                         <div class="mb-3 w-50">

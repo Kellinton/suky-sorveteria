@@ -7,31 +7,31 @@
 
 
         <div class="card col-12 mt-4 p-4">
+            <div class="pb-4 text-center">
+
+                <h5 class="modal-title" id="cadastroFuncionarioModalLabel">Detalhes do Funcionário</h5>
+
+            </div>
 
             <div class="p-4">
-                <div class="pb-4 text-center">
-
-                    <h5>Atualizar Funcionário</h5>
-
-                </div>
-
                 <!-- Formulário de cadastro -->
                 <form action="{{ route('funcionario.update', ['id' => $funcionario->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="mb-3">
-                        <div class="form-group w-100">
-                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-100 text-center text-lg" for="fotoFuncionario{{ $funcionario->id }}"><i class="ri-add-fill"></i> Trocar Imagem</label>
+
+                    <!-- Div para exibir a miniatura da imagem -->
+                    <div class="form-group w-100 d-flex justify-content-center">
+                        <div>
+                            <img id="imagemAtual{{ $funcionario->id }}" src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="img-fluid" alt="Imagem do Funcionário" style="width: 100%; height: 100px; border-radius: 15px;">
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <div class="form-group w-100 d-flex justify-content-center">
+                            <label class="bg-gradient-primary text-white p-3 rounded-3 cursor-pointer w-50 w-sm-20 w-lg-20 text-center text-sm" for="fotoFuncionario{{ $funcionario->id }}"><i class="ri-add-fill"></i> Trocar Imagem</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="fotoFuncionario{{ $funcionario->id }}"
                                     name="fotoFuncionario" onchange="exibirImagem(this, {{ $funcionario->id }})" style="display: none;">
                             </div>
-                        </div>
-                    </div>
-                    <!-- Div para exibir a miniatura da imagem -->
-                    <div class="form-group w-100 d-flex justify-content-center">
-                        <div>
-                            <img id="imagemAtual{{ $funcionario->id }}" src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="img-fluid" alt="Imagem do Funcionário" style="width: 100%; height: 250px; border-radius: 15px;">
                         </div>
                     </div>
 
