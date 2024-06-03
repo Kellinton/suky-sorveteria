@@ -217,8 +217,9 @@ class ProdutoController extends Controller
         // Atualize os outros campos do produto
         $produto->nomeProduto = $request->input('nomeProduto');
         $produto->descricaoProduto = $request->input('descricaoProduto');
-        $produto->valorProduto = $request->input('valorProduto');
         $produto->categoriaProduto = $request->input('categoriaProduto');
+        $produto->valorProduto = $request->input('valorProduto');
+        $produto->statusProduto = $request->input('statusProduto');
 
         // Salve as alterações no banco de dados
         $produto->save();
@@ -228,44 +229,44 @@ class ProdutoController extends Controller
         return redirect()->route('produto.index');
     }
 
-    public function ativar($id)
-    {
-        $produto = Produto::find($id);
+    // public function ativar($id)
+    // {
+    //     $produto = Produto::find($id);
 
-        if ($produto) {
+    //     if ($produto) {
 
-            $produto->statusProduto = 'ativo';
-            $produto->save();
+    //         $produto->statusProduto = 'ativo';
+    //         $produto->save();
 
-            Alert::success('Alterado para disponível.');
+    //         Alert::success('Alterado para disponível.');
 
-            return redirect()->route('produto.index');
+    //         return redirect()->route('produto.index');
 
-        } else {
-            Alert::error('Erro!', 'Ocorreu um erro ao ativar o item.');
-            return redirect()->route('produto.index');
-        }
-    }
-
-
-    public function desativar($id)
-    {
-        $produto = Produto::find($id);
+    //     } else {
+    //         Alert::error('Erro!', 'Ocorreu um erro ao ativar o item.');
+    //         return redirect()->route('produto.index');
+    //     }
+    // }
 
 
-        if ($produto) {
+    // public function desativar($id)
+    // {
+    //     $produto = Produto::find($id);
 
-            $produto->statusProduto = 'inativo';
-            $produto->save();
 
-            Alert::success('Alterado para indisponível.');
+    //     if ($produto) {
 
-            return redirect()->route('produto.index');
-        } else {
+    //         $produto->statusProduto = 'inativo';
+    //         $produto->save();
 
-            return redirect()->route('produto.index');
-        }
-    }
+    //         Alert::success('Alterado para indisponível.');
+
+    //         return redirect()->route('produto.index');
+    //     } else {
+
+    //         return redirect()->route('produto.index');
+    //     }
+    // }
 
 
     /**
