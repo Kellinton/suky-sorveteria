@@ -46,14 +46,14 @@
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                         <div class="card card-blog card-plain">
                             <div class="position-relative">
-                                <a class="d-block shadow-xl border-radius-xl position-relative">
-                                    <a href="{{ $produto->statusProduto === 'inativo' ? route('produto.ativar', ['id' => $produto->id]) : route('produto.desativar', ['id' => $produto->id]) }}"
+                                <div class="d-block shadow-xl border-radius-xl position-relative">
+                                    <span
                                        class="badge badge-lg bg-gradient-{{ $produto->statusProduto === 'inativo' ? 'danger' : 'success' }} position-absolute m-3" style="font-size: 1rem;">
                                        {{ $produto->statusProduto === 'inativo' ? 'Indisponível' : 'Disponível' }}
-                                    </a>
+                                    </span>
 
                                     <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
-                                </a>
+                                </div>
                             </div>
                             <div class="card-body px-1 pb-0 mb-5">
                                 <a href="javascript:;">

@@ -29,9 +29,11 @@
                                         <div class="form-group d-flex flex-column justify-content-center">
                                             <img id="imagemAtual{{ $produto->id }}" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid" alt="Imagem do Produto" style="width: 100%; height: 250px; border-radius: 15px;">
                                         </div>
+
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" maxlength="20" placeholder="Título do produto" required value="{{ $produto->nomeProduto }}">
                                         </div>
+
                                         <div class="form-group">
 
                                             <textarea class="form-control" id="descricaoProduto" name="descricaoProduto" rows="4" maxlength="100"
@@ -65,9 +67,19 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">R$</span>
                                                 </div>
+
                                                 <input type="text" class="form-control" id="valorProduto"
                                                     name="valorProduto" pattern="^[0-9]+(\.[0-9]{1,2})?$" maxlength="7"
                                                     placeholder="Preço do produto" required value="{{ $produto->valorProduto }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="mb-3 w-100">
+                                                <select class="form-select w-100" id="statusProduto" name="statusProduto">
+                                                    <option value="ativo" {{ $produto->statusProduto == 'ativo' ? 'selected' : '' }}>Disponível</option>
+                                                    <option value="inativo" {{ $produto->statusProduto == 'inativo' ? 'selected' : '' }}>Indisponível</option>
+                                                </select>
                                             </div>
                                         </div>
 
