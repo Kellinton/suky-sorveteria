@@ -58,8 +58,7 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::post('/dashboard/administrador/produto/store', [ProdutoController::class, 'store'])->name('produto.store');
      Route::get('/dashboard/administrador/produto/show/{id}', [ProdutoController::class, 'show'])->name('produto.show');
      Route::put('/dashboard/administrador/produto/update/{id}', [ProdutoController::class, 'update'])->name('produto.update');
-    //  Route::get('/dashboard/administratador/produto/ativar/{id}', [ProdutoController::class, 'ativar'])->name('produto.ativar');
-    //  Route::get('/dashboard/administratador/produto/desativar/{id}', [ProdutoController::class, 'desativar'])->name('produto.desativar');
+
 
 
      // Mensagens

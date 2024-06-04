@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 d-flex w-100 gap-4">
+                    <div class="mb-3 d-flex w-100 gap-4 flex-column-sm-35">
                         <div class="mb-3 w-50">
                             <label for="nomeFuncionario" class="form-label d-flex">Nome</label>
                             <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario"  value="{{ $funcionario->nomeFuncionario }}">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="mb-3 w-50">
                             <label for="senha" class="form-label">Senha</label>
-                            <input type="text" class="form-control" id="senha" name="senha"  value="{{ $usuario->senha }}">
+                            <input type="password" class="form-control" id="senha" name="senha"  value="{{ $usuario->senha }}">
                         </div>
                     </div>
 
@@ -130,9 +130,9 @@
 
                     <div class="w-100">
 
-                        <a href="{{ route('funcionario.index') }}" class="btn btn-secondary float-start w-30">Cancelar</a>
+                        <a href="{{ route('funcionario.index') }}" class="btn btn-secondary float-start w-45 w-sm-35 w-sm-25">Cancelar</a>
 
-                        <button class="btn btn-primary float-end w-30" type="submit">Confirmar</button>
+                        <button class="btn btn-primary float-end w-45 w-sm-35 w-sm-25" type="submit">Confirmar</button>
 
 
                     </div>
