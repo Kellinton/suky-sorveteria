@@ -31,7 +31,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4 w-100 w-lg-65">
           <div class="container-fluid pe-0">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
               <i class="fa fa-home opacity-6 text-dark me-1"></i>
               Acessar Site
             </a>
@@ -115,21 +115,18 @@
                       @endif
 
                     </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+                    <div class="form-check form-switch d-flex justify-content-between">
+                        <div>
+                            <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
+                            <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+                        </div>
+                        <a href="{{ route('recuperar.senha') }}" class="text-info text-gradient font-weight-bold">Esqueceu a senha?</a>
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Entrar</button>
                     </div>
                   </form>
                 </div>
-                {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                 <p class="mb-4 text-sm mx-auto">
-                    Não tem uma conta?
-                    <a href="javascript:;" class="text-info text-gradient font-weight-bold">Registre-se</a>
-                  </p>
-                </div> --}}
                 <div class="container">
                     <div class="row">
                       <div class="mx-auto text-center">

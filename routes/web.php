@@ -7,7 +7,9 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MensagemController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\RecuperarSenhaController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +38,9 @@ Route::get('/shop-detalhes', [ShopController::class, 'shopDetalhes'])->name('sho
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Autenticação
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
+// Recuperar Senha
+Route::get('/recuperar-senha', [RecuperarSenhaController::class, 'index'])->name('recuperar.senha');
+Route::get('/senha-recuperada', [RecuperarSenhaController::class, 'recuperar'])->name('recuperada.senha');
 
 
 
@@ -68,6 +73,9 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::put('/dashboard/administrador/mensagem/remover/{id}', [ContatoController::class, 'remover'])->name('contato.remover');
      Route::get('/dashboard/administrador/mensagem/verificar-lido/{id}', [ContatoController::class, 'verificarLido'])->name('contato.verificar-lido');
      Route::put('/dashboard/administrador/mensagem/atualizar-lido/{id}', [ContatoController::class, 'atualizarLido'])->name('contato.atualizar-lido');
+
+     // Perfil
+     Route::get('/dashboard/administrador/perfil', [PerfilController::class, 'index'])->name('perfil.index');
 
 
 });
