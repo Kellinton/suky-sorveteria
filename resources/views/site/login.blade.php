@@ -120,7 +120,7 @@
                             <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                             <label class="form-check-label" for="rememberMe">Lembrar-me</label>
                         </div>
-                        <a href="{{ route('recuperar.senha') }}" class="text-info text-gradient font-weight-bold">Esqueceu a senha?</a>
+                        <a href="{{ route('recuperar-senha.index') }}" class="text-info text-gradient font-weight-bold">Esqueceu a senha?</a>
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Entrar</button>
