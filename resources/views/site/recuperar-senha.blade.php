@@ -4,21 +4,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="dashboard/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="dashboard/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('img/logo_suky.png') }}">
   <title>
     Recuperar Senha
   </title>
+  <!-- tag CSRF do token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="dashboard/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="dashboard/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ asset('dashboard/css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ asset('dashboard/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="dashboard/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ asset('dashboard/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="dashboard/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+  <link id="pagestyle" href="{{ asset('dashboard/css/soft-ui-dashboard.css?v=1.0.7') }}" rel="stylesheet" />
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
@@ -58,21 +60,44 @@
           <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
             <div class="card z-index-0">
 
-              <div class="card-header text-center pt-4">
-                <h5 class="font-weight-bolder text-info text-gradient">Recuperação de senha</h5>
+              <div class="text-center pt-2">
+                  <img src="img/logo_suky.png" class="w-40" alt="Logotipo da Sorveteria Suky, é um sorvete de casca com o nome SUKY centralizado">
+                  <h5 class="font-weight-bolder text-info text-gradient">Recuperação de senha</h5>
               </div>
               <div class="card-body">
-                <form action="" role="form" method="POST">
+                <form action="{{ route('recuperar-senha.validar') }}" role="form" method="POST">
+                  @csrf
                   <div class="mb-3">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="Informe o Email" aria-label="Email" aria-describedby="email-addon">
+                    <input type="email" name="email" required class="form-control" placeholder="Informe o Email" aria-label="Email" aria-describedby="email-addon"  value="{{ old('email') }}">
+
+                  @if($errors->has('email'))
+                      <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                          <span class="alert-text text-light"><strong>Erro! </strong>{{ $errors->has('email') ? $errors->first('email') : '' }}</span>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                   @endif
+
                   </div>
                   <div class="mb-3">
                     <label>Token</label>
-                    <input type="text" class="form-control" placeholder="Informe o Token" aria-label="Token" aria-describedby="token-addon">
+                    <input type="text" name="token" required class="form-control" placeholder="Informe o Token" aria-label="Token" aria-describedby="token-addon"  value="{{ old('token') }}">
+
+                  @if($errors->has('token'))
+                      <div class="alert alert-primary alert-dismissible fade show mt-2" role="alert">
+                          <span class="alert-text text-light"><strong>Erro! </strong>{{ $errors->has('token') ? $errors->first('token') : '' }}</span>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                   @endif
+
                   </div>
+
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 mt-4 mb-0">Recuperar Senha</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Recuperar Senha</button>
                   </div>
                 </form>
               </div>
@@ -84,10 +109,10 @@
 
   </main>
   <!--   Core JS Files   -->
-  <script src="dashboard/js/core/popper.min.js"></script>
-  <script src="dashboard/js/core/bootstrap.min.js"></script>
-  <script src="dashboard/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="dashboard/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="{{ asset('dashboard/js/core/popper.min.js') }}"></script>
+  <script src="{{ asset('dashboard/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('dashboard/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ asset('dashboard/js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -100,7 +125,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="dashboard/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+  <script src="{{ asset('dashboard/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
 </body>
 
 </html>

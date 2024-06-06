@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="dashboard/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="dashboard/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('dashboard/img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_suky.png') }}">
     <title>Senha Recuperada</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <link href="dashboard/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="dashboard/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="{{ asset('dashboard/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dashboard/css/nucleo-svg.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="dashboard/css/nucleo-svg.css" rel="stylesheet" />
-    <link id="pagestyle" href="dashboard/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+    <link href="{{ asset('dashboard/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('dashboard/css/soft-ui-dashboard.css?v=1.0.7') }}" rel="stylesheet" />
 </head>
 <body class="">
   <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
@@ -45,28 +45,29 @@
         <div class="row mt-lg-n10 mt-md-n11 mt-n10">
           <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
             <div class="card z-index-0">
-              <div class="card-header text-center pt-4">
-                <h5 class="font-weight-bolder text-info text-gradient">Senha Recuperada</h5>
-            </div>
-            <div class="card-body">
-              <div class="mb-3">
-                <label for="password">Senha Recuperada:</label>
-                <input type="text" id="password" class="form-control" value="SenhaRecuperada123" readonly>
-              </div>
-              <div class="text-center">
-                <a href="{{ route('login') }}" class="btn bg-gradient-primary w-100 mt-4 mb-0">Voltar ao Login</a>
-              </div>
-            </div>
+                <div class="text-center pt-2">
+                    <img src="img/logo_suky.png" class="w-40" alt="Logotipo da Sorveteria Suky, é um sorvete de casca com o nome SUKY centralizado">
+                    <h5 class="font-weight-bolder text-info text-gradient">Recuperação de senha</h5>
+                </div>
+                <div class="card-body">
+                <div class="mb-3">
+                    <label for="password">Senha:</label>
+                    <input type="text" id="password" class="form-control" value="{{ $usuarioSenha }}" readonly>
+                </div>
+                <div class="text-center">
+                    <a href="{{ route('login') }}" class="btn bg-gradient-primary w-100 mt-4 mb-0">Voltar ao Login</a>
+                </div>
+                </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </main>
-<script src="dashboard/js/core/popper.min.js"></script>
-<script src="dashboard/js/core/bootstrap.min.js"></script>
-<script src="dashboard/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="dashboard/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="{{ asset('dashboard/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/plugins/smooth-scrollbar.min.js') }}"></script>
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -77,6 +78,6 @@
   }
 </script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="dashboard/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+<script src="{{ asset('dashboard/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
 </body>
 </html>

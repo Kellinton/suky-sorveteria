@@ -39,8 +39,9 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Autenticação
 Route::post('/login', [LoginController::class, 'autenticar'])->name('login.autenticar');
 // Recuperar Senha
-Route::get('/recuperar-senha', [RecuperarSenhaController::class, 'index'])->name('recuperar.senha');
-Route::get('/senha-recuperada', [RecuperarSenhaController::class, 'recuperar'])->name('recuperada.senha');
+Route::get('/recuperar-senha', [RecuperarSenhaController::class, 'index'])->name('recuperar-senha.index');
+Route::post('/recuperar-senha', [RecuperarSenhaController::class, 'validar'])->name('recuperar-senha.validar');
+Route::get('/senha-recuperada', [RecuperarSenhaController::class, 'visualizar-senha'])->name('recuperar-senha.visualizar');
 
 
 
