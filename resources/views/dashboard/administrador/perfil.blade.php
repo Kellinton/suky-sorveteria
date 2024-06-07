@@ -393,7 +393,7 @@
 
 @section('conteudo')
 
-    <div class="row m-0 py-4">
+    <div class="row m-0">
         <div class="col-12 col-sm-6  py-2">
             <div class="card">
               <div class="card-header pb-0 p-3">
@@ -401,27 +401,30 @@
               </div>
               <div class="card-body p-3">
                 <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-2">Conta</h6>
-                <ul class="list-group">
-                  <li class="list-group-item border-0 px-0">
-                    <div class="form-check form-switch ps-0">
-                        <label for="emailFuncionario" class="form-label d-flex">Email</label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control me-2" id="emailFuncionario" name="emailFuncionario" value="{{ $funcionarioPerfil->email }}">
-                            <i class="ri-pencil-line cursor-pointer"></i>
+                <form action="" class="m-0">
+                    <ul class="list-group">
+                      <li class="list-group-item border-0 px-0">
+                        <div class="form-check form-switch ps-0">
+                            <label for="emailFuncionario" class="form-label d-flex">Email</label>
+                            <div class="d-flex align-items-center">
+                                <input type="text" class="form-control me-2" id="emailFuncionario" name="emailFuncionario" value="{{ $funcionarioPerfil->email }}">
+                                <i class="ri-pencil-line cursor-pointer"></i>
+                            </div>
                         </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item border-0 px-0">
-                    <div class="form-check form-switch ps-0">
-                        <label for="senhaFuncionario" class="form-label d-flex">Senha</label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control me-2" id="senhaFuncionario" name="senhaFuncionario" value="{{ $funcionarioPerfil->senha }}">
-                            <i class="ri-pencil-line cursor-pointer"></i>
+                      </li>
+                      <li class="list-group-item border-0 px-0">
+                        <div class="form-check form-switch ps-0">
+                            <label for="senhaFuncionario" class="form-label d-flex">Senha</label>
+                            <div class="d-flex align-items-center">
+                                <input type="text" class="form-control me-2" id="senhaFuncionario" name="senhaFuncionario" value="{{ $funcionarioPerfil->senha }}">
+                                <i class="ri-pencil-line cursor-pointer"></i>
+                            </div>
                         </div>
-                    </div>
-                  </li>
-                </ul>
-                <div class="pt-3">
+                      </li>
+                    </ul>
+                        <button class="btn btn-primary w-50 w-lg-30 btn-md" type="submit">Salvar</button>
+                </form>
+                <div>
                     <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-2">Recuperação de senha</h6>
                     <ul class="list-group">
                         <li class="list-group-item border-0 px-0">
