@@ -77,6 +77,7 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
 
      // Perfil
      Route::get('/dashboard/administrador/perfil', [PerfilController::class, 'index'])->name('perfil.index');
+     Route::put('/dashboard/administrador/perfil/update/{id}', [PerfilController::class, 'update'])->name('perfil.update');
 
 
 });
