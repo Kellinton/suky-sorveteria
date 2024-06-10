@@ -401,13 +401,16 @@
               </div>
               <div class="card-body p-3">
                 <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-2">Conta</h6>
-                <form action="" class="m-0">
+                <form action="{{ route('perfil.update', ['id' => $funcionarioPerfil->id]) }}" method="POST"
+                    enctype="multipart/form-data" class="m-0">
+                    @csrf
+                    @method('PUT')
                     <ul class="list-group">
                       <li class="list-group-item border-0 px-0">
                         <div class="form-check form-switch ps-0">
                             <label for="emailFuncionario" class="form-label d-flex">Email</label>
                             <div class="d-flex align-items-center">
-                                <input type="text" class="form-control me-2" id="emailFuncionario" name="emailFuncionario" value="{{ $funcionarioPerfil->email }}">
+                                <input type="text" class="form-control me-2" id="email" name="email" value="{{ $funcionarioPerfil->email }}">
                                 <i class="ri-pencil-line cursor-pointer"></i>
                             </div>
                         </div>
@@ -416,7 +419,7 @@
                         <div class="form-check form-switch ps-0">
                             <label for="senhaFuncionario" class="form-label d-flex">Senha</label>
                             <div class="d-flex align-items-center">
-                                <input type="text" class="form-control me-2" id="senhaFuncionario" name="senhaFuncionario" value="{{ $funcionarioPerfil->senha }}">
+                                <input type="text" class="form-control me-2" id="senha" name="senha" value="{{ $funcionarioPerfil->senha }}">
                                 <i class="ri-pencil-line cursor-pointer"></i>
                             </div>
                         </div>
@@ -427,7 +430,7 @@
                 <div>
                     <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-2">Recuperação de senha</h6>
                     <ul class="list-group">
-                        <li class="list-group-item border-0 px-0">
+                        <li class="list-group-item border-0 p-0">
                             <div class="form-check form-switch ps-0">
                                 <label for="tokenFuncionario" class="form-label d-flex">Token</label>
                                     <div class="d-flex align-items-center">
@@ -495,6 +498,9 @@
         });
     });
     </script>
+
+
+@include('sweetalert::alert')
 @endsection
 
 
