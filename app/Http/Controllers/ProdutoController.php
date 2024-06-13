@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Funcionario;
+use App\Models\Contato;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -36,6 +37,8 @@ class ProdutoController extends Controller
 
         $produtos = Produto::all();
 
+        $naoLidas = Contato::where('lidoContato', 0)->count();
+
         // filtrar
         // $acai = Produto::where('categoriaProduto', 'acai')->get();
         // $sorvetePote = Produto::where('categoriaProduto', 'sorvetePote')->get();
@@ -46,7 +49,8 @@ class ProdutoController extends Controller
             'funcionarioAutenticado',
             'produtos',
             'totalProdutos',
-            'totalValorProdutos'
+            'totalValorProdutos',
+            'naoLidas'
 
         ));
     }

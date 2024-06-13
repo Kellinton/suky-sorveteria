@@ -41,12 +41,15 @@ class AdministradorController extends Controller
          $totalFuncionarios = Funcionario::count();
 
 
+         // Contar o número de mensagens não lidas
+         $naoLidas = Contato::where('lidoContato', 0)->count();
+
          $produtos = Produto::orderBy('id', 'desc')->take(4)->get();
 
          $contatos = Contato::orderBy('id', 'desc')->take(6)->get();
 
          return view('dashboard.administrador.index', compact(
-            'funcionarioAutenticado', 'totalValorProdutos', 'totalFuncionarios', 'produtos', 'contatos'
+            'funcionarioAutenticado', 'totalValorProdutos', 'totalFuncionarios', 'produtos', 'contatos', 'naoLidas'
         ));
 
     }

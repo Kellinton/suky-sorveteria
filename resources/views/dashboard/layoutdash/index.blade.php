@@ -140,7 +140,14 @@
                     </g>
                   </svg>
               </div>
-              <span class="nav-link-text ms-1">Mensagens</span>
+              <span class="nav-link-text ms-1 position-relative">
+                Mensagens
+                @if($naoLidas > 0)
+                    <div class="position-absolute bg-primary text-white d-flex justify-content-center align-items-center rounded-circle border border-white" style="width: 20px; height: 20px; top: -7px; right: -22px; font-size: 0.7rem;" title="Notificações">
+                        <span>{{ $naoLidas }}</span>
+                    </div>
+                @endif
+            </span>
             </a>
           </li>
         <li class="nav-item mt-3">
@@ -285,8 +292,15 @@
                         </g>
                       </g>
                     </svg>
-                    <span class="ms-1">Mensagens</span>
+                    <span class="ms-1 position-relative">Mensagens
+                        @if($naoLidas > 0)
+                            <div class="position-absolute bg-primary text-white d-flex justify-content-center align-items-center rounded-circle border border-white" style="width: 20px; height: 20px; top: -7px; right: -22px; font-size: 0.7rem;" title="Notificações">
+                                <span>{{ $naoLidas }}</span>
+                            </div>
+                        @endif
+                    </span>
                   </a>
+
                 </li>
                 <li class="nav-item">
                   <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">

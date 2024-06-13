@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
 use App\Models\Usuario;
+use App\Models\Contato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,11 +25,15 @@ class PerfilController extends Controller
           ->where('funcionarios.id', $id)
           ->select('funcionarios.*', 'usuarios.*')
           ->first(); // Usando first() ao invés de get() para recuperar apenas um registro
+          // dd($funcionarioPerfil);
 
-       // dd($funcionarioPerfil);
+          $naoLidas = Contato::where('lidoContato', 0)->count();
+
+
         return view('dashboard.administrador.perfil', compact(
             'funcionarioAutenticado',
-            'funcionarioPerfil'
+            'funcionarioPerfil',
+            'naoLidas'
         ));
 
 

@@ -23,6 +23,7 @@ class BuscarProdutos extends Component
         if ($this->search) {
             $produtos->where('nomeProduto', 'like', '%' . $this->search . '%')
                      ->orWhere('descricaoProduto', 'like', '%' . $this->search . '%');
+
         }
 
         if ($this->selectedCategoria) {
