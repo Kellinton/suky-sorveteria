@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
+use App\Models\Contato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -39,6 +40,7 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
+        $naoLidas = Contato::where('lidoContato', 0)->count();
 
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
         $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
@@ -54,6 +56,7 @@ class FuncionarioController extends Controller
             'funcionarios',
             'totalFuncionarios',
             'totalSalario',
+            'naoLidas'
         ));
     }
 
@@ -76,6 +79,7 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
+        $naoLidas = Contato::where('lidoContato', 0)->count();
 
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
         $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
@@ -91,6 +95,7 @@ class FuncionarioController extends Controller
             'funcionarios',
             'totalFuncionarios',
             'totalSalario',
+            'naoLidas'
         ));
     }
 
@@ -201,6 +206,7 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
+        $naoLidas = Contato::where('lidoContato', 0)->count();
 
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
         $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
@@ -216,7 +222,10 @@ class FuncionarioController extends Controller
         'usuario',
         'funcionarioAutenticado',
         'totalFuncionarios',
-        'totalSalario' ));
+        'totalSalario',
+        'naoLidas'
+
+));
 
     }
 

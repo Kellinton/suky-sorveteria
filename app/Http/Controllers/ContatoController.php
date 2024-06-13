@@ -36,6 +36,8 @@ class ContatoController extends Controller
 
         $contatos = Contato::orderBy('id', 'desc')->get();
 
+        $naoLidas = Contato::where('lidoContato', 0)->count();
+
         $totalMensagens = Contato::count();
 
         $totalMensagensComFavorito = Contato::where('favoritoContato', 1)->count();
@@ -44,7 +46,8 @@ class ContatoController extends Controller
             'funcionarioAutenticado',
             'contatos',
             'totalMensagens',
-            'totalMensagensComFavorito'
+            'totalMensagensComFavorito',
+            'naoLidas'
         ));
     }
 
