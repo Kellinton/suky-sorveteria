@@ -4,16 +4,15 @@
 
 @section('conteudo')
     <div class="row mb-4">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
             <div class="card-body p-3">
             <div class="row">
                 <div class="col-8">
                 <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Despesa / mensal</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Despesa com Salários</p>
                     <h5 class="font-weight-bolder mb-0">
                         R$ {{ number_format($totalSalario, 2, ',', '.') }}
-                        <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                 </div>
                 </div>
@@ -26,29 +25,50 @@
             </div>
         </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
             <div class="card-body p-3">
             <div class="row">
                 <div class="col-8">
                 <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Média Salarial</p>
                     <h5 class="font-weight-bolder mb-0">
-                     {{ $totalFuncionarios }}
+                        R$ {{ number_format($salarioMedio, 2, ',', '.') }}
 
                     </h5>
                 </div>
                 </div>
                 <div class="col-4 text-end">
                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-chart-pie-35 text-lg opacity-10" aria-hidden="true"></i>
                 </div>
                 </div>
             </div>
             </div>
         </div>
         </div>
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                    <div class="numbers">
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Funcionários</p>
+                        <h5 class="font-weight-bolder mb-0">
+                         {{ $totalFuncionarios }}
 
+                        </h5>
+                    </div>
+                    </div>
+                    <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                        <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-12">
@@ -70,6 +90,7 @@
                     <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ocupação</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Salário</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data / Contrato</th>
                     <th class="text-secondary opacity-7"></th>
@@ -87,24 +108,31 @@
                             @else
                                 <img src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
                             @endif
+
                         </div>
+
                         <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ $funcionario->nomeFuncionario }} {{ $funcionario->sobrenomeFuncionario }}</h6>
-
-                            <p class="text-xs text-secondary mb-0">{{ $funcionario->email }}</p>
-
+                            <p class="text-xs text-secondary mb-0 d-flex align-items-center">
+                                <i class="ri-time-line me-1"></i>
+                                Atualizado em {{ \Carbon\Carbon::parse($funcionario->updated_at)->format('d/m/Y H:i') }}
+                            </p>
                         </div>
+
                         </div>
                     </td>
                     <td>
                         <p class="text-xs font-weight-bold mb-1">{{ $funcionario->cargoFuncionario }}</p>
                         <p class="text-xs text-secondary mb-0">{{ ucfirst($funcionario->tipo_funcionario) }}</p>
                     </td>
+                    <td>
+                        <span class="text-secondary text-xs font-weight-bold">{{ $funcionario->salarioFuncionario }}</span>
+                    </td>
                     <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-{{ $funcionario->statusFuncionario === 'inativo' ? 'danger' : 'success' }}">{{ $funcionario->statusFuncionario }}</span>
                     </td>
                     <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{ $funcionario->dataContratacaoFuncionario }}</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($funcionario->dataContratacaoFuncionario)->format('d/m/Y') }}</span>
                     </td>
                     <td class="align-middle text-center">
                         <a href="{{ route('funcionario.show', ['id' => $funcionario->id]) }}" class="text-secondary font-weight-bold text-xs d-flex align-items-center gap-1" data-toggle="tooltip" data-original-title="Editar">
