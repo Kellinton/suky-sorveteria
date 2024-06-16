@@ -35,6 +35,9 @@ class ProdutoController extends Controller
         // Quantidade valor em produtos
         $totalValorProdutos = Produto::sum('valorProduto');
 
+        // Valor médio em produtos
+        $valorMedioProdutos = Produto::avg('valorProduto');
+
         $produtos = Produto::all();
 
         $naoLidas = Contato::where('lidoContato', 0)->count();
@@ -50,6 +53,7 @@ class ProdutoController extends Controller
             'produtos',
             'totalProdutos',
             'totalValorProdutos',
+            'valorMedioProdutos',
             'naoLidas'
 
         ));

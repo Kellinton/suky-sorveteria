@@ -57,11 +57,11 @@
                             </div>
                             <div class="card-body px-1 pb-0 mb-5">
                                 <a href="javascript:;">
-                                    <h5 style="min-height: 25px;">
+                                    <h5 style="min-height: 60px;">
                                         {{ $produto->nomeProduto }}
                                     </h5>
                                 </a>
-                                <p class="mb-4 text-sm" style="min-height: 50px;">
+                                <p class="mb-4 text-sm" style="min-height: 70px;">
                                     {{ $produto->descricaoProduto }}
                                 </p>
                                 <div class="d-flex align-items-center justify-content-between">

@@ -40,6 +40,9 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
+        // Salário Médio dos Funcionários
+        $salarioMedio = Funcionario::avg('salarioFuncionario');
+
         $naoLidas = Contato::where('lidoContato', 0)->count();
 
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
@@ -56,6 +59,7 @@ class FuncionarioController extends Controller
             'funcionarios',
             'totalFuncionarios',
             'totalSalario',
+            'salarioMedio',
             'naoLidas'
         ));
     }
@@ -79,6 +83,9 @@ class FuncionarioController extends Controller
         // Quantidade Salário
         $totalSalario = Funcionario::sum('salarioFuncionario');
 
+        // Salário Médio dos Funcionários
+        $salarioMedio = Funcionario::avg('salarioFuncionario');
+
         $naoLidas = Contato::where('lidoContato', 0)->count();
 
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
@@ -95,6 +102,7 @@ class FuncionarioController extends Controller
             'funcionarios',
             'totalFuncionarios',
             'totalSalario',
+            'salarioMedio',
             'naoLidas'
         ));
     }
@@ -203,8 +211,11 @@ class FuncionarioController extends Controller
         // Quantidade de Funcionários
         $totalFuncionarios = Funcionario::count();
 
-        // Quantidade Salário
+        // Despesa com Salários
         $totalSalario = Funcionario::sum('salarioFuncionario');
+
+        // Salário Médio dos Funcionários
+        $salarioMedio = Funcionario::avg('salarioFuncionario');
 
         $naoLidas = Contato::where('lidoContato', 0)->count();
 
@@ -223,6 +234,7 @@ class FuncionarioController extends Controller
         'funcionarioAutenticado',
         'totalFuncionarios',
         'totalSalario',
+        'salarioMedio',
         'naoLidas'
 
 ));
