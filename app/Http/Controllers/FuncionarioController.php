@@ -9,6 +9,7 @@ use App\Models\Contato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class FuncionarioController extends Controller
@@ -20,6 +21,12 @@ class FuncionarioController extends Controller
     public function __construct(Funcionario $funcionario)
     {
         $this->funcionario = $funcionario;
+
+        // Configura o locale para português do Brasil em todo o controlador
+        Carbon::setLocale('pt_BR');
+
+        // Timezone de Brasília
+        date_default_timezone_set('America/Sao_Paulo');
     }
     /**
      * Display a listing of the resource.
