@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\Contato;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AdministradorController extends Controller
 {
@@ -51,6 +52,42 @@ class AdministradorController extends Controller
          return view('dashboard.administrador.index', compact(
             'funcionarioAutenticado', 'totalValorProdutos', 'totalFuncionarios', 'produtos', 'contatos', 'naoLidas'
         ));
-
     }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'senha' => 'required',
+        ]);
+
+        $usuario = Usuario::where('email', $credentials['email'])->where('senha', $credentials['senha'])->first();
+
+        if ($usuario && $usuario->tipo_usuario_type === 'aluno') {
+            $aluno = $usuario->tipo_usuario()->first();
+            if ($aluno) {
+
+                $token = $usuario->createToken('Token de Acesso')->plainTextToken;
+
+                return response()->json([
+                    'message' => 'Login bem sucedido!',
+                    'usuario' => [
+                        'id'    => $usuario->id,
+                        'nome'  => $usuario->nome,
+                        'email' => $usuario->email,
+                        'tipo_usuario'  => $usuario->tipo_usuario_type,
+                        'dados_aluno'   => [
+                            'idAluno'   => $aluno->id,
+                            'nome'      => $aluno->nome,
+                        ],
+                    ],
+
+                    'acess_token' => $token,
+                    'token_type'  => 'Bearer',
+                ]);
+            }
+        }
+        return response()->json(['message' => 'Credenciais inválidas ou usuário não é aluno'], 401);
+    }
+ 
 }
