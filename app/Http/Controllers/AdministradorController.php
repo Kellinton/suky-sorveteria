@@ -9,6 +9,7 @@ use App\Models\Usuario;
 use App\Models\Contato;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AdministradorController extends Controller
@@ -63,9 +64,9 @@ class AdministradorController extends Controller
 
         $usuario = Usuario::where('email', $credentials['email'])->where('senha', $credentials['senha'])->first();
 
-        if ($usuario && $usuario->tipo_usuario_type === 'aluno') {
-            $aluno = $usuario->tipo_usuario()->first();
-            if ($aluno) {
+        if ($usuario && $usuario->tipo_usuario_type === 'administrador') {
+            $administrador = $usuario->tipo_usuario()->first();
+            if ($administrador) {
 
                 $token = $usuario->createToken('Token de Acesso')->plainTextToken;
 
@@ -76,9 +77,9 @@ class AdministradorController extends Controller
                         'nome'  => $usuario->nome,
                         'email' => $usuario->email,
                         'tipo_usuario'  => $usuario->tipo_usuario_type,
-                        'dados_aluno'   => [
-                            'idAluno'   => $aluno->id,
-                            'nome'      => $aluno->nome,
+                        'dados_administrador'   => [
+                            'idAdministrador'   => $administrador->id,
+                            'nome'      => $administrador->nome,
                         ],
                     ],
 
@@ -87,7 +88,7 @@ class AdministradorController extends Controller
                 ]);
             }
         }
-        return response()->json(['message' => 'Credenciais inválidas ou usuário não é aluno'], 401);
+        return response()->json(['message' => 'Credenciais inválidas ou usuário não é administrador'], 401);
     }
- 
+
 }

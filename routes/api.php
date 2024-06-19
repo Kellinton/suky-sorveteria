@@ -15,8 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [AdministradorController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('administrador', 'App\Http\Controllers\AdministradorController');
+
+Route::post('login', [AdministradorController::class, 'login']);
+
+Route::middleware(['auth:sanctum', 'administrador'])->group(function() {
+    Route::apiResource('administrador', AdministradorController::class);
+    Route::get('/administrador/{id}/menu', [AdministradorController::class, 'getMenu']);
+    Route::get('/administrador/{id}/funcionario', [AdministradorController::class, 'getFuncionario']);
+    Route::get('/administrador/{id}/estoque', [AdministradorController::class, 'getEstoque']);
+ });
