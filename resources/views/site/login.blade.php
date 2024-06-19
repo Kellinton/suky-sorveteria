@@ -157,6 +157,8 @@
   <footer class="footer py-3">
 
   </footer>
+  @include('sweetalert::alert')
+
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Arquivos JS Principais   -->
   <script src="dashboard/js/core/popper.min.js"></script>

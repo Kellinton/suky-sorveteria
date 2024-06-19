@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
 use App\Models\Usuario;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
@@ -63,6 +64,13 @@ class LoginController extends Controller
 
             if($tipoUsuario->tipo_funcionario == 'administrador'){
 
+                // Verifica o status do funcionário
+                if($tipoUsuario->statusFuncionario == 'inativo'){
+
+                    Alert::error('Acesso não autorizado!', 'Sua conta existe, mas você não tem acesso à dashboard. Entre em contato com o suporte.');
+                    return back()->withErrors(['status' => 'Sua conta existe, mas você não tem acesso à dashboard. Entre em contato com o suporte.']);
+                }
+
                 session([
                     'id'            => $tipoUsuario->id,
                     'nome'          => $tipoUsuario->nomeFuncionario,
@@ -72,6 +80,13 @@ class LoginController extends Controller
                return redirect()->route('dashboard.administrador');
 
             }elseif($tipoUsuario->tipo_funcionario == 'assistente'){
+
+                // Verifica o status do funcionário
+                if($tipoUsuario->statusFuncionario == 'inativo'){
+
+                    Alert::error('Acesso não autorizado!', 'Sua conta existe, mas você não tem acesso à dashboard. Entre em contato com o suporte.');
+                    return back()->withErrors(['status' => 'Sua conta existe, mas você não tem acesso à dashboard. Entre em contato com o suporte.']);
+                }
 
                 session([
                     'id'            => $tipoUsuario->id,
