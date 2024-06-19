@@ -79,11 +79,11 @@ class AdministradorController extends Controller
                         'tipo_usuario'  => $usuario->tipo_usuario_type,
                         'dados_administrador'   => [
                             'idAdministrador'   => $administrador->id,
-                            'nome'      => $administrador->nome,
+                            'nome'      => $administrador->nomeFuncionario,
                         ],
                     ],
 
-                    'acess_token' => $token,
+                    'access_token' => $token,
                     'token_type'  => 'Bearer',
                 ]);
             }
