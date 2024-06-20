@@ -167,7 +167,7 @@
           </div>
           <div class="card-body p-3">
             <div class="row">
-
+            @if($produtos->count())
                 @foreach ($produtos->sortByDesc('id') as $produto)
 
                     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
@@ -201,7 +201,16 @@
                     </div>
 
                 @endforeach
+            @else
+                <div class="col-xl-9 col-md-6 mb-xl-0 mb-4">
+                    <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                            <img class="w-20" src="{{ asset('dashboard/img/sem_produtos.png') }}" alt="caixa vazia">
 
+                            <p>Nenhum produto encontrado ;(</p>
+
+                    </div>
+                </div>
+            @endif
 
             </div>
           </div>
