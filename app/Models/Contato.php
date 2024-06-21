@@ -19,6 +19,12 @@ class Contato extends Model
         'mensagemContato',
         'lidoContato',
         'favoritoContato',
-        'removidoContato'
+        'removidoContato',
+        'respondidoContato'
     ];
+
+    public function resposta()
+    {
+        return $this->hasOne(ContatoResposta::class, 'contato_id');
+    }
 }

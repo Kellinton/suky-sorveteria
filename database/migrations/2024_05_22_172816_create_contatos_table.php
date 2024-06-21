@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('lidoContato')->default(false);
             $table->boolean('favoritoContato')->default(false);
             $table->boolean('removidoContato')->default(false);
+            $table->boolean('respondidoContato')->default(false);
             $table->timestamps();
         });
     }

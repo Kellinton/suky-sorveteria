@@ -575,6 +575,7 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Mail\\ContatoEmail' => __DIR__ . '/../..' . '/app/Mail/ContatoEmail.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/Models/Cliente.php',
         'App\\Models\\Contato' => __DIR__ . '/../..' . '/app/Models/Contato.php',
+        'App\\Models\\ContatoResposta' => __DIR__ . '/../..' . '/app/Models/ContatoResposta.php',
         'App\\Models\\Funcionario' => __DIR__ . '/../..' . '/app/Models/Funcionario.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/Models/Produto.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

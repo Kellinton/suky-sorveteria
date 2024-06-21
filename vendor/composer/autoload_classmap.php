@@ -38,6 +38,7 @@ return array(
     'App\\Mail\\ContatoEmail' => $baseDir . '/app/Mail/ContatoEmail.php',
     'App\\Models\\Cliente' => $baseDir . '/app/Models/Cliente.php',
     'App\\Models\\Contato' => $baseDir . '/app/Models/Contato.php',
+    'App\\Models\\ContatoResposta' => $baseDir . '/app/Models/ContatoResposta.php',
     'App\\Models\\Funcionario' => $baseDir . '/app/Models/Funcionario.php',
     'App\\Models\\Produto' => $baseDir . '/app/Models/Produto.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
