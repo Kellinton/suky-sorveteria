@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('contatos', function (Blueprint $table) {
             $table->id();
             $table->string('nomeContato',100);
-            $table->string('emailContato', 100)->unique();
+            $table->string('emailContato', 100);
             $table->string('foneContato', 15);
             $table->string('assuntoContato', 100)->default('Contato Site');
             $table->text('mensagemContato');

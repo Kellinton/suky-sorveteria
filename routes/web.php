@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\AssistenteController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\ContatoRespostaController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -13,6 +14,11 @@ use App\Http\Controllers\RecuperarSenhaController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SobreController;
 use Illuminate\Support\Facades\Route;
+
+
+use App\Models\Contato;
+use App\Models\ContatoResposta;
+use App\Mail\RespostaEmail;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,12 +81,27 @@ Route::middleware(['autenticacao:administrador', 'verificar_administrador'])->gr
      Route::get('/dashboard/administrador/mensagem/verificar-lido/{id}', [ContatoController::class, 'verificarLido'])->name('contato.verificar-lido');
      Route::put('/dashboard/administrador/mensagem/atualizar-lido/{id}', [ContatoController::class, 'atualizarLido'])->name('contato.atualizar-lido');
 
+     // Mensagens / Resposta
+     Route::post('/dashboard/administrador/mensagem/responder', [ContatoRespostaController::class, 'enviarResposta'])->name('contato.responder');
+
+    //   Route::get('/dashboard/administrador/mensagem/mail/teste-email', function () {
+
+    //      // Substitua pelo método adequado para buscar um contato existente
+    //      $contato = Contato::findOrFail(1); // Aqui, estou assumindo que o contato com ID 1 existe
+
+    //      // Substitua pelo método adequado para buscar uma resposta existente
+    //      $resposta = ContatoResposta::findOrFail(1); // Aqui, estou assumindo que a resposta com ID 1 existe
+    //     // dd('oi');
+    //      return new RespostaEmail($contato, $resposta);
+    //  });
+
      // Perfil
      Route::get('/dashboard/administrador/perfil', [PerfilController::class, 'index'])->name('perfil.index');
      Route::put('/dashboard/administrador/perfil/update/{id}', [PerfilController::class, 'update'])->name('perfil.update');
 
 
 });
+
 
 Route::middleware(['autenticacao:assistente'])->group(function (){
 

@@ -79,9 +79,9 @@
                         </div>
 
                         <!-- Formulário de resposta -->
-                        <form action="" method="POST">
+                        <form action="{{ route('contato.responder') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="contact_id" value="{{ $contato->id }}">
+                            <input type="hidden" name="contato_id" value="{{ $contato->id }}">
                             <input type="hidden" name="nome_administrador" value="{{ $funcionarioAutenticado->nomeFuncionario }} {{ $funcionarioAutenticado->sobrenomeFuncionario }}">
                             <input type="hidden" name="tipo_administrador" value="{{ $funcionarioAutenticado->tipo_funcionario }}">
                             <div class="m-container p-0 m-0" id="reply-form{{ $contato->id }}" style="display:none;">
@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <span class="text-bold" style="color: #344767;"></span>
-                                    <textarea class="form-control" name="mensagem_administrador" rows="4">Deixe sua mensagem...</textarea>
+                                    <textarea class="form-control" name="mensagem_resposta" rows="4">Deixe sua mensagem...</textarea>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end mt-4">
@@ -121,6 +121,8 @@
             </div>
         </div>
     </div>
+
+ @include('sweetalert::alert')
 @endforeach
 
 <script>

@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
+use App\Models\Funcionario;
+use App\Models\Contato;
 use App\Models\ContatoResposta;
+use App\Mail\RespostaEmail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class ContatoRespostaController extends Controller
 {
@@ -89,50 +97,45 @@ class ContatoRespostaController extends Controller
 
 
 
-    //  public function enviarResposta(Request $request)
-    //  {
-    //      $request->validate([
-    //          'contato_id' => 'required|exists:contatos,id',
-    //          'mensagem' => 'required|string',
-    //          // Você pode adicionar outras validações aqui, se necessário
-    //      ]);
+    public function enviarResposta(Request $request)
+    {
 
-    //      // Encontrar o contato pelo ID
-    //      $contato = Contato::findOrFail($request->contato_id);
+        $request->validate([
+            'contato_id' => 'required|exists:contatos,id',
+            'mensagem_resposta' => 'required|string',
+            'nome_administrador' => 'required|string',
+            'tipo_administrador' => 'required|string',
+        ]);
 
-    //      // Salvar a resposta na tabela respostas_contatos
-    //      $resposta = new RespostaContato();
-    //      $resposta->contato_id = $contato->id;
-    //      $resposta->mensagem_resposta = $request->mensagem;
-    //      $resposta->nome_administrador = auth()->user()->name; // Nome do administrador logado
-    //      $resposta->tipo_administrador = auth()->user()->tipo; // Tipo do administrador logado
-    //      $resposta->save();
+        // Encontrar o contato pelo ID
+        $contato = Contato::findOrFail($request->contato_id);
+        // dd($contato);
+        // Salvar a resposta na tabela respostas_contatos
+        $resposta = new ContatoResposta();
+        $resposta->contato_id = $contato->id;
+        $resposta->mensagem_resposta = $request->mensagem_resposta;
+        $resposta->nome_administrador = $request->nome_administrador; // Nome e sobrenome do administrador logado
+        $resposta->tipo_administrador = $request->tipo_administrador; // Tipo do administrador logado
 
-    //      // Atualizar o campo respondidoContato para indicar que foi respondido
-    //      $contato->respondidoContato = true;
-    //      $contato->save();
+        $resposta->save();
 
-    //      // Enviar e-mail com a resposta para o contato
-    //      $this->enviarEmailResposta($contato, $resposta);
+        // Atualizar o campo respondidoContato para indicar que foi respondido
+        $contato->lidoContato = true;
+        $contato->respondidoContato = true;
 
-    //      return redirect()->back()->with('success', 'Resposta enviada com sucesso!');
-    //  }
+        $contato->save();
 
-    //  private function enviarEmailResposta(Contato $contato, RespostaContato $resposta)
-    //  {
-    //      // Lógica para enviar e-mail usando o seu servidor SMTP
-    //      // Aqui você pode usar Laravel Mail para enviar o e-mail
-    //      // Exemplo de implementação simplificada:
+        try {
+            Mail::to($contato->emailContato)->send(new RespostaEmail($contato, $resposta));
+        } catch (\Exception $e) {
+            // Log do erro no Laravel
+            Log::error('Erro ao enviar e-mail: ' . $e->getMessage());
 
-    //      Mail::send('emails.resposta_contato', [
-    //          'contato' => $contato,
-    //          'resposta' => $resposta
-    //      ], function ($message) use ($contato) {
-    //          $message->to($contato->emailContato, $contato->nomeContato)
-    //                  ->subject('Resposta à sua mensagem de contato');
-    //      });
+            Alert::error('Mensagem não enviada!', 'Erro ao enviar a mensagem. Tente novamente mais tarde.');
+            return back()->with('error', 'Erro ao enviar e-mail.', 500);
+        }
 
-    //      // Verifique a documentação do Laravel para configurar o envio de e-mails usando SMTP
-    //      // https://laravel.com/docs/8.x/mail
-    //  }
+        Alert::success('Resposta Enviada!', 'Resposta enviada com sucesso!');
+        return redirect()->back()->with('success', 'Resposta enviada com sucesso!');
+    }
 }

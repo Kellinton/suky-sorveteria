@@ -17,17 +17,18 @@ class VerificarAdministrador
      */
     public function handle(Request $request, Closure $next)
     {
+
         // Verificar se o usuário é administrador
         // dd(session('tipoFuncionario'));
         if (session('tipoFuncionario') !== 'administrador') {
 
-             dd('chegou aqui, ele é assistente');
+            //  dd('chegou aqui, ele é assistente');
 
             return redirect()->route('login')->withErrors('Acesso restrito para administradores.');
         }
 
 
-        //dd('chegou aqui, ele é adm');
+        // dd('chegou aqui, ele é adm');
         return $next($request);
     }
 }

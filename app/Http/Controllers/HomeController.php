@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -78,14 +79,16 @@ class HomeController extends Controller
 			$contato = Contato::create($validarDados->validated());
 
             // Envia e-mail
-            // try {
-            //     Mail::to('codeforgegroup@gmail.com')->send(new ContatoEmail($contato));
+             try {
+                 Mail::to('codeforgegroup@gmail.com')->send(new ContatoEmail($contato));
 
-            // } catch (\Exception $e) {
-            //     // Em caso de erro no envio do e-mail, retorna uma resposta de erro
-            //     Alert::error('Mensagem não enviada!', 'Erro ao enviar o Email.');
-			// 	return back()->with('error', 'Erro ao enviar e-mail.', 500);
-            // }
+             } catch (\Exception $e) {
+
+             Log::error('Erro ao enviar e-mail: ' . $e->getMessage());
+             // Em caso de erro no envio do e-mail, retorna uma resposta de erro
+             Alert::error('Mensagem não enviada!', 'Ocorreu um Erro ao enviar o Email. Tente novamente mais tarde.');
+			 	return back()->with('error', 'Erro ao enviar e-mail.', 500);
+             }
 
 
             Alert::success('Email Enviado!', 'Email registrado com sucesso');
