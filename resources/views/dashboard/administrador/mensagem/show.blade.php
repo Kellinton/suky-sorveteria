@@ -76,6 +76,11 @@
                         <div class="mt-4" id="contact-message{{ $contato->id }}">
                             <span class="text-bold" style="color: #344767;">Mensagem: </span>
                             <p>{{ $contato->mensagemContato }}</p>
+                            <div class="d-flex justify-content-end mt-4">
+
+                                <p class="p-0 m-0">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM [às] HH:mm') }}</p>
+
+                            </div>
                         </div>
 
                         <!-- Formulário de resposta -->
@@ -84,34 +89,63 @@
                             <input type="hidden" name="contato_id" value="{{ $contato->id }}">
                             <input type="hidden" name="nome_administrador" value="{{ $funcionarioAutenticado->nomeFuncionario }} {{ $funcionarioAutenticado->sobrenomeFuncionario }}">
                             <input type="hidden" name="tipo_administrador" value="{{ $funcionarioAutenticado->tipo_funcionario }}">
+                            <input type="hidden" name="foto_administrador" value="{{ $funcionarioAutenticado->fotoFuncionario }}">
                             <div class="m-container p-0 m-0" id="reply-form{{ $contato->id }}" style="display:none;">
                                 <div class="m-info">
-                                    <img src="{{ asset('img/funcionarios/' . $funcionarioAutenticado->fotoFuncionario) }}" alt="Imagem de Perfil" title="Imagem de Perfil" class="border-radius-lg">
+                                    @if ($contato->respondidoContato === 1)
+                                        <img src="{{ asset('img/funcionarios/' . $contato->foto_administrador) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
+                                    @else
+                                        <img src="{{ asset('img/funcionarios/' . $funcionarioAutenticado->fotoFuncionario) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
+                                    @endif
                                     <div>
-                                        <span>{{ $funcionarioAutenticado->nomeFuncionario }} {{ $funcionarioAutenticado->sobrenomeFuncionario }}</span>
-                                        <p class="text-sm">{{ Str::ucfirst($funcionarioAutenticado->tipo_funcionario) }}</p>
-                                        <p class="text-sm">Responder para: <span class="text-sm">{{ $contato->nomeContato }}</span></p>
+                                        @if ($contato->respondidoContato === 1)
+                                            <span>{{ $contato->nome_administrador }}</span>
+                                        @else
+                                            <span>{{ $funcionarioAutenticado->nomeFuncionario }} {{ $funcionarioAutenticado->sobrenomeFuncionario }}</span>
+                                        @endif
+                                        @if ($contato->respondidoContato === 1)
+                                            <p class="text-sm">{{ Str::ucfirst($contato->tipo_administrador) }}</p>
+                                        @else
+                                            <p class="text-sm">{{ Str::ucfirst($funcionarioAutenticado->tipo_funcionario) }}</p>
+                                        @endif
+
+                                        @if ($contato->respondidoContato === 1)
+                                            <p class="text-sm">Respondeu: <span class="text-sm">{{ $contato->nomeContato }}</span></p>
+                                        @else
+                                            <p class="text-sm">Responder para: <span class="text-sm">{{ $contato->nomeContato }}</span></p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <span class="text-bold" style="color: #344767;"></span>
-                                    <textarea class="form-control" name="mensagem_resposta" rows="4">Deixe sua mensagem...</textarea>
+                                    @if ($contato->respondidoContato === 1)
+                                        <span class="text-bold" style="color: #344767;">Resposta: </span>
+                                        <p>{{ $contato->mensagem_resposta }}</p>
+                                    @else
+                                        <textarea class="form-control" name="mensagem_resposta" rows="4" placeholder="Deixe sua mensagem..."></textarea>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end mt-4">
-                                <p class="p-0 m-0">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM') }}</p>
-                            </div>
+
                             <div class="modal-footer m-data px-0">
                                 <div id="buttons-view{{ $contato->id }}" class="w-100">
                                     <div class="w-100 d-flex justify-content-between">
                                         <button type="button" class="btn btn-secondary m-0" data-dismiss="modal">Fechar</button>
-                                        <button type="button" class="btn btn-primary m-0" onclick="showReplyForm({{ $contato->id }})">Responder</button>
+                                        @if ($contato->respondidoContato === 1)
+                                            <button type="button" class="btn btn-primary m-0" onclick="showReplyForm({{ $contato->id }})">Ver Resposta</button>
+                                        @else
+                                            <button type="button" class="btn btn-primary m-0" onclick="showReplyForm({{ $contato->id }})">Responder</button>
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div id="buttons-reply{{ $contato->id }}" class="w-100" style="display:none;">
                                     <div class="w-100 d-flex justify-content-between">
                                         <button type="button" class="btn btn-secondary m-0" onclick="showContactInfo({{ $contato->id }})">Voltar</button>
-                                        <button type="submit" class="btn btn-success m-0">Enviar</button>
+                                        @if ($contato->respondidoContato === 1)
+
+                                        @else
+                                            <button type="submit" class="btn btn-success m-0">Enviar</button>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

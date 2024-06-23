@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('contato_id')->constrained()->onDelete('cascade');
             $table->text('mensagem_resposta');
             $table->string('nome_administrador');
+            $table->string('foto_administrador', 255)->nullable();
             $table->string('tipo_administrador');
             $table->timestamps();
         });

@@ -147,7 +147,7 @@
                         </div>
                         <div class="d-flex align-items-start flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ $contato->nomeContato }}</h6>
-                            <p class="mb-0 text-xs">{{ $contato->mensagemContato }}</p>
+                            <p class="mb-0 text-xs">{{ Str::limit($contato->mensagemContato, 25, '...') }}</p>
                         </div>
                         <p class="pe-3 ps-0 mb-0 ms-auto text-xs">{{ \Carbon\Carbon::parse($contato->created_at)->diffForHumans() }}</p>
                         </li>

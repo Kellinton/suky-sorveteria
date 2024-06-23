@@ -34,7 +34,13 @@ class ContatoController extends Controller
         $funcionarioAutenticado = Funcionario::find($id);
 
 
-        $contatos = Contato::orderBy('id', 'desc')->get();
+        // $contatos = Contato::orderBy('id', 'desc')->get();
+
+        $contatos = Contato::leftJoin('contato_respostas', 'contatos.id', '=', 'contato_respostas.contato_id')
+        ->select('contatos.*', 'contato_respostas.mensagem_resposta', 'contato_respostas.nome_administrador', 'contato_respostas.foto_administrador', 'contato_respostas.tipo_administrador', 'contato_respostas.created_at', 'contato_respostas.updated_at')
+        ->orderBy('contatos.updated_at', 'desc')
+        ->get();
+        // dd($contatos);
 
         $naoLidas = Contato::where('lidoContato', 0)->count();
 
@@ -47,7 +53,7 @@ class ContatoController extends Controller
             'contatos',
             'totalMensagens',
             'totalMensagensComFavorito',
-            'naoLidas'
+            'naoLidas',
         ));
     }
 

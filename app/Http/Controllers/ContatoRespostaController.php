@@ -104,6 +104,7 @@ class ContatoRespostaController extends Controller
             'contato_id' => 'required|exists:contatos,id',
             'mensagem_resposta' => 'required|string',
             'nome_administrador' => 'required|string',
+            'foto_administrador' => 'required|string',
             'tipo_administrador' => 'required|string',
         ]);
 
@@ -115,6 +116,7 @@ class ContatoRespostaController extends Controller
         $resposta->contato_id = $contato->id;
         $resposta->mensagem_resposta = $request->mensagem_resposta;
         $resposta->nome_administrador = $request->nome_administrador; // Nome e sobrenome do administrador logado
+        $resposta->foto_administrador = $request->foto_administrador; // Foto do administrador logado
         $resposta->tipo_administrador = $request->tipo_administrador; // Tipo do administrador logado
 
         $resposta->save();

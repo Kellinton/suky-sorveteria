@@ -67,7 +67,7 @@
         background-color: #a59f9f17;
     }
     .lido{
-        opacity: 0.5;
+        background-color: #a59f9f25;
     }
     .favoritar-btn{
         background: none;
@@ -148,6 +148,7 @@
                         <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Mensagem</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"></th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ações</th>
                         </tr>
@@ -183,6 +184,13 @@
                                 <td>
                                     <p class="text-xs font-weight-bolder mb-1">{{ $contato->assuntoContato }}: </p>
                                     <p class="text-xs text-secondary mb-0">{{ Str::limit($contato->mensagemContato, 25, '...') }}</p>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    @if ($contato->respondidoContato === 1)
+                                        <span class="badge badge-sm bg-gradient-success">Respondido!</span>
+                                    @else
+                                        <span> </span>
+                                    @endif
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM') }}</span>
