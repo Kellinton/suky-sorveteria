@@ -316,7 +316,7 @@ class FuncionarioController extends Controller
         $usuario->senha             = $request->input('senha');
         $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
         $usuario->tipo_usuario_id   = $funcionario->id;
-        $usuario->token_lembrete = Str::random(100);
+
 
         $usuario->save();
 
