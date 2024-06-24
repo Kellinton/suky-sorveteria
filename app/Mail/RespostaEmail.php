@@ -33,7 +33,7 @@ class RespostaEmail extends Mailable
 
     public function build()
     {
-        return $this->from('ascensaodev@smpsistema.com.br')
+        return $this
                     ->subject("Resposta ao seu contato")
                     ->view('dashboard.administrador.mensagem.mail.resposta_contato')
                     ->with([

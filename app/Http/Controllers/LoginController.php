@@ -26,7 +26,7 @@ class LoginController extends Controller
         // Mensagens de erro personalizadas para as regras de validação
         $msg = [
             'email.required'    => 'O campo de e-mail é obrigatório.',
-            'email.required'    => 'O e-mail informado não é válido.',
+            'email.email'    => 'O e-mail informado não é válido.',
             'password.required' => 'O campo de senha é obrigatório.'
         ];
         // Executa a validação dos dados recebidos na requisição
