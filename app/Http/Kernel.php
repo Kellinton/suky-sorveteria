@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
 
         'autenticacao' => \App\Http\Middleware\AuthSorveteriaMiddleware::class,
         'verificar_administrador' => \App\Http\Middleware\VerificarAdministrador::class,
-        'administrador' => \App\Http\Middleware\UserIsAdministrador::class,
+        'funcionario' => \App\Http\Middleware\UserIsFuncionario::class,
     ];
 }

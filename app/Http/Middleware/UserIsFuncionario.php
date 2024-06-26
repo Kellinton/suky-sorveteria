@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserIsAdministrador
+class UserIsFuncionario
 {
     /**
      * Handle an incoming request.
@@ -17,13 +17,12 @@ class UserIsAdministrador
      */
     public function handle(Request $request, Closure $next)
     {
-
         $user = Auth::user();
 
-        if ($user && $user->tipo_usuario_type === 'administrador') {
+        if ($user && ($user->tipo_usuario_type === 'administrador' || $user->tipo_usuario_type === 'assistente')) {
             return $next($request);
         }
 
-        return response()->json(['message' => 'Acesso negado. Somente administradores podem acessar esta área.'], 403);
+        return response()->json(['message' => 'Acesso negado. Somente administradores e assistentes podem acessar esta área.'], 403);
     }
 }

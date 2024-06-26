@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\api\DashboardController;
+use App\Http\Controllers\api\LoginController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('administrador', 'App\Http\Controllers\AdministradorController');
 
-Route::post('login', [AdministradorController::class, 'login']);
+Route::post('login', [LoginController::class, 'login']);
 
-Route::middleware(['auth:sanctum', 'administrador'])->group(function() {
-    Route::apiResource('administrador', AdministradorController::class);
-    Route::get('/administrador/{id}/menu', [AdministradorController::class, 'getMenu']);
-    Route::get('/administrador/{id}/funcionario', [AdministradorController::class, 'getFuncionario']);
-    Route::get('/administrador/{id}/estoque', [AdministradorController::class, 'getEstoque']);
- });
+
+ Route::middleware(['auth:sanctum', 'funcionario'])->group(function() {
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
