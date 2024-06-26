@@ -30,5 +30,5 @@ Route::post('login', [LoginController::class, 'login']);
  Route::middleware(['auth:sanctum', 'funcionario'])->group(function() {
 
     // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/{idFuncionario}', [DashboardController::class, 'index']);
 });
