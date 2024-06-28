@@ -107,6 +107,20 @@ Route::middleware(['autenticacao:assistente'])->group(function (){
 
     Route::get('/dashboard/assistente', [AssistenteController::class, 'index'])->name('dashboard.assistente');
 
+    Route::get('/dashboard/assistente/mensagem', [AssistenteController::class, 'index'])->name('assistente.contato.index');
+    Route::get('/dashboard/assistente/mensagem/show/{id}', [AssistenteController::class, 'show'])->name('assistente.contato.show');
+    Route::put('/dashboard/assistente/mensagem/favoritar/{id}', [AssistenteController::class, 'favoritar'])->name('assistente.contato.favoritar');
+    Route::put('/dashboard/assistente/mensagem/remover/{id}', [AssistenteController::class, 'remover'])->name('assistente.contato.remover');
+    Route::get('/dashboard/assistente/mensagem/verificar-lido/{id}', [AssistenteController::class, 'verificarLido'])->name('assistente.contato.verificar-lido');
+    Route::put('/dashboard/assistente/mensagem/atualizar-lido/{id}', [AssistenteController::class, 'atualizarLido'])->name('assistente.contato.atualizar-lido');
+
+    // Mensagens / Resposta
+    Route::post('/dashboard/assistente/mensagem/responder', [ContatoRespostaController::class, 'enviarResposta'])->name('assistente.contato.responder');
+
+         // Perfil
+    Route::get('/dashboard/assistente/perfil', [AssistenteController::class, 'showPerfil'])->name('assistente.perfil.index');
+    Route::put('/dashboard/assistente/perfil/update/{id}', [AssistenteController::class, 'updatePerfil'])->name('assistente.perfil.update');
+
 });
 
 // logout

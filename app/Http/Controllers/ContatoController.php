@@ -37,9 +37,20 @@ class ContatoController extends Controller
         // $contatos = Contato::orderBy('id', 'desc')->get();
 
         $contatos = Contato::leftJoin('contato_respostas', 'contatos.id', '=', 'contato_respostas.contato_id')
-        ->select('contatos.*', 'contato_respostas.mensagem_resposta', 'contato_respostas.nome_administrador', 'contato_respostas.foto_administrador', 'contato_respostas.tipo_administrador', 'contato_respostas.created_at', 'contato_respostas.updated_at')
-        ->orderBy('contatos.updated_at', 'desc')
+        ->select(
+            'contatos.*',
+            'contato_respostas.mensagem_resposta',
+            'contato_respostas.nome_administrador',
+            'contato_respostas.foto_administrador',
+            'contato_respostas.tipo_administrador',
+            'contatos.created_at as contato_created_at',
+            'contatos.updated_at as contato_updated_at',
+            'contato_respostas.created_at as resposta_created_at',
+            'contato_respostas.updated_at as resposta_updated_at'
+        )
+        ->orderBy('contatos.id', 'desc')
         ->get();
+        
         // dd($contatos);
 
         $naoLidas = Contato::where('lidoContato', 0)->count();

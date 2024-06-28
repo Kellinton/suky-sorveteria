@@ -99,7 +99,7 @@ class ContatoRespostaController extends Controller
 
     public function enviarResposta(Request $request)
     {
-
+ 
         $request->validate([
             'contato_id' => 'required|exists:contatos,id',
             'mensagem_resposta' => 'required|string',

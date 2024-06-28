@@ -35,7 +35,7 @@ class RespostaEmail extends Mailable
     {
         return $this
                     ->subject("Resposta ao seu contato")
-                    ->view('dashboard.administrador.mensagem.mail.resposta_contato')
+                    ->view('dashboard.mail.resposta_contato')
                     ->with([
                         'contato' => $this->contato,
                         'resposta' => $this->resposta,

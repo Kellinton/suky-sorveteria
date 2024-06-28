@@ -78,7 +78,7 @@
                             <p>{{ $contato->mensagemContato }}</p>
                             <div class="d-flex justify-content-end mt-4">
 
-                                <p class="p-0 m-0">{{ \Carbon\Carbon::parse($contato->created_at)->isoFormat('DD [de] MMMM [às] HH:mm') }}</p>
+                                <p class="p-0 m-0">{{ \Carbon\Carbon::parse($contato->contato_created_at)->isoFormat('DD [de] MMMM [às] HH:mm') }}</p>
 
                             </div>
                         </div>
@@ -123,6 +123,11 @@
                                     @else
                                         <textarea class="form-control" name="mensagem_resposta" rows="4" placeholder="Deixe sua mensagem..."></textarea>
                                     @endif
+                                </div>
+                                <div class="d-flex justify-content-end mt-4">
+
+                                    <p class="p-0 m-0">{{ \Carbon\Carbon::parse($contato->resposta_created_at)->isoFormat('DD [de] MMMM [às] HH:mm') }}</p>
+
                                 </div>
                             </div>
 

@@ -71,7 +71,7 @@
 
         @if ($funcionarioAutenticado->tipo_funcionario == 'administrador')
             <li class="nav-item">
-            <a class="nav-link  {{ request()->routeIs('estoque.index') ? 'active' : '' }}" href="../pages/tables.html">
+            <a class="nav-link  {{ request()->is('dashboard/administrador/estoque*') ? 'active' : '' }}" href="../pages/tables.html">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Gerenciar Estoque</title>
@@ -91,7 +91,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link  {{ request()->routeIs('produto.index') ? 'active' : '' }}" href="{{ route('produto.index') }}">
+            <a class="nav-link  {{ request()->is('dashboard/administrador/produto*') ? 'active' : '' }}" href="{{ route('produto.index') }}">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Gerenciar Menu</title>
@@ -111,7 +111,7 @@
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link  {{ request()->routeIs('funcionario.index') ? 'active' : '' }}" href="{{ route('funcionario.index') }}">
+            <a class="nav-link  {{ request()->is('dashboard/administrador/funcionario*') ? 'active' : '' }}" href="{{ route('funcionario.index') }}">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>Gerenciar Funcionários</title>
@@ -132,7 +132,7 @@
             </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  {{ request()->routeIs('contato.index') ? 'active' : '' }}" href="{{ route('contato.index') }}">
+                <a class="nav-link  {{ request()->is('dashboard/administrador/mensagem*') ? 'active' : '' }}" href="{{ route('contato.index') }}">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>Mensagens</title>
@@ -166,11 +166,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link {{ $funcionarioAutenticado->tipo_funcionario == 'administrador'
-            ? ( request()->routeIs('perfil.index') ? 'active' : '' )
-            : ( request()->routeIs('assistente.perfil.index') ? 'active' : '' ) }}"
+            ? (request()->is('dashboard/administrador/perfil*') ? 'active' : '')
+            : (request()->is('dashboard/assistente/perfil*') ? 'active' : '') }}"
             href="{{ $funcionarioAutenticado->tipo_funcionario == 'administrador'
             ? route('perfil.index')
-            : ' ' }}">
+            : route('assistente.perfil.index') }}">
 
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
