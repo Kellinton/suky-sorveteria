@@ -143,7 +143,10 @@
                     @foreach ($contatos as $contato)
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                         <div class="avatar me-3">
-                            <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" alt="imagem de usuário" class="border-radius-lg shadow">
+                            <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg" style="height: 50px; height: 50px;">
+                                <i class="fas fa-user opacity-10" aria-hidden="true"></i>
+                            </div>
+                            {{-- <img src="{{ asset('dashboard/img/usuario/perfil_usuario.png') }}" alt="imagem de usuário" class="border-radius-lg shadow"> --}}
                         </div>
                         <div class="d-flex align-items-start flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ $contato->nomeContato }}</h6>
