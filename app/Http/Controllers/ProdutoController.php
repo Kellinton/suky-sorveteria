@@ -181,13 +181,13 @@ class ProdutoController extends Controller
             'nomeProduto' => 'required|max:255',
             'descricaoProduto' => 'required|max:255',
             'valorProduto' => 'required|numeric',
-            'categoriaProduto' => 'required|in:acai,sorvetePote,picole',
+            // 'categoriaProduto' => 'required|in:acai,sorvetePote,picole',
             'fotoProduto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // opcional, máximo de 2MB
         ];
 
         // Mensagens de erro personalizadas
         $messages = [
-            'categoriaProduto.in' => 'A categoria selecionada é inválida.',
+            // 'categoriaProduto.in' => 'A categoria selecionada é inválida.',
             'fotoProduto.image' => 'O arquivo enviado não é uma imagem válida.',
             'fotoProduto.mimes' => 'A imagem deve ser do tipo: jpeg, png, jpg ou gif.',
             'fotoProduto.max' => 'A imagem não pode ter mais de 2MB.',
@@ -225,7 +225,7 @@ class ProdutoController extends Controller
         // Atualize os outros campos do produto
         $produto->nomeProduto = $request->input('nomeProduto');
         $produto->descricaoProduto = $request->input('descricaoProduto');
-        $produto->categoriaProduto = $request->input('categoriaProduto');
+        // $produto->categoriaProduto = $request->input('categoriaProduto');
         $produto->valorProduto = $request->input('valorProduto');
         $produto->statusProduto = $request->input('statusProduto');
 

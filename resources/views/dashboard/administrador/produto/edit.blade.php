@@ -40,7 +40,7 @@
                                                 placeholder="Descrição do produto" required>{{ $produto->descricaoProduto }}</textarea>
                                         </div>
 
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sorvetePote"
                                                         name="categoriaProduto" value="sorvetePote" required {{ $produto->categoriaProduto == 'sorvetePote' ? 'checked' : '' }}>
@@ -59,7 +59,7 @@
                                                     <label class="form-check-label categoria-btn"
                                                         for="acai">Açaí</label>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                         <div class="form-group">

@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class ProdutoController extends Controller
 {
+
     public function index()
     {
 
@@ -78,12 +80,26 @@ class ProdutoController extends Controller
 
     public function update(Request $request, $id)
     {
+        Log::info('Dados recebidos:', $request->all());
+
+
+        //   dd(
+        //       $request->input('nomeProduto'),
+        //       $request->input('descricaoProduto'),
+        //       $request->input('valorProduto'),
+        //       $request->input('categoriaProduto'),
+        //       $request->file('fotoProduto'),
+        //       $request->input('statusProduto')
+        //   );
+
+        //  dd($request->all());
+
         $rules = [
             'nomeProduto' => 'required|max:255',
             'descricaoProduto' => 'required|max:255',
             'valorProduto' => 'required|numeric',
             'categoriaProduto' => 'required|in:acai,sorvetePote,picole',
-            'fotoProduto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+             'fotoProduto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -106,6 +122,7 @@ class ProdutoController extends Controller
         $produto->categoriaProduto = $request->input('categoriaProduto');
         $produto->valorProduto = $request->input('valorProduto');
         $produto->statusProduto = $request->input('statusProduto');
+        // dd($produto);
         $produto->save();
 
         return response()->json($produto);

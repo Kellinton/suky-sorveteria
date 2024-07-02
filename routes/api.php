@@ -34,8 +34,9 @@ Route::post('login', [LoginController::class, 'login']);
     Route::get('/dashboard/{idFuncionario}', [DashboardController::class, 'index']);
 
      // Produtos
-     Route::get('/produtos', [ProdutoController::class, 'index']);
-     Route::post('/produtos', [ProdutoController::class, 'store']);
-     Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
-     Route::put('/produtos/{id}', [ProdutoController::class, 'update']);
-});
+    //  Route::apiResource('produtos', ProdutoController::class);
+      Route::get('/produtos', [ProdutoController::class, 'index']);
+      Route::post('/produtos', [ProdutoController::class, 'store']);
+      Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
+      Route::post('/produtos/{id}', [ProdutoController::class, 'update']); // atualizar com post (temporário)
+    });
