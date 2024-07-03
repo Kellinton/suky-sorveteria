@@ -106,7 +106,7 @@
                             @if ($funcionario->fotoFuncionario == ' ' || $funcionario->fotoFuncionario == null)
                                 <img src="{{ asset('img/usuario/perfil_usuario.png') }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
                             @else
-                                <img src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
+                                <img src="{{ asset('storage/img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="avatar avatar-sm me-3" alt="Foto do Funcionário">
                             @endif
 
                         </div>

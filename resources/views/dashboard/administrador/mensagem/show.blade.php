@@ -93,9 +93,9 @@
                             <div class="m-container p-0 m-0" id="reply-form{{ $contato->id }}" style="display:none;">
                                 <div class="m-info">
                                     @if ($contato->respondidoContato === 1)
-                                        <img src="{{ asset('img/funcionarios/' . $contato->foto_administrador) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
+                                        <img src="{{ asset('storage/img/funcionarios/' . $contato->foto_administrador) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
                                     @else
-                                        <img src="{{ asset('img/funcionarios/' . $funcionarioAutenticado->fotoFuncionario) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
+                                        <img src="{{ asset('storage/img/funcionarios/' . $funcionarioAutenticado->fotoFuncionario) }}" alt="Imagem do funcionário" title="Imagem do funcionário" class="border-radius-lg">
                                     @endif
                                     <div>
                                         @if ($contato->respondidoContato === 1)

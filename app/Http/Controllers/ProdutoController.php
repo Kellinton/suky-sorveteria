@@ -78,22 +78,6 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        // Obtém o último produto cadastrado
-        $ultimoProduto = Produto::latest('id')->first();
-
-        // Verifica se existe algum produto cadastrado
-        if ($ultimoProduto) {
-            // Se houver um produto cadastrado, obtenha o ID do último produto
-            $ultimoID = $ultimoProduto->id;
-        } else {
-            // Se não houver nenhum produto cadastrado, defina o ID como 1
-            $ultimoID = 1;
-        }
-
-
-        // Calcula o ID do próximo produto
-        $proximoID = $ultimoID + 1;
-
 
         // Valida os dados enviados pelo formulário
         $request->validate([
@@ -104,10 +88,6 @@ class ProdutoController extends Controller
             'fotoProduto' => 'required|image|max:2048' // Define a validação para a foto (obrigatória, imagem, tamanho máximo de 2MB)
         ]);
 
-        // Obtém a categoria do produto
-        $categoriaProduto = $request->categoriaProduto;
-        // Salva a foto no sistema de arquivos e obtém o caminho
-        $foto = $request->file('fotoProduto')->store('img/produtos/' . $categoriaProduto , 'public');
 
         // Cria um novo produto com os dados recebidos do formulário
         $produto = new Produto();
@@ -115,24 +95,26 @@ class ProdutoController extends Controller
         $produto->descricaoProduto = $request->descricaoProduto;
         $produto->valorProduto = $request->valorProduto;
         $produto->categoriaProduto = $request->categoriaProduto;
-        $produto->fotoProduto = $foto;
 
-        // Verifica se uma nova imagem foi enviada
+
         if ($request->hasFile('fotoProduto')) {
-
-            // Obtém o objeto da imagem
+            // Obter a imagem do request
             $imagem = $request->file('fotoProduto');
-            // Define o nome do arquivo usando o ID do próximo produto e o nome original da imagem
-            $nomeArquivo = Str::slug($produto->nomeProduto) . '_' . $proximoID . '.' . $imagem->getClientOriginalExtension();
 
-            // Move a imagem para o diretório de destino
-            $imagem->move(public_path('img/produtos/' .  $categoriaProduto . '/' ), $nomeArquivo);
-            // Define o nome da imagem no objeto do produto
+            $nomeArquivo = time() . '.' . $imagem->getClientOriginalExtension();
+
+            // Armazenar a imagem no diretório de destino no storage público
+            $caminhoDiretorio = 'img/produtos/' . $produto->categoriaProduto;
+            $imagem->storeAs($caminhoDiretorio, $nomeArquivo, 'public');
+
+            // Atualizar o campo 'fotoProduto' do produto com o caminho completo
             $produto->fotoProduto = $nomeArquivo;
         }
 
-        // Salva o novo produto no banco de dados
+
         $produto->save();
+
+
 
         Alert::success('Produto Cadastrado!', 'O item foi cadastrado.');
 
@@ -202,23 +184,27 @@ class ProdutoController extends Controller
         // Encontre o produto pelo ID
         $produto = Produto::findOrFail($id);
 
-        // Verifique se uma nova imagem foi enviada
         if ($request->hasFile('fotoProduto')) {
-            // Se uma nova imagem foi enviada, mova-a para o diretório e atualize o nome da imagem no produto
+            // Obter a imagem do request
             $imagem = $request->file('fotoProduto');
 
-            $nomeArquivo = Str::slug($produto->nomeProduto) . '_' . $id . '.' . $imagem->getClientOriginalExtension();
+            // Gerar um nome de arquivo único
+            $nomeArquivo = time() . '.' . $imagem->getClientOriginalExtension();
 
-            // Move a imagem para o diretório de destino
-            $imagem->move(public_path('img/produtos/' .  $produto->categoriaProduto . '/' ), $nomeArquivo);
-            // Define o nome da imagem no objeto do produto
-            $produto->fotoProduto = $nomeArquivo;
+            // Armazenar a imagem no diretório de destino no storage público
+            $caminhoDiretorio = 'img/produtos/' . $produto->categoriaProduto;
+            $imagem->storeAs($caminhoDiretorio, $nomeArquivo, 'public');
 
-            // Se o produto já tiver uma foto, exclua-a
-            // if ($produto->fotoProduto) {
-            //     Storage::disk('public')->delete($produto->fotoProduto);
-            // }
+            // Se o produto já tiver uma foto, excluí-la
+            if ($produto->fotoProduto) {
+                // Caminho completo da foto anterior
+                $caminhoFotoAnterior = 'img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto;
 
+                // Excluir a foto anterior
+                Storage::disk('public')->delete($caminhoFotoAnterior);
+            }
+
+            // Atualizar o campo 'fotoProduto' do produto com o novo nome do arquivo
             $produto->fotoProduto = $nomeArquivo;
         }
 

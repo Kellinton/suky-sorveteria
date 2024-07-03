@@ -22,7 +22,7 @@
                     <!-- Div para exibir a miniatura da imagem -->
                     <div class="form-group w-100 d-flex justify-content-center">
                         <div>
-                            <img id="imagemAtual{{ $funcionario->id }}" src="{{ asset('img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="img-fluid" alt="Imagem do Funcionário" style="width: 100%; height: 100px; border-radius: 15px;">
+                            <img id="imagemAtual{{ $funcionario->id }}" src="{{ asset('storage/img/funcionarios/' . $funcionario->fotoFuncionario) }}" class="img-fluid" alt="Imagem do Funcionário" style="width: 100%; height: 100px; border-radius: 15px;">
                         </div>
                     </div>
                     <div class="mb-3 d-flex justify-content-center">

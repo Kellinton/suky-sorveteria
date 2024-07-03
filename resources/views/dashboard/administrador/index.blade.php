@@ -61,7 +61,7 @@
                 <div class="carousel-inner overflow-hidden position-relative border-radius-xl" style="height: 250px;">
 
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="First slide">
 
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
@@ -82,7 +82,7 @@
                   </div>
 
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="First slide">
 
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
@@ -101,7 +101,7 @@
                   </div>
 
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="img/curved-images/curved14.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="Third slide">
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
                             <div class="d-flex">
@@ -182,7 +182,7 @@
                                        {{ $produto->statusProduto === 'inativo' ? 'Indisponível' : 'Disponível' }}
                                     </span>
 
-                                    <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
+                                    <img class="w-100 border-radius-xl" src="{{ asset('storage/img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
                                 </div>
                             </div>
                             <div class="card-body px-1 pb-0 mb-5">

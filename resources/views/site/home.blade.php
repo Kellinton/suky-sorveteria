@@ -299,7 +299,7 @@
                                         <div class="col-md-6 col-lg-4 col-xl-3 produto-filtrar" data-categoria="{{ $produto->categoriaProduto }}">
                                             <div class="rounded position-relative">
                                                 <div class="fruite-img">
-                                                    <img src="{{ asset ('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img src="{{ asset ('storage/img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" class="img-fluid w-100 rounded-top" alt="">
                                                 </div>
                                                 <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
                                                     @if ($produto->categoriaProduto == 'acai')

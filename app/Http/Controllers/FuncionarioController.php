@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class FuncionarioController extends Controller
@@ -146,12 +147,6 @@ class FuncionarioController extends Controller
             'fotoFuncionario'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $ultimoFuncionario = Funcionario::latest('id')->first();
-        $ultimoID = $ultimoFuncionario ? $ultimoFuncionario->id : 0;
-
-        $proximoID = $ultimoID + 1;
-
-
         // Criando um novo funcionário
         $funcionario = new Funcionario();
 
@@ -170,30 +165,34 @@ class FuncionarioController extends Controller
         $funcionario->statusFuncionario             = $request->input('statusFuncionario');
 
         if ($request->hasFile('fotoFuncionario')) {
-            $fotoFuncionario = $request->file('fotoFuncionario');
-            $nomeArquivo = Str::slug($funcionario->nomeFuncionario) . '_' . $proximoID . '.' . $fotoFuncionario->getClientOriginalExtension();
-            $caminhoDestino = public_path('img/funcionarios/');
 
-            $fotoFuncionario->move($caminhoDestino, $nomeArquivo);
+            $imagem = $request->file('fotoFuncionario');
+
+            $nomeArquivo = time() . '.' . $imagem->getClientOriginalExtension();
+
+            $caminhoDiretorio = 'img/funcionarios/';
+            $imagem->storeAs($caminhoDiretorio, $nomeArquivo, 'public');
+
 
             $funcionario->fotoFuncionario = $nomeArquivo;
         }
+
 
         $funcionario->save();
 
 
 
-            // Criando um novo usuário
-            $usuario = new Usuario();
+        // Criando um novo usuário
+        $usuario = new Usuario();
 
-            $usuario->nome              = $request->input('nomeFuncionario');
-            $usuario->email             = $request->input('email');
-            $usuario->senha             = $request->input('senha');
-            $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
-            $usuario->tipo_usuario_id   = $funcionario->id;
-            $usuario->token_lembrete = Str::random(100);
+        $usuario->nome              = $request->input('nomeFuncionario');
+        $usuario->email             = $request->input('email');
+        $usuario->senha             = $request->input('senha');
+        $usuario->tipo_usuario_type = $request->input('tipo_funcionario');
+        $usuario->tipo_usuario_id   = $funcionario->id;
+        $usuario->token_lembrete = Str::random(100);
 
-            $usuario->save();
+        $usuario->save();
 
 
         Alert::success('Funcionário Cadastrado!', 'O funcionário foi cadastrado com sucesso.');
@@ -280,21 +279,6 @@ class FuncionarioController extends Controller
         $usuario = Usuario::where('tipo_usuario_id', $id)->firstOrFail(); // ajustar o relacionamento entre Funcionario e Usuario
 
 
-        // Verificar se uma nova imagem foi enviada
-        if ($request->hasFile('fotoFuncionario')) {
-            // Se uma nova imagem foi enviada, mova-a para o diretório e atualize o nome da imagem no produto
-            $imagem = $request->file('fotoFuncionario');
-
-            $nomeArquivo = Str::slug($funcionario->nomeFuncionario) . '_' . $id . '.' . $imagem->getClientOriginalExtension();
-
-            // Move a imagem para o diretório de destino
-            $imagem->move(public_path('img/funcionarios/'), $nomeArquivo);
-            // Define o nome da imagem no objeto do produto
-            $funcionario->fotoFuncionario = $nomeArquivo;
-
-            $funcionario->fotoFuncionario = $nomeArquivo;
-        }
-
         $funcionario->nomeFuncionario               = $request->input('nomeFuncionario');
         $funcionario->sobrenomeFuncionario          = $request->input('sobrenomeFuncionario');
         $funcionario->foneFuncionario               = $request->input('foneFuncionario');
@@ -308,6 +292,26 @@ class FuncionarioController extends Controller
         $funcionario->salarioFuncionario            = $request->input('salarioFuncionario');
         $funcionario->tipo_funcionario              = $request->input('tipo_funcionario');
         $funcionario->statusFuncionario             = $request->input('statusFuncionario');
+
+        if ($request->hasFile('fotoFuncionario')) {
+
+            $imagem = $request->file('fotoFuncionario');
+
+            $nomeArquivo = time() . '.' . $imagem->getClientOriginalExtension();
+
+            $caminhoDiretorio = 'img/funcionarios/';
+            $imagem->storeAs($caminhoDiretorio, $nomeArquivo, 'public');
+
+            if ($funcionario->fotoFuncionario) {
+
+                $caminhoFotoAnterior = 'img/funcionarios/' . $funcionario->fotoFuncionario;
+
+                Storage::disk('public')->delete($caminhoFotoAnterior);
+            }
+
+
+            $funcionario->fotoFuncionario = $nomeArquivo;
+        }
 
         $funcionario->save();
 

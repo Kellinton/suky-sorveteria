@@ -52,7 +52,7 @@
                                        {{ $produto->statusProduto === 'inativo' ? 'Indisponível' : 'Disponível' }}
                                     </span>
 
-                                    <img class="w-100 border-radius-xl" src="{{ asset('img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
+                                    <img class="w-100 border-radius-xl" src="{{ asset('storage/img/produtos/' . $produto->categoriaProduto . '/' . $produto->fotoProduto) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl" style="width: 306px; height: 214px;">
                                 </div>
                             </div>
                             <div class="card-body px-1 pb-0 mb-5">
