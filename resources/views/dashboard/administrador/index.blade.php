@@ -61,7 +61,7 @@
                 <div class="carousel-inner overflow-hidden position-relative border-radius-xl" style="height: 250px;">
 
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('dashboard/img/curved-images/curved14.jpg') }}" alt="First slide">
 
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
@@ -82,7 +82,7 @@
                   </div>
 
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('dashboard/img/curved-images/curved14.jpg') }}" alt="First slide">
 
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
@@ -101,7 +101,7 @@
                   </div>
 
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('img/curved-images/curved14.jpg') }}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ asset('dashboard/img/curved-images/curved14.jpg') }}" alt="Third slide">
                     <div class="mask bg-gradient-primary">
                         <div class="card-body position-relative z-index-1 px-5 py-4">
                             <div class="d-flex">
