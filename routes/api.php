@@ -4,6 +4,7 @@ use App\Http\Controllers\api\LoginController;
 use App\Http\Controllers\api\DashboardController;
 use App\Http\Controllers\api\ProdutoController;
 use App\Http\Controllers\api\ContatoController;
+use App\Http\Controllers\api\FuncionarioController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,4 +43,7 @@ Route::post('login', [LoginController::class, 'login']);
 
     // Mensagens
     Route::get('/contatos', [ContatoController::class, 'index']);
+
+    // Funcionarios
+    Route::get('/funcionarios', [FuncionarioController::class, 'index']);
 });
