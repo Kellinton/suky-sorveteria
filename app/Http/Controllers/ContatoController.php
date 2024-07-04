@@ -50,10 +50,12 @@ class ContatoController extends Controller
         )
         ->orderBy('contatos.id', 'desc')
         ->get();
-        
+
         // dd($contatos);
 
         $naoLidas = Contato::where('lidoContato', 0)->count();
+
+        $mensagensRespondidas = Contato::where('respondidoContato', 1)->count();
 
         $totalMensagens = Contato::count();
 
@@ -63,6 +65,7 @@ class ContatoController extends Controller
             'funcionarioAutenticado',
             'contatos',
             'totalMensagens',
+            'mensagensRespondidas',
             'totalMensagensComFavorito',
             'naoLidas',
         ));

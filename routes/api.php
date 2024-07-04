@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\LoginController;
 use App\Http\Controllers\api\DashboardController;
 use App\Http\Controllers\api\ProdutoController;
+use App\Http\Controllers\api\ContatoController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,10 +34,12 @@ Route::post('login', [LoginController::class, 'login']);
     // Dashboard
     Route::get('/dashboard/{idFuncionario}', [DashboardController::class, 'index']);
 
-     // Produtos
-    //  Route::apiResource('produtos', ProdutoController::class);
-      Route::get('/produtos', [ProdutoController::class, 'index']);
-      Route::post('/produtos', [ProdutoController::class, 'store']);
-      Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
-      Route::post('/produtos/{id}', [ProdutoController::class, 'update']); // atualizar com post (temporário)
-    });
+    // Produtos
+    Route::get('/produtos', [ProdutoController::class, 'index']);
+    Route::post('/produtos', [ProdutoController::class, 'store']);
+    Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
+    Route::post('/produtos/{id}', [ProdutoController::class, 'update']); // atualizar com post (temporário)
+
+    // Mensagens
+    Route::get('/contatos', [ContatoController::class, 'index']);
+});

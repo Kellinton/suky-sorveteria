@@ -58,6 +58,8 @@ class AssistenteController extends Controller
 
         $naoLidas = Contato::where('lidoContato', 0)->count();
 
+        $mensagensRespondidas = Contato::where('respondidoContato', 1)->count();
+
         $totalMensagens = Contato::count();
 
         $totalMensagensComFavorito = Contato::where('favoritoContato', 1)->count();
@@ -66,6 +68,7 @@ class AssistenteController extends Controller
             'funcionarioAutenticado',
             'contatos',
             'totalMensagens',
+            'mensagensRespondidas',
             'totalMensagensComFavorito',
             'naoLidas',
         ));
