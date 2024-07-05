@@ -56,7 +56,6 @@ class FuncionarioController extends Controller
         // retornando os funcionários, juntando a tabela funcionários e usuários, obtendo todos os campos da tabela funcionario e o campo email da tabela usuários
         $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
         ->select('funcionarios.*', 'usuarios.email')
-        ->orderBy('funcionarios.updated_at', 'desc')
         ->get();
 
         //dd($funcionarios);
