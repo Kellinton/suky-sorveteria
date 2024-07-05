@@ -9,11 +9,19 @@ class BuscarProdutos extends Component
 {
     public $search = '';
     public $selectedCategoria = '';
+    public $selectedDisponibilidade = '';
+
+    public function aplicarFiltro()
+    {
+        $this->render();
+    }
 
     public function render()
     {
-        $produtos = $this->getProdutos();
-        return view('livewire.buscar-produtos', compact('produtos'));
+
+        return view('livewire.buscar-produtos', [
+            'produtos' => $this->getProdutos()
+        ]);
     }
 
     public function getProdutos()
@@ -27,8 +35,11 @@ class BuscarProdutos extends Component
         }
 
         if ($this->selectedCategoria) {
-            $produtos->where('categoriaProduto', $this->selectedCategoria)
-                     ->orWhere('statusProduto', $this->selectedCategoria);
+            $produtos->where('categoriaProduto', $this->selectedCategoria);
+        }
+
+        if ($this->selectedDisponibilidade) {
+            $produtos->where('statusProduto', $this->selectedDisponibilidade);
         }
 
         return $produtos->get();
