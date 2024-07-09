@@ -35,50 +35,51 @@ class ProdutoController extends Controller
 
     public function store(Request $request)
     {
-        $ultimoProduto = Produto::latest('id')->first();
-        $ultimoID = $ultimoProduto ? $ultimoProduto->id : 0;
-        $proximoID = $ultimoID + 1;
-
-        $validator = Validator::make($request->all(), [
-            'nomeProduto' => 'required|string|max:255',
-            'descricaoProduto' => 'required|string',
+        $rules = [
+            'nomeProduto' => 'required|max:255',
+            'descricaoProduto' => 'required|max:255',
             'valorProduto' => 'required|numeric',
-            'categoriaProduto' => 'required|string|max:255',
-            'fotoProduto' => 'required|image|max:2048'
-        ]);
+            'categoriaProduto' => 'required|in:acai,sorvetePote,picole',
+            'fotoProduto' => 'nullable|string',
+            // 'fotoProduto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $categoriaProduto = $request->categoriaProduto;
-        $foto = $request->file('fotoProduto')->store('img/produtos/' . $categoriaProduto , 'public');
-
         $produto = new Produto();
-        $produto->nomeProduto = $request->nomeProduto;
-        $produto->descricaoProduto = $request->descricaoProduto;
-        $produto->valorProduto = $request->valorProduto;
-        $produto->categoriaProduto = $request->categoriaProduto;
-        $produto->fotoProduto = $foto;
 
-        // if ($request->hasFile('fotoProduto')) {
-        //     $imagem = $request->file('fotoProduto');
-        //     $nomeArquivo = Str::slug($produto->nomeProduto) . '_' . $proximoID . '.' . $imagem->getClientOriginalExtension();
-        //     $imagem->move(public_path('img/produtos/' .  $categoriaProduto . '/' ), $nomeArquivo);
-        //     $produto->fotoProduto = $nomeArquivo;
-        // }
+        if ($request->fotoProduto) {
+            // Salvar no storage
+            $base64Image = $request->fotoProduto;
+            $imagem = base64_decode($base64Image);
+            $nomeArquivo = time() . '.png';
+            $categoriaProduto = $request->input('categoriaProduto');
 
-        if ($request->hasFile('fotoProduto')) {
-            $imagem = $request->file('fotoProduto');
-            $nomeArquivo = Str::slug($produto->nomeProduto) . '_' . $proximoID . '.' . $imagem->getClientOriginalExtension();
-            $imagem->storeAs('public/img/produtos/' . $produto->categoriaProduto, $nomeArquivo);
+            // Caminho temporário para salvar a imagem
+            Storage::disk('public')->put('temp/' . $nomeArquivo, $imagem);
+
+            // Mover para o diretório final
+            Storage::disk('public')->move('temp/' . $nomeArquivo, 'img/produtos/' . $categoriaProduto . '/' . $nomeArquivo);
+
+            // Atualizar o caminho da imagem no produto
             $produto->fotoProduto = $nomeArquivo;
         }
 
+        $produto->nomeProduto = $request->input('nomeProduto');
+        $produto->descricaoProduto = $request->input('descricaoProduto');
+        $produto->categoriaProduto = $request->input('categoriaProduto');
+        $produto->valorProduto = $request->input('valorProduto');
+        $produto->statusProduto = $request->input('statusProduto');
+
         $produto->save();
 
-        return response()->json($produto, 201);
+        return response()->json($produto);
     }
+
 
     public function show($id)
     {
