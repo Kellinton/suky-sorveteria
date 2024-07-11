@@ -53,3 +53,4 @@ Route::post('login', [LoginController::class, 'login']);
     // Perfil
     Route::get('/perfil/{idFuncionario}', [PerfilController::class, 'index']);
 });
+
