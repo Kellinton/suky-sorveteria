@@ -62,7 +62,7 @@ class ProdutoController extends Controller
             return response()->json(['errors' => $validator->errors()], 422); // status HTTP 422 (Unprocessable Entity). status para indicar que a requisição foi bem formada, mas não pôde ser processada devido a erros de validação.
         }
 
-     
+
         $produto = new Produto();
 
         if ($request->fotoProduto) {
@@ -114,10 +114,22 @@ class ProdutoController extends Controller
             //  'fotoProduto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
-        $validator = Validator::make($request->all(), $rules);
+        // Mensagens de erro personalizadas
+        $messages = [
+            'nomeProduto.required' => 'O campo Nome do Produto é obrigatório.',
+            'nomeProduto.max' => 'O campo Nome do Produto deve ter no máximo :max caracteres.',
+            'descricaoProduto.required' => 'O campo Descrição do Produto é obrigatório.',
+            'descricaoProduto.max' => 'O campo Descrição do Produto deve ter no máximo :max caracteres.',
+            'valorProduto.required' => 'O campo Valor do Produto é obrigatório.',
+            'valorProduto.numeric' => 'O campo Valor do Produto deve ser numérico.',
+            'categoriaProduto.required' => 'O campo Categoria do Produto é obrigatório.',
+            'categoriaProduto.in' => 'A Categoria do Produto deve ser uma das seguintes: Açaí, Sorvete de pote, Picolé.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
+            return response()->json(['errors' => $validator->errors()], 422); // status HTTP 422 (Unprocessable Entity). status para indicar que a requisição foi bem formada, mas não pôde ser processada devido a erros de validação.
         }
 
         $produto = Produto::findOrFail($id);
@@ -153,7 +165,7 @@ class ProdutoController extends Controller
         // dd($produto);
         $produto->save();
 
-        return response()->json($produto);
+        return response()->json($produto, 200);
     }
 
     // public function destroy($id)
