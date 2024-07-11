@@ -61,6 +61,6 @@ class DashboardController extends Controller
             'totalFuncionarios' => $totalFuncionarios,
             'mensagensRecentes' => $mensagensRecentes,
 
-        ]);
+        ], 200);
     }
 }

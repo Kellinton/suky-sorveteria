@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Funcionario;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+
 
 class FuncionarioController extends Controller
 {
     public function index()
     {
         $funcionarios = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
-        ->select('funcionarios.*', 'usuarios.email')
+        ->select('funcionarios.*', 'usuarios.email', 'usuarios.senha')
         ->orderBy('funcionarios.updated_at', 'desc')
         ->get();
 
@@ -30,7 +32,20 @@ class FuncionarioController extends Controller
             'totalFuncionarios' => $totalFuncionarios,
             'mediaSalarial' => $mediaSalarial,
             'funcionariosInativos' => $funcionariosInativos,
-        ]);
+        ], 200);
+    }
+
+    public function show($id)
+    {
+
+        // $funcionario = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
+        // ->select('funcionarios.*', 'usuarios.email', 'usuarios.senha')
+        // ->findOrFail($id);
+
+
+        // return response()->json([
+        //     'funcionario' => $funcionario,
+        // ]);
     }
 
 }

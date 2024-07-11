@@ -30,7 +30,7 @@ class ProdutoController extends Controller
             'totalProdutos' => $totalProdutos,
             'totalValorProdutos' => $totalValorProdutos,
             'valorMedioProdutos' => $valorMedioProdutos,
-        ]);
+        ], 200);
     }
 
     public function store(Request $request)
@@ -77,14 +77,15 @@ class ProdutoController extends Controller
 
         $produto->save();
 
-        return response()->json($produto);
+        return response()->json(['produto' => $produto], 201);
+
     }
 
 
     public function show($id)
     {
         $produto = Produto::findOrFail($id);
-        return response()->json($produto);
+        return response()->json($produto, 200);
     }
 
     public function update(Request $request, $id)

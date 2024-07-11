@@ -5,6 +5,7 @@ use App\Http\Controllers\api\DashboardController;
 use App\Http\Controllers\api\ProdutoController;
 use App\Http\Controllers\api\ContatoController;
 use App\Http\Controllers\api\FuncionarioController;
+use App\Http\Controllers\api\PerfilController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,4 +47,9 @@ Route::post('login', [LoginController::class, 'login']);
 
     // Funcionarios
     Route::get('/funcionarios', [FuncionarioController::class, 'index']);
+    // Route::post('/funcionarios', [FuncionarioController::class, 'store']);
+    Route::get('/funcionarios/{id}', [FuncionarioController::class, 'show']);
+
+    // Perfil
+    Route::get('/perfil/{idFuncionario}', [PerfilController::class, 'index']);
 });

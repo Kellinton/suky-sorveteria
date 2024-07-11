@@ -38,7 +38,7 @@ class ContatoController extends Controller
             'naoRespondidas' => $naoRespondidas,
             'mensagensRespondidas' => $mensagensRespondidas,
             'mensagensTotais' => $mensagensTotais,
-        ]);
+        ], 200);
 
     }
 }
