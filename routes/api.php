@@ -31,16 +31,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [LoginController::class, 'login']);
 
 
- Route::middleware(['auth:sanctum', 'funcionario'])->group(function() {
+  Route::middleware(['auth:sanctum', 'funcionario'])->group(function() {
 
     // Dashboard
     Route::get('/dashboard/{idFuncionario}', [DashboardController::class, 'index']);
 
     // Produtos
-    Route::get('/produtos', [ProdutoController::class, 'index']);
     Route::post('/produtos', [ProdutoController::class, 'store']);
     Route::get('/produtos/{id}', [ProdutoController::class, 'show']);
-    Route::post('/produtos/{id}', [ProdutoController::class, 'update']); // atualizar com post (temporário)
+    Route::post('/produtos/{id}', [ProdutoController::class, 'update']);
+    Route::get('/produtos', [ProdutoController::class, 'index']);
 
     // Mensagens
     Route::get('/contatos', [ContatoController::class, 'index']);
@@ -52,5 +52,5 @@ Route::post('login', [LoginController::class, 'login']);
 
     // Perfil
     Route::get('/perfil/{idFuncionario}', [PerfilController::class, 'index']);
-});
+ });
 
