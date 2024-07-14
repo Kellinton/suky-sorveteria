@@ -51,6 +51,7 @@ Route::post('login', [LoginController::class, 'login']);
     Route::get('/funcionarios/{id}', [FuncionarioController::class, 'show']);
 
     // Perfil
-    Route::get('/perfil/{idFuncionario}', [PerfilController::class, 'index']);
+    Route::get('/perfil/{id}', [PerfilController::class, 'show']);
+    Route::post('/perfil/{id}', [PerfilController::class, 'update']);
  });
 

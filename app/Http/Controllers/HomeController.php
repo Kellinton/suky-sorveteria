@@ -16,7 +16,9 @@ class HomeController extends Controller
     public function index() {
 
 
-            $produtos = Produto::orderBy('id', 'desc')->get();
+        $produtos = Produto::where('statusProduto', 'ativo')
+        ->orderBy('id', 'desc')
+        ->get();
 
             // dd($produtos);
 

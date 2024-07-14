@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $tipoFuncionario = ucfirst($funcionario->tipo_funcionario);
 
 
-        $fotoUrl = asset('img/funcionarios/' . $funcionario->fotoFuncionario);
+        $fotoUrl = asset('storage/img/funcionarios/' . $funcionario->fotoFuncionario);
 
         // Quantidade valor em produtos
         $totalValorProdutos = Produto::sum('valorProduto');
