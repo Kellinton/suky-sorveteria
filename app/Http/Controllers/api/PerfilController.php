@@ -52,7 +52,7 @@ class PerfilController extends Controller
             'email' => 'required|email|max:255',
             'nome' => 'required|max:20',
             'sobrenome' => 'required|max:20',
-            'senha' => 'required|min:8',
+            'senha' => 'required|max:20',
             'fotoFuncionario' => 'nullable|string',
         ];
 
@@ -64,7 +64,7 @@ class PerfilController extends Controller
             'sobrenome.required' => 'O campo Sobrenome é obrigatório.',
             'sobrenome.max' => 'O campo Sobrenome deve ter no máximo :max caracteres.',
             'senha.required' => 'O campo Senha é obrigatório.',
-            'senha.min' => 'O campo Senha deve ter no mínimo :min caracteres.',
+            'senha.max' => 'O campo Senha deve ter no máximo :max caracteres.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -72,7 +72,7 @@ class PerfilController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422); // status HTTP 422 (Unprocessable Entity). status para indicar que a requisição foi bem formada, mas não pôde ser processada devido a erros de validação.
         }
-        
+
         $usuario = Usuario::find($id);
 
         // Se o usuário existe, busca o funcionário relacionado
