@@ -44,14 +44,13 @@ Route::post('login', [LoginController::class, 'login']);
 
     // Mensagens
     Route::get('/contatos', [ContatoController::class, 'index']);
+    Route::get('/contatos/{id}', [ContatoController::class, 'show']);
 
     // Funcionarios
     Route::get('/funcionarios', [FuncionarioController::class, 'index']);
-    // Route::post('/funcionarios', [FuncionarioController::class, 'store']);
     Route::get('/funcionarios/{id}', [FuncionarioController::class, 'show']);
 
     // Perfil
     Route::get('/perfil/{id}', [PerfilController::class, 'show']);
     Route::post('/perfil/{id}', [PerfilController::class, 'update']);
  });
-

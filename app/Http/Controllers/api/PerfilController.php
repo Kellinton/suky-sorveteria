@@ -67,7 +67,12 @@ class PerfilController extends Controller
             'senha.min' => 'O campo Senha deve ter no mínimo :min caracteres.',
         ];
 
+        $validator = Validator::make($request->all(), $rules, $messages);
 
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422); // status HTTP 422 (Unprocessable Entity). status para indicar que a requisição foi bem formada, mas não pôde ser processada devido a erros de validação.
+        }
+        
         $usuario = Usuario::find($id);
 
         // Se o usuário existe, busca o funcionário relacionado

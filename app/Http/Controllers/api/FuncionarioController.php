@@ -38,14 +38,14 @@ class FuncionarioController extends Controller
     public function show($id)
     {
 
-        // $funcionario = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
-        // ->select('funcionarios.*', 'usuarios.email', 'usuarios.senha')
-        // ->findOrFail($id);
+         $funcionario = Funcionario::join('usuarios', 'funcionarios.id', '=', 'usuarios.tipo_usuario_id')
+         ->select('funcionarios.*', 'usuarios.email', 'usuarios.senha')
+         ->findOrFail($id);
 
 
-        // return response()->json([
-        //     'funcionario' => $funcionario,
-        // ]);
+         return response()->json([
+             'funcionario' => $funcionario,
+         ], 200);
     }
 
 }
