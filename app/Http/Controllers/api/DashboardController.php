@@ -36,15 +36,30 @@ class DashboardController extends Controller
         // Funcionários Totais
         $totalFuncionarios = Funcionario::count();
 
-        // Buscar as 3 mensagens mais recentes
-        $mensagensRecentes = Contato::orderBy('created_at', 'desc')->take(3)->get();
-
-        // Formatar as mensagens e datas
-        $mensagensRecentes = $mensagensRecentes->map(function($mensagem) {
+        $funcionariosRecentes = Funcionario::orderBy('updated_at', 'desc')
+        ->take(3)
+        ->get()
+        ->map(function ($funcionario) {
             return [
-                'nomeContato' => $mensagem->nomeContato,
-                'mensagemContato' => Str::limit($mensagem->mensagemContato, 25, '...'),
-                'created_at' => Carbon::parse($mensagem->created_at)->diffForHumans(),
+                'nomeFuncionario' => $funcionario->nomeFuncionario,
+                'sobrenomeFuncionario' => $funcionario->sobrenomeFuncionario,
+                'fotoFuncionario' => $funcionario->fotoFuncionario,
+                'cargoFuncionario' => ucfirst($funcionario->cargoFuncionario),
+                'tipo_funcionario' => ucfirst($funcionario->tipo_funcionario),
+                'statusFuncionario' => ucfirst($funcionario->statusFuncionario),
+            ];
+        });
+        $produtosRecentes = Produto::orderBy('updated_at', 'desc')
+        ->take(3)
+        ->get()
+        ->map(function ($produto) {
+            return [
+                'nomeProduto' => $produto->nomeProduto,
+                'descricaoProduto' => $produto->descricaoProduto,
+                'categoriaProduto' => $produto->categoriaProduto,
+                'valorProduto' => $produto->valorProduto,
+                'fotoProduto' => $produto->fotoProduto,
+                'statusProduto' => $produto->statusProduto,
             ];
         });
 
@@ -56,11 +71,11 @@ class DashboardController extends Controller
                 'foto_funcionario' => $fotoUrl,
                 'tipo_funcionario' => $tipoFuncionario,
             ],
+            'funcionariosRecentes' => $funcionariosRecentes,
+            'produtosRecentes'  => $produtosRecentes,
             'totalValorProdutos' => $totalValorProdutos,
             'totalProdutos' => $totalProdutos,
             'totalFuncionarios' => $totalFuncionarios,
-            'mensagensRecentes' => $mensagensRecentes,
-
         ], 200);
     }
 }
