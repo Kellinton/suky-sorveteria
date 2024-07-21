@@ -3,7 +3,7 @@
 # Dashboard | Suky 🍧
 <p>
 
-<img width="800" height="400" src="/to_readme/dashboard-suky.png">
+<img width="800" height="400" src="/to_readme/dashboard-suky-sorveteria.png">
 
 </p>
 
