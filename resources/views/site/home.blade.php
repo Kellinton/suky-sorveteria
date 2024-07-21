@@ -315,7 +315,9 @@
                                                     <p style="min-height: 70px;">{{ $produto->descricaoProduto }}</p>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">R$ {{ $produto->valorProduto }}</p>
-                                                        <button onclick="adicionarAoCarrinho('Açai 1', 4.99)" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>iFood</button>
+                                                        <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/suky-fabrica-de-sorvete-e-acai-jardim-tua/6d823199-8bfe-4b37-a097-933917dbc40a" target="_blank" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i>iFood
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
